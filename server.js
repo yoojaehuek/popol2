@@ -12,6 +12,7 @@ const localUrl = 8081;
 
 const { sequelize } = require('./models');
 const musicRouter = require('./routes/musics');
+const userRouter = require('./routes/user')
 
 //상수 multer에 "multer"라이브러리 가져옴
 const multer = require("multer");
@@ -81,6 +82,7 @@ app.post('/mp3', upload.single('file'), (req, res)=>{
 })
 
 app.use('/music', musicRouter); 
+app.use('/user', userRouter); 
 
 // 위에서 안걸린 나머지 모든 get요청 처리
 // 예: http://localhost:8080/asdfasdfasd
