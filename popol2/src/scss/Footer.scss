@@ -1,8 +1,14 @@
 
+
 #footer {
   color: rgb(247, 247, 247);
   background-color: black;
 }
+
+#footer li {
+  font-size: 0.8rem;
+}
+
 
 #footer-info > div {
   display: flex;
@@ -21,6 +27,10 @@
   color: white
 }
 
+#footer-copy{
+  padding-top: 20px;
+}
+
 #footer-copy ul {
   font-size: 0.7vw;
   display: flex;
@@ -33,4 +43,8 @@
 }
 #footer-copy ul li:not(:last-child) {
   border-right: 1px solid #ccc;
+}
+
+.copyright-inner{
+  font-size: 0.6rem;
 }

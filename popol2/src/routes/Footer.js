@@ -54,16 +54,7 @@ const Footer = () => {
                 <i class="fa-brands fa-tiktok fa-lg"></i>
               </li>
               <li>
-                <i class="fa-brands fa-discord fa-lg"></i>
-              </li>
-              <li>
                 <i class="fa-brands fa-youtube fa-lg"></i>
-              </li>
-              <li>
-                <i class="fa-brands fa-github fa-lg"></i>
-              </li>
-              <li>
-                <i class="fa-solid fa-camera fa-lg"></i>
               </li>
             </ul>
           </div>
@@ -73,14 +64,6 @@ const Footer = () => {
         </div>
       </div>
       <div id="footer-copy">
-        <div className="footer-copy-inner">
-          <ul>
-            <li>법적 약관</li>
-            <li>개인정보 보호정책</li>
-            <li>쿠키설정</li>
-            <li>개인정보처리방침</li>
-          </ul>
-        </div>
         <div id="copyright">
           <div className="copyright-inner">
             상호 : 3Team 쇼핑몰 주소 : 평택 남구 삼산중로 100번길 대표전화 :
