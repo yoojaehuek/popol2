@@ -4,20 +4,20 @@ import { useNavigate } from "react-router-dom";
 import '../scss/Join.scss';
 import { BsGoogle } from "react-icons/bs";
 import { AiFillMessage } from "react-icons/ai";
-import { API_URL } from '../config/contansts'
+import { API_URL } from '../config/contansts';
 const Join = () => {
     const navigate = useNavigate();
     const joinSubmit = async (e) =>{
         e.preventDefault();
         const id = e.target.id.value
         const pwd = e.target.pwd.value
-        if(id.pwd != ""){
+        if(id.pwd !== ""){
             await axios.post(`${API_URL}/user`,{id,pwd})
             .then(() =>{
                 navigate('/');
                 console.log("전송됨");
             })
-            .catch(err =>{
+            .catch((err) =>{
                 console.error(err);
             })
         }else{

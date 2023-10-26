@@ -10,7 +10,6 @@ const Musics = () => {
   const getMusics = async () => {
     await axios.get(`${API_URL}/music`);
   }
-
   return(
     <>
       <h1>로그인 후 메인입니다.</h1>
