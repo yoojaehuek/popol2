@@ -83,7 +83,7 @@ const steps = [
   {
     id: 'music1111',
     message: '추천 음악입니다. ~~~~~~~~ .',
-    end: true,
+    trigger: '1',
   },
   {
     id: 'music2',

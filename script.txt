@@ -1,3 +1,3 @@
-INSERT INTO `mplaydb`.`amounts` (`name`, `price`, `numberAcounts`, `content`) VALUES ('Solo', '5000', '1', '무광고로 음악 감상하기 \n 다운로드하여 오프라인에서 감상 <br> 나만의 맞춤 플레이리스트 <br> 100곡 감상 가능 <br> 여러 디바이스에서 감상');
-INSERT INTO `mplaydb`.`amounts` (`name`, `price`, `numberAcounts`, `content`) VALUES ('Duo', '9900', '2', 'Premium 별도 계정 2개 <br> 무광고로 음악 감상 <br> 다운로드 오프라인에서 감상 <br> 나만의 맞춤 플레이리스트 <br> 100곡 감상 가능 <br> 여러 디바이스에서 감상');
-INSERT INTO `mplaydb`.`amounts` (`name`, `price`, `numberAcounts`, `content`) VALUES ('Basic', '3000', '1', '무광고로 음악 감상하기 <br> 나만의 맞춤 플레이리스트 <br> 100곡 감상 가능 <br> 여러 디바이스에서 감상');
+INSERT INTO `mplaydb`.`amounts` (`name`, `price`, `numberAcounts`, `content`) VALUES ('Solo', '5000', '1', '무광고로 음악 감상하기\n다운로드하여 오프라인에서 감상 \n 나만의 맞춤 플레이리스트 \n 100곡 감상 가능 \n 여러 디바이스에서 감상');
+INSERT INTO `mplaydb`.`amounts` (`name`, `price`, `numberAcounts`, `content`) VALUES ('Duo', '9900', '2', 'Premium 별도 계정 2개 \n 무광고로 음악 감상 \n 다운로드 오프라인에서 감상 \n 나만의 맞춤 플레이리스트 \n 100곡 감상 가능 \n 여러 디바이스에서 감상');
+INSERT INTO `mplaydb`.`amounts` (`name`, `price`, `numberAcounts`, `content`) VALUES ('Basic', '3000', '1', '무광고로 음악 감상하기 \n 나만의 맞춤 플레이리스트 \n 100곡 감상 가능 \n 여러 디바이스에서 감상');
