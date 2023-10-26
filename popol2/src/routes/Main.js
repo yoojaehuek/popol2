@@ -2,6 +2,10 @@ import React from 'react';
 import "../scss/Main.scss";
 import ReactFullpage from '@fullpage/react-fullpage';
 import { useState, useEffect } from 'react';
+import useAsync from '../customHook/useAsync';
+import { API_URL } from '../config/contansts';
+import Amount from './amount';
+import axios from 'axios';
 
 const Main = () => {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -18,12 +22,28 @@ const Main = () => {
     };
     }, []);
 
+
     useEffect(() => {
       setTimeout(() => {
         setShowMainPage(true);
       }, 1000);
     }, []);
 
+
+    const getAmounts = async () => {
+      const res = await axios.get(`${API_URL}/amounts`);
+      console.log("res.data:", res.data);
+      return res.data;
+    }
+    const [state ] = useAsync(getAmounts, []);
+    const { loading, data:amounts, error} = state; //state구조분해 
+    if(loading) return <div>로딩중 ......</div>
+    if(error) return <div>에러가 발생했습니다.</div>
+    if(!amounts){
+        return <div>로딩중입니다.</div>
+    }
+  
+  
 
   return (
     <ReactFullpage
@@ -90,96 +110,7 @@ const Main = () => {
                   <h2>스피커 및 기타 기기에서 제한 없이 마음껏 들으세요.</h2>
                 </div>
                 <div className='Moneyset3'>
-                  <div>
-                    <div className='user-text2 first'>
-                        <div className="money">
-                          <div className="moneytop">
-                            <h3>Solo</h3>
-                            <p>매월 10,900원 정기결제(부가세 별도).</p>
-                            <p>계정 1개</p>
-                            <hr className="moneyline"></hr>
-                          </div>
-                          <ul className="moneymid">
-                            <li><p>무광고로 음악 감상하기</p></li>
-                            <li><p>다운로드하여 오프라인에서 감상</p></li>
-                            <li><p>나만의 맞춤 플레이리스트</p></li>
-                            <li><p>8천만 곡 감상 가능</p></li>
-                            <li><p>여러 디바이스에서 감상</p></li>
-                          </ul>
-                          <div className="moneybottom">
-                            <div>
-                              <a className="moneybottoma" href="/">
-                                <span className="moneybottomb">Get Started</span>
-                                <span className="moneybotton"></span>
-                              </a>
-                            </div>
-                          </div>
-                          <div className="moneyfotter">
-                            <p className="moneyfottertxt">체험 기간 이후 매월 정기결제되고 이용 약관이 적용됩니다. Premium을 이미 이용해 봤다면 참여할 수 없습니다.</p>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-                  <div>
-                    <div className='user-text2 first'>
-                        <div className="money">
-                          <div className="moneytop">
-                            <h3>Duo</h3>
-                            <p>매월 16,350원 정기결제(부가세 별도)</p>
-                            <p>계정 2개</p>
-                            <hr className="moneyline"></hr>
-                          </div>
-                          <ul className="moneymid">
-                            <li><p>Premium 별도 계정 2개</p></li>
-                            <li><p>무광고로 음악 감상하기</p></li>
-                            <li><p>다운로드하여 오프라인에서 감상</p></li>
-                            <li><p>나만의 맞춤 플레이리스트</p></li>
-                            <li><p>8천만 곡 감상 가능</p></li>
-                            <li><p>여러 디바이스에서 감상</p></li>
-                          </ul>
-                          <div className="moneybottom">
-                            <div>
-                              <a className="moneybottoma" href="/">
-                                <span className="moneybottomb">Get Started</span>
-                                <span className="moneybotton"></span>
-                              </a>
-                            </div>
-                          </div>
-                          <div className="moneyfotter">
-                            <p className="moneyfottertxt">이용 약관이 적용됩니다. 아직 Premium 구독을 해본 적이 없는 사용자만 참여할 수 있습니다. 같은 주소지에 거주하는 두 사람을 위한 서비스입니다.</p>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-                  <div>
-                    <div className='user-text2 first'>
-                        <div className="money">
-                          <div className="moneytop">
-                            <h3>Basic</h3>
-                            <p>매월 7,900원(부가세 별도)</p>
-                            <p>계정 1개</p>
-                            <hr className="moneyline"></hr>
-                          </div>
-                          <ul className="moneymid">
-                            <li><p>무광고로 음악 감상하기</p></li>
-                            <li><p>나만의 맞춤 플레이리스트</p></li>
-                            <li><p>8천만 곡 감상 가능</p></li>
-                            <li><p>여러 디바이스에서 감상</p></li>
-                          </ul>
-                          <div className="moneybottom">
-                            <div>
-                              <a className="moneybottoma" href="/">
-                                <span className="moneybottomb">Get Started</span>
-                                <span className="moneybotton"></span>
-                              </a>
-                            </div>
-                          </div>
-                          <div className="moneyfotter">
-                            <p className="moneyfottertxt">이용 약관이 적용됩니다.</p>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
+                  {amounts.map(amount => <Amount key = {amount.id} amount={amount}></Amount>)}
                 </div>
               </section>
             </div>
