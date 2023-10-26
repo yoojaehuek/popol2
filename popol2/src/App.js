@@ -6,6 +6,7 @@ import Footer from './routes/Footer';
 import Main from './routes/Main';
 import Mypage from './routes/Mypage';
 
+
 function App() {
   return (
     <div className="App">
