@@ -9,7 +9,8 @@ import axios from 'axios';
 
 const Main = () => {
   const [showWelcome, setShowWelcome] = useState(true);
-  
+  const [showMainPage, setShowMainPage] = useState(false);
+
   useEffect(() => {
     // 1초 후에 환영 메시지를 천천히 사라지게 합니다.
     const fadeOutTimer = setTimeout(() => {
@@ -20,6 +21,14 @@ const Main = () => {
       clearTimeout(fadeOutTimer);
     };
     }, []);
+
+
+    useEffect(() => {
+      setTimeout(() => {
+        setShowMainPage(true);
+      }, 1000);
+    }, []);
+
 
     const getAmounts = async () => {
       const res = await axios.get(`${API_URL}/amounts`);
@@ -35,6 +44,7 @@ const Main = () => {
     }
   
   
+
   return (
     <ReactFullpage
       scrollingSpeed={900} 
@@ -48,8 +58,45 @@ const Main = () => {
                   <h1>저희 비발디 파크를 찾아주셔서 감사합니다.</h1>
                 </div>
               ) : (
-                <div className="main-page">
-                  <h1>섹션1</h1>
+                <div className="main-page2">
+                  <div className={`main-page3 ${showMainPage ? 'fade-in' : ''}`}>
+                    <section className='Money'>
+                      <div className='txt'>
+                        <h1>저희 비발디 파크를 이용해야 하는 이유!</h1>
+                      </div>
+                      <ul className='section1'>
+                        <li className='section2'>
+                          <div className='sectionimg'></div>
+                          <div className='sectionp'>
+                            <p className='sectionp2'>새로운 음악 발견하기</p>
+                            <p className='section5'>100개가 넘는 트랙을 즐겨보세요!</p>
+                          </div>
+                        </li>
+                        <li className='section2'>
+                          <div className='sectionimg2'></div>
+                          <div className='sectionp'>
+                            <p className='sectionp2'>나만의 맞춤 플레이리스트</p>
+                            <p className='section5'>음악 취향에 맞춰 좋아요를 누르면 플레이리스트에 추가됩니다</p>
+                          </div>
+                        </li>
+                        <li className='section2'>
+                          <div className='sectionimg3'></div>
+                          <div className='sectionp'>
+                            <p className='sectionp2'>오프라인에서 감상</p>
+                            <p className='section5'>내 디바이스에 노래 다운로드.</p>
+                          </div>
+                        </li>
+                        <li className='section2'>
+                          <div className='sectionimg4'></div>
+                          <div className='sectionp'>
+                            <p className='sectionp2'>여러 기기에서 스트리밍</p>
+                            <p className='section5'>모바일, PC, 태블릿에서 음악을 들어보세요.</p>
+                          </div>
+                        </li>
+                      </ul>
+                    </section>
+                    
+                  </div>
                 </div>
               )}
             </div>
