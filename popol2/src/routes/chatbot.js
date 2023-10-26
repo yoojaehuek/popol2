@@ -10,43 +10,99 @@ const steps = [
   {
     id: '2',
     options: [
-      { value: 'option1', label: '음악 추천', trigger: '3' },
-      { value: 'option2', label: '넌 뭐야', trigger: 'whoAmI' },
+      { value: 'option1', label: '넌 누구니?', trigger: 'whoAmI' },
+      { value: 'option2', label: '음악 추천해줘', trigger: 'Music' },
       { value: 'goBack', label: '처음으로 돌아가기', trigger: '1' },
     ],
   },
   {
     id: 'whoAmI',
     message: '저는 저에요!',
+    trigger: 'Music',
+    trigger: '1',
+  },
+  {
+    id: 'Music',
+    message: '어떤 음악을 추천해 드릴까요?',
     trigger: 'recommendMusic',
-  },
-  {
-    id: '3',
-    message: '옵션 1을 선택하셨습니다.',
-    end: true,
-  },
-  {
-    id: '4',
-    message: '옵션 2를 선택하셨습니다.',
-    end: true,
   },
   {
     id: 'recommendMusic',
     options: [
-      { value: 'musicOption1', label: '음악 추천 1', trigger: 'music1' },
-      { value: 'musicOption2', label: '음악 추천 2', trigger: 'music2' },
+      { value: 'musicOption1', label: '국가', trigger: 'music1' },
+      { value: 'musicOption2', label: '기분', trigger: 'music2' },
+      { value: 'musicOption3', label: '아무거나', trigger: 'music3' },
       { value: 'goBack', label: '처음으로 돌아가기', trigger: '1' },
     ],
   },
   {
     id: 'music1',
-    message: '음악 추천 1을 선택하셨습니다.',
+    message: '국가를 골라주세요.',
+    trigger: 'music11',
+  },
+  {
+    id: 'music11',
+    options: [
+      { value: 'musicOption1', label: 'K-POP', trigger: 'music111' },
+      { value: 'musicOption2', label: 'POP', trigger: 'music222' },
+      { value: 'musicOption3', label: 'J-POP', trigger: 'music333' },
+      { value: 'goBack', label: '처음으로 돌아가기', trigger: '1' },
+    ],
+  },
+  {
+    id: 'music111',
+    options: [
+      { value: 'musicOption1', label: '발라드', trigger: 'music1111' },
+      { value: 'musicOption2', label: '힙합', trigger: 'music1111' },
+      { value: 'musicOption3', label: '락', trigger: 'music1111' },
+      { value: 'musicOption4', label: '트로트', trigger: 'music1111' },
+      { value: 'musicOption5', label: '아이돌', trigger: 'music1111' },
+      { value: 'goBack', label: '처음으로 돌아가기', trigger: '1' },
+    ],
+  },
+  {
+    id: 'music222',
+    options: [
+      { value: 'musicOption1', label: '솔로', trigger: 'music1111' },
+      { value: 'musicOption2', label: '밴드', trigger: 'music1111' },
+      { value: 'musicOption3', label: '락, 힙합', trigger: 'music1111' },
+      { value: 'musicOption4', label: 'ost', trigger: 'music1111' },
+      { value: 'goBack', label: '처음으로 돌아가기', trigger: '1' },
+    ],
+  },
+  {
+    id: 'music333',
+    options: [
+      { value: 'musicOption1', label: '아이돌', trigger: 'music1111' },
+      { value: 'musicOption2', label: '가요', trigger: 'music1111' },
+      { value: 'musicOption3', label: '락', trigger: 'music1111' },
+      { value: 'musicOption4', label: '가쿠세이', trigger: 'music1111' },
+      { value: 'goBack', label: '처음으로 돌아가기', trigger: '1' },
+    ],
+  },
+  {
+    id: 'music1111',
+    message: '추천 음악입니다. ~~~~~~~~ .',
     end: true,
   },
   {
     id: 'music2',
-    message: '음악 추천 2를 선택하셨습니다.',
-    end: true,
+    message: '지금은 어떤 기분이세요?.',
+    trigger: 'music22',
+  },
+  {
+    id: 'music22',
+    options: [
+      { value: 'musicOption1', label: '우울', trigger: 'music1111' },
+      { value: 'musicOption2', label: '행복', trigger: 'music1111' },
+      { value: 'musicOption3', label: '화남', trigger: 'music1111' },
+      { value: 'goBack', label: '처음으로 돌아가기', trigger: '1' },
+    ],
+  },
+  {
+    id: 'music3',
+    message: '아무거나 추천해드릴게요.',
+    trigger: 'music1111',
   },
 ];
 
