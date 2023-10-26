@@ -5,16 +5,23 @@ import {
   loadPaymentWidget,
   ANONYMOUS,
 } from "@tosspayments/payment-widget-sdk"
+import { useParams, useLocation } from 'react-router-dom';
 
 const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm" 
 const customerKey = "cF_qY0QYTa9_AQYoQ2Ede" 
 
 export function CheckoutPage() {
+  const location = useLocation();
+  const {state} = location;
+  console.log("state:",state);
+
+  
   const paymentWidgetRef = useRef<PaymentWidgetInstance | null>(null) 
   const paymentMethodsWidgetRef = useRef<ReturnType<
     PaymentWidgetInstance["renderPaymentMethods"]
   > | null>(null) 
-  const [price, setPrice] = useState(50000)
+  const [price, setPrice] = useState(state.price)
+  const [name, setName] = useState(state.name)
 
   useEffect(() => {
     (async () => {
@@ -61,21 +68,21 @@ export function CheckoutPage() {
       price,
       paymentMethodsWidget.UPDATE_REASON.COUPON
     ) 
-  }, [price]) 
+  }, [price])
 
   return (
     <div>
-      <h1>------결제한 상품 넣기------</h1>
+      <h1>{name}</h1>
       <span>{`${price.toLocaleString()}원`}</span>
       <div>
         <label>
           <input
             type="checkbox"
             onChange={(event) => {
-              setPrice(event.target.checked ? price - 5000 : price + 5000) 
+              setPrice(event.target.checked ? price - 500 : price + 500) 
             }}
           />
-          5,000원 할인 쿠폰 적용
+          500원 할인 쿠폰 적용
         </label>
       </div>
       <div id="payment-widget" />
@@ -90,9 +97,8 @@ export function CheckoutPage() {
             // https://docs.tosspayments.com/reference/widget-sdk#requestpayment결제-정보
             await paymentWidget?.requestPayment({
               orderId: "GEc_JImf1o6lzPPcYT1r6",
-              orderName: "토스 티셔츠 외 2건",
-              customerName: "김토스",
-              customerEmail: "customer123@gmail.com",
+              orderName: "Music Hub",
+              customerName: "사용자",
               successUrl: `${window.location.origin}/success`,
               failUrl: `${window.location.origin}/fail`,
             }) 

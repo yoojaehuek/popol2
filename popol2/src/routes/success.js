@@ -6,6 +6,7 @@ export function SuccessPage() {
     <div>
       <h1>결제 성공 페이지</h1>
       <p>결제가 성공적으로 처리되었습니다.</p>
+      <NavLink to='/mypage'><button>마이페이지</button></NavLink>
       <NavLink to='/'><button>메인</button></NavLink>
     </div>
   );

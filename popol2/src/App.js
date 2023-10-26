@@ -29,7 +29,7 @@ function App() {
         <Route path='/mypage' element={<Mypage></Mypage>}></Route>
         <Route path='/music' element={<Musics></Musics>}></Route>
         <Route path='/uploader' element={<Uploader></Uploader>}></Route>
-        <Route path='/payment' element={<CheckoutPage />} />
+        <Route path='/payment/:id' element={<CheckoutPage />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/chatbot" element={<Simple />} />
         <Route path="/fail" element={<FailPage />} />

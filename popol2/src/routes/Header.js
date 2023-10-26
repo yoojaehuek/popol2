@@ -14,7 +14,7 @@ const Header = () => {
         </h1>
         <ul className="headtext nav">
           <li>
-            <NavLink to="/Music">가입하기</NavLink>
+            <NavLink to="/Join">가입하기</NavLink>
           </li>
           <li>
             <NavLink to="/Login">로그인</NavLink>
