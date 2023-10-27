@@ -5,6 +5,7 @@ import AccordionItem from './AccordionItem';
 import { useState, useEffect } from 'react';
 import { useRef } from "react";
 import { useInView } from "framer-motion";
+import InfiniteRollingSlider from './InfiniteRollingSlider';
 
 const Main = () => {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -107,11 +108,7 @@ const Main = () => {
                 <div className="section22">
                   <Section22>
                     <div className='section22-txt'>
-                      <h1>밤하늘 감성적으로 젖어보고 싶지 않으신가요?</h1>
-                      <h1>왼쪽에서 나오는 텍스트</h1>
-                      <h1>왼쪽에서 나오는 텍스트</h1>
-                      <h1>왼쪽에서 나오는 텍스트</h1>
-                      <h1>왼쪽에서 나오는 텍스트</h1>
+                      <InfiniteRollingSlider></InfiniteRollingSlider>
                     </div>
                   </Section22>
                 </div>
