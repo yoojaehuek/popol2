@@ -45,16 +45,16 @@ const Footer = () => {
             <h4>Follow Us</h4>
             <ul>
               <li>
-                <i class="fa-brands fa-facebook fa-lg"></i>
+                <i className="fa-brands fa-facebook fa-lg"></i>
               </li>
               <li>
-                <i class="fa-brands fa-twitter fa-lg"></i>
+                <i className="fa-brands fa-twitter fa-lg"></i>
               </li>
               <li>
-                <i class="fa-brands fa-tiktok fa-lg"></i>
+                <i className="fa-brands fa-tiktok fa-lg"></i>
               </li>
               <li>
-                <i class="fa-brands fa-youtube fa-lg"></i>
+                <i className="fa-brands fa-youtube fa-lg"></i>
               </li>
             </ul>
           </div>

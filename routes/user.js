@@ -14,13 +14,13 @@ router.route('/')
   })
   .post(async(req,res,next)=>{
     try {
-      // const user = await User.create({
-      //   id : req.body.id,
-      //   pwd : req.body.pwd,
-      //   name : req.body.name,
-      //   phone : req.body.phone,
-      // })
-      // console.log("join,user",user);
+      const user = await User.create({
+        id : req.body.id,
+        pwd : req.body.pwd,
+        name : req.body.name,
+        phone : req.body.phone,
+      })
+      console.log("join,user",user);
       res.status(201).json("OK");
       console.log("join req.body: ",req.body);
     } catch (error) {

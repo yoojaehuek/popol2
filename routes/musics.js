@@ -7,8 +7,9 @@ const router = express.Router();
 router.route('/')
   .get(async (req,res,next)=>{ //전체조회
     try {
-      console.log('전체조회성공');
-      res.end();
+      const musics = await Music.findAll({});
+      console.log("musics", musics);
+      res.json(musics);
     } catch (err) {
       console.error(err);
       next(err);
