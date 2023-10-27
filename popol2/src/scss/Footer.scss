@@ -6,7 +6,7 @@
 }
 
 #footer li {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 
@@ -19,9 +19,7 @@
   width: 100%;
   line-height: 2;
 }
-#footer-info > div div h3 {
-  color: green;
-}
+
 
 #footer h4{
   color: white
@@ -48,3 +46,17 @@
 .copyright-inner{
   font-size: 0.6rem;
 }
+
+.econ{
+  padding-left: 4.5rem;
+}
+
+.icon{
+  display: flex;
+  gap: 16px; // 그리드 아이템 간격 설정
+}
+
+.icon2{
+  padding-top: 10px;
+}
+
