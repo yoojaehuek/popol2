@@ -6,21 +6,18 @@
 
 
 .headertxt {
-  text-align: center;
-  font-size: 1.5rem;
-  animation: fadeOut 1s linear 1s forwards;
+  opacity: 1;
+  transition: opacity 1s ease-out; /* 페이드 아웃 애니메이션을 위한 트랜지션 */
 }
 
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-  }
+.headertxt.fade-out {
+  opacity: 0;
 }
 
 .section {
   display: flex;
   justify-content: center;
-  // align-items: center;
+  align-items: center;
   flex-direction: column;
   height: 100vh;
   width: 100%;
@@ -50,7 +47,6 @@
 .Moneytoptxt > h2{
   font-size: 1.5rem;
 }
-
 
 .Moneyset3{
   display: grid;
@@ -142,7 +138,7 @@
 .moneyfottertxt{
   margin-top: 12px;
   color: rgb(83, 83, 83);
-  font-size: 0.75re;
+  font-size: 12px;
   line-height: 16px;
   font-weight: 400;
   text-align: left;
