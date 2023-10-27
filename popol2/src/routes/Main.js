@@ -1,7 +1,10 @@
 import React from 'react';
 import "../scss/Main.scss";
 import ReactFullpage from '@fullpage/react-fullpage';
+import AccordionItem from './AccordionItem';
 import { useState, useEffect } from 'react';
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 
 const Main = () => {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -24,12 +27,31 @@ const Main = () => {
       }, 1000);
     }, []);
 
+    function Section22({ children }) {
+      const ref = useRef(null);
+      const isInView = useInView(ref,{triggerOnce: false});
+    
+      return (
+        <section ref={ref}>
+          <span
+            style={{
+              transform: isInView ? "none" : "translateX(-400px)",
+              opacity: isInView ? 1 : 0,
+              transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+            }}
+          >
+            {children}
+          </span>
+        </section>
+      );
+    }
+  
 
   return (
     <ReactFullpage
       scrollingSpeed={900} 
       navigation 
-      render={({ state, fullpageApi }) => {
+      render={({}) => {
         return (
           <div id="fullpage-wrapper">
             <div className="section">
@@ -81,7 +103,19 @@ const Main = () => {
               )}
             </div>
             <div className="section">
-              <h1>두 번째 섹션</h1>
+              <div className="main-page">
+                <div className="section22">
+                  <Section22>
+                    <div className='section22-txt'>
+                      <h1>밤하늘 감성적으로 젖어보고 싶지 않으신가요?</h1>
+                      <h1>왼쪽에서 나오는 텍스트</h1>
+                      <h1>왼쪽에서 나오는 텍스트</h1>
+                      <h1>왼쪽에서 나오는 텍스트</h1>
+                      <h1>왼쪽에서 나오는 텍스트</h1>
+                    </div>
+                  </Section22>
+                </div>
+              </div>
             </div>
             <div className="section">
               <section className="Money">
@@ -184,7 +218,16 @@ const Main = () => {
               </section>
             </div>
             <div className="section">
-              <h1>4 번째 섹션</h1>
+              <div className="main-page2">
+                <div>
+                  <div>
+                    <h1>궁금한 점이 있으실까요?</h1>
+                    <h2>답변 드리겠습니다!</h2>
+                  </div>
+                  <AccordionItem
+                  />
+                </div>
+              </div>
             </div>
           </div>
         );
