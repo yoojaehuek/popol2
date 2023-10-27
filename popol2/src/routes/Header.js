@@ -1,17 +1,17 @@
 import React from "react";
 import "../scss/Header.scss";
-import logo from '../img/banners/logo5.jpg'; // 이미지 파일 경로로 수정
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
     <div id="header">
       <div className="inner">
-        <div className="headerimg">
+        <h1>
           <NavLink to="/">
-            <img src={logo} alt="로고" />
+            <a href="/">로고</a>
+            <img src="./img/banners/logo.png" alt="" />
           </NavLink>
-        </div>
+        </h1>
         <ul className="headtext nav">
           <li>
             <NavLink to="/Join">가입하기</NavLink>

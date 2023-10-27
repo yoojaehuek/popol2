@@ -21,10 +21,16 @@ class Amount extends Sequelize.Model {
         comment: "월정액 이름",
       },
       price: { //가격
-        type: Sequelize.STRING(10),
+        type: Sequelize.INTEGER,
         allowNull: false,
         comment: 
           "가격",
+      },
+      numberAcounts: { //계정 개수
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        comment: 
+          "계정 수",
       },
       content: {
         type: Sequelize.STRING(1000),
