@@ -1,8 +1,3 @@
-
-*{
-  margin: 0;
-}
-
 #fullpage-wrapper{
   position: relative;
   width: 100%;
@@ -36,6 +31,7 @@
 
 .Money{
   display: block;
+  
 }
 
 .Moneytoptxt{
@@ -58,7 +54,6 @@
   justify-content: center;
   overflow-wrap: break-word;
   overflow: auto;
-  background: var(--background-base,inherit);
 }
 
 .user-text2{
@@ -149,5 +144,138 @@
   text-align: left;
   height: 2.5rem;
   width: 23.75rem;
+}
+
+.main-page{
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  opacity: 1;
+}
+
+.main-page2 {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  padding: 4vw 15vw;
+}
+
+.main-page3 {
+  width: 100%;
+  height: 200px;
+  opacity: 0; /* 초기에 투명한 상태로 설정 */
+  animation: fadeIn 2s ease-in forwards; /* 애니메이션 적용 */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.section22-txt > h1{
+  color: white;
+}
+
+.h1tag h1{
+  text-align: center;
+  font-size: 3rem;
+}
+
+.section1 {
+  display: flex;
+  gap: 80px;
+  padding: 5vw 0;
+  margin: 0px;
+  list-style: none;
+}
+
+.section2{
+  margin-bottom: 20px;
+  display: block;
+  width: 270px;
+}
+
+.sectionimg{
+  background-image: url('../img/music/music.png');
+  display: inline-block;
+  background-position: center top;
+  margin-right: 20px;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  width: 283px;
+  height: 17.6rem;
+}
+
+.sectionimg2{
+  background-image: url('../img/music/music2.png');
+  display: inline-block;
+  background-position: center top;
+  margin-right: 20px;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  width: 283px;
+  height: 17.6rem;
+}
+
+.sectionimg3{
+  background-image: url('../img/music/music3.png');
+  display: inline-block;
+  background-position: center top;
+  margin-right: 20px;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  width: 283px;
+  height: 17.6rem;
+}
+
+.sectionimg4{
+  background-image: url('../img/music/music4.png');
+  display: inline-block;
+  background-position: center top;
+  margin-right: 20px;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  width: 283px;
+  height: 17.6rem;
+}
+
+.sectionp{
+  display: inline-block;
+  width: 100%;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  margin: 16px 0px;
+  display: block;
+  text-align: center;
+}
+
+.sectionp2{
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+  color: inherit;
+}
+
+.txt h1{
+  font-size: 6vh;
+}
+
+.section22 {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+}
+
+.section22 span {
+  display: block;
+  transform: translateX(-400px);
+  opacity: 0;
 }
 

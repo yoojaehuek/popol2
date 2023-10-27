@@ -1,7 +1,8 @@
-$black: #000; //모듈화 계속 재사용가능
+
+$b: #000;
 
 #header {
-  background-color: $black;
+  background-color: $b;
   width: 100%;
   height: 70px;
   padding: 1vw;
@@ -21,16 +22,13 @@ $black: #000; //모듈화 계속 재사용가능
 .nav{
   display: flex;
   margin: 0;
-  li{ //증첩 .nav li{}랑 똑같음
+  li{
     font-size: 20px;
     margin: 0 1vw;
   }
 }
 
-// .nav li{
-//   font-size: 20px;
-//   margin: 0 1vw;
-// }
+
 
 
 #header ul {
