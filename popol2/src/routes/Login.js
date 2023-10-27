@@ -22,8 +22,8 @@ const Login = () => {
                     <li>
                         <div id="toggle-box">
                             <input type="checkbox" id="toggle" hidden/>
-                            <label htmlFor="toggle" class="toggleSwitch">
-                                <span class="toggleButton"></span>
+                            <label for="toggle" className="toggleSwitch">
+                                <span className="toggleButton"></span>
                             </label>
                             <span id="toggle-txt">자동 로그인</span>
                         </div>

@@ -7,11 +7,11 @@ const Mypage = () => {
        <div id="container">
     <div id="toptop">
       <div id="topMenu"> 
-        <div class="profile">
+        <div className="profile">
           <img src={'images/profile.png'}/>
           <p>김준녕</p>
         </div>
-        <a href="#" class="logout">로그아웃</a>
+        <a href="#" className="logout">로그아웃</a>
       </div>
     </div>
     
@@ -33,7 +33,7 @@ const Mypage = () => {
           <li><a href="#">이벤트 응모내역</a></li>
         </ul>
       </nav>
-      <div class="contents">
+      <div className="contents">
         <h1>내 정보</h1>
         <div id="grid">
           <div id="box1">
@@ -48,67 +48,67 @@ const Mypage = () => {
               <h5>회원님의 등급은 <b>플레티넘</b> 입니다.</h5>
               <p>2개월 후 <b>다이아</b>회원으로 등급 업데이트 예정입니다.</p>
               <p>등업 후 <b>다이아</b>혜택을 누리세요.</p>
-              <div class="btn1">
+              <div className="btn1">
                 <a href="#">멜론 라운지</a>
               </div>
             </div>
           </div>
           <div id="box2">
-            <div class="title">로그인 및 보안</div>
-            <div class="detail">
+            <div className="title">로그인 및 보안</div>
+            <div className="detail">
               <p>로그인시 비밀번호를 재설정하고</p>
               <p>로그인 보안기능을 설정합니다.</p>
             </div>
-            <div class="bottom">
-              <div class="link">
+            <div className="bottom">
+              <div className="link">
                 <a href="#">바로가기</a>
               </div>
-              <div class="ikon">
+              <div className="ikon">
                 <img src={'images/Lock.png'}/>
               </div>
             </div>
           </div>
           <div id="box3">
-            <div class="title">개인정보 관리</div>
-            <div class="detail">
+            <div className="title">개인정보 관리</div>
+            <div className="detail">
               <p>닉네임, 연락처 등</p>
               <p>개인정보를 확인하고관리합니다.</p>
             </div>
-            <div class="bottom2">
-              <div class="link">
+            <div className="bottom2">
+              <div className="link">
                 <a href="#">바로가기</a>
               </div>
-              <div class="ikon">
+              <div className="ikon">
                 <img src={'images/Gear.png'}/>
               </div>
             </div>
           </div>
           <div id="box4">
-            <div class="title">개인정보 이용</div>
-            <div class="detail">
+            <div className="title">개인정보 이용</div>
+            <div className="detail">
               <p>서비스 내 동의한 내역 조회 및</p>
               <p>동의 철회를 관리합니다.</p>
             </div>
-            <div class="bottom2">
-              <div class="link">
+            <div className="bottom2">
+              <div className="link">
                 <a href="#">바로가기</a>
               </div>
-              <div class="ikon">
+              <div className="ikon">
                 <img src={'images/key.png'}/>
               </div>
             </div>
           </div>
           <div id="box5">
-            <div class="title">이용권/쿠폰/캐시</div>
-            <div class="detail">
+            <div className="title">이용권/쿠폰/캐시</div>
+            <div className="detail">
               <p>멜론에 보유한 이용권/쿠폰/캐시</p>
               <p>내역을 확인할 수 있습니다.</p>
             </div>
-            <div class="bottom2">
-              <div class="link">
+            <div className="bottom2">
+              <div className="link">
                 <a href="#">바로가기</a>
               </div>
-              <div class="ikon">
+              <div className="ikon">
                 <img src={'images/gift.png'}/>
               </div>
             </div>

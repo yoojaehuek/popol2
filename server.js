@@ -55,8 +55,8 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 
-// 브라우저 cors 이슈를 막기 위해 사용(모든 브라우저의 요청을 일정하게 받겠다)
-var cors = require('cors');
+// 브라우저 cors 이슈를 막기 위해 사용(모든 브라우저의 요청 받겠다 보안이 뻥ㅋㅋㅋ)
+const cors = require('cors');
 app.use(cors());
 
 //app.use('요청 경로', express.static('실제 경로'));
@@ -72,7 +72,6 @@ app.post('/image', upload.single('image'), (req, res)=>{
       imageUrl: `http://localhost:${localUrl}/`+file.destination+file.filename //이미지 여기 저장했다 json형식으로 보냄
   })
 })
-
 app.post('/mp3', upload.single('file'), (req, res)=>{ 
   const file = req.file;
   console.log("post(/mp3) file:",file);
@@ -82,7 +81,7 @@ app.post('/mp3', upload.single('file'), (req, res)=>{
 })
 })
 
-app.use('/music', musicRouter); 
+app.use('/musics', musicRouter); 
 app.use('/user', userRouter); 
 app.use('/amounts', amountRouter);
 

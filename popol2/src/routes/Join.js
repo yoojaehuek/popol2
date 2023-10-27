@@ -10,9 +10,11 @@ const Join = () => {
     const joinSubmit = async (e) =>{
         e.preventDefault();
         const id = e.target.id.value
+        const name = e.target.name.value
+        const phon = e.target.phon.value
         const pwd = e.target.pwd.value
         if(id.pwd != ""){
-            await axios.post(`${API_URL}/user`,{id,pwd})
+            await axios.post(`${API_URL}/user`,{id, name, phon ,pwd})
             .then(() =>{
                 navigate('/');
                 console.log("전송됨");
@@ -33,8 +35,16 @@ const Join = () => {
         <div>
             <ul id="join-input">
                 <li>
-                    <h5>이메일</h5>
-                    <input id="id" type="text" placeholder="이메일"/>
+                    <h5>아이디</h5>
+                    <input id="id" type="text" placeholder="아이디"/>
+                </li>
+                <li>
+                    <h5>이름</h5>
+                    <input id="name" type="text" placeholder="이름"/>
+                </li>
+                <li>
+                    <h5>전화번호</h5>
+                    <input id="phon" type="text" placeholder="전화번호"/>
                 </li>
                 <li>
                     <h5>비밀번호</h5>

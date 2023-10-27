@@ -27,7 +27,7 @@ function App() {
         <Route path='/Join' element={<Join></Join>}></Route>
         <Route path='/playlist' element={<Playlist></Playlist>}></Route>
         <Route path='/mypage' element={<Mypage></Mypage>}></Route>
-        <Route path='/music' element={<Musics></Musics>}></Route>
+        <Route path='/musics' element={<Musics></Musics>}></Route>
         <Route path='/uploader' element={<Uploader></Uploader>}></Route>
         <Route path='/payment/:id' element={<CheckoutPage />} />
         <Route path="/success" element={<SuccessPage />} />

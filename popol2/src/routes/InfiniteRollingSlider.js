@@ -38,7 +38,7 @@ const InfiniteRollingSlider = () => {
 								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
 							</div>
 							<div>
-								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
+								<img className="phoneImage" alt="이미지" src="`images`/all/bts.png" />
 							</div>
 							<div>
 								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
