@@ -11,7 +11,7 @@ const Join = () => {
         e.preventDefault();
         const id = e.target.id.value
         const pwd = e.target.pwd.value
-        if(id.pwd !== ""){
+        if(id.pwd !== ""){ 
             await axios.post(`${API_URL}/user`,{id,pwd})
             .then(() =>{
                 navigate('/');

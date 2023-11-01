@@ -5,7 +5,6 @@ import { API_URL } from "../config/contansts";
 import '../scss/Musics.scss';
 
 const Musics = () => {
-  
   //전체곡 조회함수
   const getMusics = async () => {
     await axios.get(`${API_URL}/music`);

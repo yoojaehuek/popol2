@@ -52,7 +52,7 @@ const Login = () => {
             </ul>
             <li>
                 <button id="Login-btn" type="submit">로그인 하기</button>
-                <div id="find-id"> <a href="/">ID/PW찾기</a> <a href="/">회원가입</a> </div>
+                <div id="find-id"> <a href="#">ID/PW찾기</a> <a href="/join">회원가입</a> </div>
             </li>
         </div>
 

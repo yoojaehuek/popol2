@@ -26,19 +26,33 @@ class Music extends Sequelize.Model {
         comment: 
           "곡 종류(1: 한국(1,1-1,1-2,1-3,1-4),2: 미국(2,2-1,2-2,2-3,2-4), 3: 일본(3,3-1,3-2,3-3,3-4))",
       },
-      artist: { //아티스트
+      singer: { //가수
         type: Sequelize.STRING(30),
         allowNull: false,
-        comment: "아티스트",
+        comment: "가수",
       },
-      imageUrl:{ //이미지 URL주소
-        type: Sequelize.STRING,
+      composer: { //작곡가
+        type: Sequelize.STRING(30),
         allowNull: false,
+        comment: "작곡가",
+      },
+      lyricist: { //작사가
+        type: Sequelize.STRING(30),
+        allowNull: false,
+        comment: "작사가",
       },
       lyrics: { //가사
         type: Sequelize.STRING(5000), 
         allowNull: false,
         comment: "가사",
+      },
+      imageUrl:{ //이미지 URL주소
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      musicUrl:{ //음악파일 URL주소
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       regdate: { //곡 등록일
         type: Sequelize.DATE,
