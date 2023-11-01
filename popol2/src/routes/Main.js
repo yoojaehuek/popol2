@@ -51,13 +51,12 @@ const Main = () => {
         </section>
       );
     }
-
     const getAmounts = async () => {
       const res = await axios.get(`${API_URL}/amounts`);
       console.log("res.data:", res.data);
       return res.data;
     }
-
+    
     const [state ] = useAsync(getAmounts, []);
     const { loading, data:amounts, error} = state; //state구조분해 
     if(loading) return <div>로딩중 ......</div>
@@ -65,7 +64,6 @@ const Main = () => {
     if(!amounts){
         return <div>로딩중입니다.</div>
     }
-  
   
     return (
       <ReactFullpage
