@@ -5,7 +5,7 @@ export function FailPage() {
   return (
     <div>
       <h1>결제 실패 페이지</h1>
-      <p>결제가 성공적으로 처리되었습니다.</p>
+      <p>결제가 실패</p>
       <NavLink to ='/'><button>메인</button></NavLink>
     </div>
   );
