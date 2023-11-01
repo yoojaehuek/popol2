@@ -72,7 +72,7 @@ const Uploader = () => {
     const onSubmit = (values) => { //이미지 선택하고 확인 버튼 눌렀을때
         console.log("values", values);
         // 서버로 데이터 전송하기
-        axios.post(`${API_URL}/music`, {
+        axios.post(`${API_URL}/musics`, {
             imageUrl: imageUrl,
             musicUrl: musicUrl,
             name: values.name,
@@ -86,9 +86,9 @@ const Uploader = () => {
             alert("등록 성공");
             navigate("/");
         })
-            .catch(e => {
-                console.log(e);
-            })
+        .catch(e => {
+            console.log(e);
+        })
     }
 
     return (
