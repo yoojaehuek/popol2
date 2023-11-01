@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SongDetails = () => {
+const MusicDetails = () => {
   const [showLyrics, setShowLyrics] = useState(false);
 
   const handleToggleLyrics = () => {
@@ -29,4 +29,4 @@ const SongDetails = () => {
   );
 };
 
-export default SongDetails;
+export default MusicDetails;

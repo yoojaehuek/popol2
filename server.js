@@ -59,10 +59,7 @@ app.use(express.json())
 
 // 브라우저 cors 이슈를 막기 위해 사용(모든 브라우저의 요청 받겠다 보안이 뻥ㅋㅋㅋ)
 const cors = require('cors');
-app.use(cors({
-  origin: "*", // 출처 허용 옵션
-  credential: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
-}));
+app.use(cors());
 
 //app.use('요청 경로', express.static('실제 경로'));
 app.use('/', express.static(path.join(__dirname, 'popol2/build'))); //POPOL2/popol2/build/ 파일 지정
@@ -83,7 +80,7 @@ app.post('/mp3', upload.single('file'), (req, res)=>{
   res.send({ 
     // imageUrl: "http://localhost:3000/"+file.destination+file.filename
     musicUrl: `http://localhost:${localUrl}/`+file.destination+file.filename //이미지 여기 저장했다 json형식으로 보냄
-})
+  })
 })
 
 app.use('/musics', musicRouter); 
