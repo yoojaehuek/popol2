@@ -10,6 +10,7 @@ import axios from 'axios';
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import InfiniteRollingSlider from './InfiniteRollingSlider';
+import SimpleChatBot from './chatbot';
 
 
 const Main = () => {
@@ -116,7 +117,9 @@ const Main = () => {
                           </li>
                         </ul>
                       </section>
-                      
+                      <div>
+                      <SimpleChatBot />
+                      </div>
                     </div>
                   </div>
                 )}

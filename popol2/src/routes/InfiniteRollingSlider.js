@@ -32,13 +32,13 @@ const InfiniteRollingSlider = () => {
 					<h3>K-POP</h3>
 					<Slider {...settings} className='slider2'>
 							<div>
-								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
+								<img className="phoneImage" alt="이미지" src="img/banners/logo.png" />
 							</div>
 							<div>
 								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
 							</div>
 							<div>
-								<img className="phoneImage" alt="이미지" src="`images`/all/bts.png" />
+								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
 							</div>
 							<div>
 								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />

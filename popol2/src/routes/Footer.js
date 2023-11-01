@@ -1,77 +1,53 @@
 import React from "react";
 import "../scss/Footer.scss"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faTwitter, faYoutube, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
   return (
-    <div id="footer">
-      <div id="footer-info">
-        <div className="footer-inner">
+    <>
+      <footer class="footer-distributed" style={{ backgroundColor: "red" }}>
+        <div class="footer-left">
+          <h3>Music<span>Hub</span></h3>
+          <p class="footer-l">
+            <p>김지환</p>
+            <p>김준녕</p>
+            <p>김정혁</p>
+            <p>박승균</p>
+            <p>백승준</p>
+            <p>유재혁</p>
+            <p>임헌성</p>
+          </p>
+          <p class="footer-company-name">Kookje © 2023</p>
+        </div>
+        <div class="footer-center">
           <div>
-            <h3>회사</h3>
-            <ul>
-              <li>국제대학교</li>
-              <li></li>
-              <li> </li>
-              <li></li>
-              <li></li>
-            </ul>
+            <i class="fa fa-map-marker"></i>
+            <p><span>56 Jangan Ugilgil</span> pyeongtaeg, Korea</p>
           </div>
           <div>
-            <h3>만든이</h3>
-            <div className="econ">
-              <ul className="icon">
-                <li>김지환</li>
-                <li>김준녕</li>
-                <li>김정혁</li>
-              </ul>
-              <ul className="icon">
-                <li>박승균</li>
-                <li>백승준</li>
-                <li>유재혁</li>
-              </ul>
-              <ul className="icon">
-                <li>임헌성</li>
-              </ul>
-            </div>
+            <i class="fa fa-phone"></i>
+            <p>+82 123-1234</p>
           </div>
           <div>
-            <h3>유용한 링크</h3>
-            <ul>
-              <li>GIT HUB</li>
-            </ul>
-          </div>
-          <div className="icon">
-            <div className="icon2">
-              <li>
-                <i className="fa-brands fa-facebook fa-lg"></i>
-              </li>
-              <li>
-                <i className="fa-brands fa-twitter fa-lg"></i>
-              </li>
-              <li>
-                <i className="fa-brands fa-tiktok fa-lg"></i>
-              </li>
-              <li>
-                <i className="fa-brands fa-youtube fa-lg"></i>
-              </li>
-            </div>
-          </div>
-          <div>
-            <h3>Music Hub</h3>
+            <i class="fa fa-envelope"></i>
+            <p>1teamcompany@company.co.kr</p>
           </div>
         </div>
-      </div>
-      {/* <div id="footer-copy">
-        <div id="copyright">
-          <div className="copyright-inner">
-            상호 :쇼핑몰 주소 : 평택 남구 삼산중로 100번길 대표전화 :
-            국번없이 052-1234-4223 대표이사 : 3Team 개인정보관리자 : 국제대학교
-            사업자 등록번호 : 102-12-12345 copyright(c) Green Lamp,.LTD all
-            rights reserved. Korea
+        <div class="footer-right">
+          <p class="footer-company-about">
+            <span>About the company</span>
+            우리는 음악을 사랑하는 이들을 위한 따뜻한 공간을 만들어나가고자 합니다. 뮤직허브는 세계 각지의 음악 애호가들에게 음악의 아름다움과 힘을 경험하게 해주는 플랫폼입니다.
+          </p>
+          <div class="footer-icons">
+            <p><FontAwesomeIcon icon={faFacebook} /></p>
+            <p><FontAwesomeIcon icon={faTwitter} /></p>
+            <p><FontAwesomeIcon icon={faYoutube} /></p>
+            <p><FontAwesomeIcon icon={faGithub} /></p>
           </div>
         </div>
-      </div> */}
-    </div>
+      </footer>
+    </>
   );
 };
 
