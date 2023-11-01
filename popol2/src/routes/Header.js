@@ -1,28 +1,32 @@
 import React from "react";
 import "../scss/Header.scss";
 import { NavLink } from "react-router-dom";
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
-const Header = () => {
+export default function Header() {
   return (
-    <div id="header">
-      <div className="inner">
-        <h1>
-          <NavLink to="/">
-            <a href="/">로고</a>
-            <img src="./img/banners/logo.png" alt="" />
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" sx={{ backgroundColor: '#45e8bc' }}>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
+          <NavLink to='/'>
+            <Typography variant="h6" component="div">
+              Music Hub
+            </Typography>
           </NavLink>
-        </h1>
-        <ul className="headtext nav">
-          <li>
-            <NavLink to="/Join">가입하기</NavLink>
-          </li>
-          <li>
-            <NavLink to="/Login">로그인</NavLink>
-          </li>
-        </ul>
-      </div>
-    </div>
+          <div>
+            <NavLink to='/join'>
+              <Button color="inherit">회원가입</Button>
+            </NavLink>
+            <NavLink to='/login'>
+              <Button color="inherit">로그인</Button>
+            </NavLink>
+          </div>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
-};
-
-export default Header;
+}

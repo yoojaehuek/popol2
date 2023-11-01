@@ -32,31 +32,34 @@ const InfiniteRollingSlider = () => {
 					<h3>K-POP</h3>
 					<Slider {...settings} className='slider2'>
 							<div>
-								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
+								<img className="phoneImage" alt="이미지" src="images/all/k-pop/bts.png" />
 							</div>
 							<div>
-								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
+								<img className="phoneImage" alt="이미지" src="images/all/k-pop/aespa.jpg" />
 							</div>
 							<div>
-								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
+								<img className="phoneImage" alt="이미지" src="images/all/k-pop/ENHYPEN.jpg"/>
 							</div>
 							<div>
-								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
+								<img className="phoneImage" alt="이미지" src="images/all/k-pop/ive.jpg" />
 							</div>
 							<div>
-								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
+								<img className="phoneImage" alt="이미지" src="images/all/k-pop/bts.png" />
 							</div>
 							<div>
-								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
+								<img className="phoneImage" alt="이미지" src="images/all/k-pop/NCT U.jpg" />
 							</div>
 							<div>
-								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
+								<img className="phoneImage" alt="이미지" src="images/all/k-pop/Seven.jpg" />
 							</div>
 							<div>
-								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
+								<img className="phoneImage" alt="이미지" src="images/all/k-pop/Stray Kids.jpg"  />
 							</div>
 							<div>
-								<img className="phoneImage" alt="이미지" src="images/all/bts.png" />
+								<img className="phoneImage" alt="이미지" src="images/all/k-pop/Tomorrw.jpg"  />
+							</div>
+							<div>
+								<img className="phoneImage" alt="이미지" src="images/all/k-pop/TWICE.jpg" />
 							</div>
 					</Slider>
 					<h3>POP</h3>

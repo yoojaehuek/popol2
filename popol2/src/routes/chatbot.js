@@ -1,5 +1,9 @@
 import React from 'react';
 import ChatBot from 'react-simple-chatbot';
+import Avatar from '@mui/material/Avatar';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Tooltip from '@mui/material/Tooltip';
+import { useState } from 'react';
 
 const steps = [
   {
@@ -108,7 +112,33 @@ const steps = [
 
 
 const Simple = () => {
-  return <ChatBot steps={steps} />;
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleChatToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div>
+      <Tooltip title="챗봇 열기" arrow>
+        <Avatar
+          sx={{ bgcolor: 'secondary.main', cursor: 'pointer' }}
+          onClick={handleChatToggle}
+        >
+          <LockOutlinedIcon />
+        </Avatar>
+      </Tooltip>
+      {isOpen && (
+        <div style={{ position: 'fixed', bottom: 10, right: 10, zIndex: 9999 }}>
+          <ChatBot
+            steps={steps}
+            recognitionEnable={true}
+            opened={true}
+          />
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Simple;

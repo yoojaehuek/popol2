@@ -7,20 +7,16 @@
 
 .headertxt {
   text-align: center;
-  font-size: 1.5rem;
-  animation: fadeOut 1s linear 1s forwards;
 }
 
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-  }
+.headertxt.fade-out {
+  transition: opacity 2s ease-in-out; /* opacity를 천천히 변경하도록 설정합니다. */
+  opacity: 1;
 }
 
 .section {
   display: flex;
   justify-content: center;
-  // align-items: center;
   flex-direction: column;
   height: 100vh;
   width: 100%;
@@ -34,7 +30,10 @@
 
 .Money{
   display: block;
-  
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  padding: 2vw 15vw;
 }
 
 .Moneytoptxt{
@@ -50,7 +49,6 @@
 .Moneytoptxt > h2{
   font-size: 1.5rem;
 }
-
 
 .Moneyset3{
   display: grid;
@@ -105,18 +103,23 @@
 }
 
 .moneybottoma{
+  background-color: black;
+  color: white;
+  border: solid 1px rgba(0, 0, 0, 0);
+  border-radius: 20px;
   box-sizing: border-box;
   cursor: pointer;
   position: relative;
   text-align: center;
   vertical-align: middle;
+  padding: 7px 20px;
 }
 
-.moneybottomb{
-  -webkit-box-pack: center;
-  justify-content: center;
-  text-decoration: none !important;
+.moneybottoma:hover{
+  transition: background-color 1s;
+  background-color: gray;
 }
+
 
 .moneybotton{
   display: block;
@@ -140,9 +143,10 @@
 }
 
 .moneyfottertxt{
-  margin-top: 12px;
+  margin-top: 30px;
+  margin-left: 2vw;
   color: rgb(83, 83, 83);
-  font-size: 0.75re;
+  font-size: 12px;
   line-height: 16px;
   font-weight: 400;
   text-align: left;
@@ -151,6 +155,7 @@
 }
 
 .main-page{
+  display: block;
   width: 100%;
   height: 100vh;
   text-align: center;
@@ -161,7 +166,6 @@
   width: 100%;
   height: 100vh;
   text-align: center;
-  padding: 4vw 15vw;
 }
 
 .main-page3 {
@@ -179,6 +183,7 @@
     opacity: 1;
   }
 }
+
 
 .section22-txt > h1{
   color: white;
@@ -269,6 +274,7 @@
   font-size: 6vh;
 }
 
+
 .section22 {
   box-sizing: border-box;
   width: 100%;
@@ -282,4 +288,53 @@
   transform: translateX(-400px);
   opacity: 0;
 }
+  
+.cube {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  margin: -20vw -35vw;
+}
+.cube1 h1{
+  margin: 25vw -42vw 20vw;
+}
+.side {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  opacity: 0.6;
+}
+.side top {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  opacity: 0.6;
+}
 
+.front {
+  transform: rotateY(0deg) translateZ(100px);
+  background-color: #ee4444;
+}
+.right {
+  transform: rotateY(90deg) translateZ(100px);
+  background-color: #ffcc00;
+}
+.back {
+  transform: rotateY(180deg) translateZ(100px);
+  background-color: #ff0055;
+}
+.left {
+  transform: rotateY(-90deg) translateZ(100px);
+  background-color: #8855ff;
+}
+.top {
+  transform: rotateX(90deg) translateZ(100px);
+  background-color: #0099ff;
+}
+.bottom {
+  transform: rotateX(90deg) translateZ(-30px);
+  background-color: #0099ff;
+}

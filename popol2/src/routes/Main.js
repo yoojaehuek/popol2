@@ -15,16 +15,15 @@ import InfiniteRollingSlider from './InfiniteRollingSlider';
 const Main = () => {
   const [showWelcome, setShowWelcome] = useState(true);
   const [showMainPage, setShowMainPage] = useState(false);
-  // asjdhbfkhdbkjakfnlksnl
 
   useEffect(() => {
     // 1초 후에 환영 메시지를 천천히 사라지게 합니다.
-    const fadeOutTimer = setTimeout(() => {
+    const timeout = setTimeout(() => {
       setShowWelcome(false);
     }, 2000);
 
     return () => {
-      clearTimeout(fadeOutTimer);
+      clearTimeout(timeout);
     };
     }, []);
 
