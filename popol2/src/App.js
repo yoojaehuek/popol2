@@ -11,7 +11,7 @@ import Mypage from './routes/Mypage';
 import Musics from './routes/Musics';
 import Uploader from './routes/Uploader';
 import CheckoutPage from './routes/payment.tsx';
-import SuccessPage from './routes/success';
+import SuccessPage from './routes/Success';
 import Simple from './routes/chatbot';
 import FailPage from './routes/fail';
 import Dash from './routes/dash';

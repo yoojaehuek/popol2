@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,7 +12,12 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState } from "react" 
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import '../scss/Join.scss';
+import { BsGoogle } from "react-icons/bs";
+import { AiFillMessage } from "react-icons/ai";
+import { API_URL } from '../config/contansts'
 
 function Copyright(props: any) {
   return (
@@ -30,12 +35,13 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function Join() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    phoneNumber: '',
+    id: '',
+    pwd: '',
+    confirmPwd: '',
+    name: '',
+    phone: '',
   });
 
   const handleInputChange = (event) => {
@@ -43,11 +49,49 @@ export default function Join() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(formData);
+    const id = formData.id;
+    const pwd = formData.pwd;
+    const confirmPwd = formData.confirmPwd;
+    const name = formData.name;
+    const phone = formData.phone;
+    if(pwd == confirmPwd && id != "" && pwd != "" && confirmPwd != "" && name != "" && phone != ""){
+        await axios.post(`${API_URL}/user`,{id, name, phone ,pwd})
+        .then(() =>{
+          alert("가입성공!");
+          navigate('/');  
+        })
+        .catch(err =>{
+            console.error(err);
+        })
+    }else{
+        return alert("전부 입력해주세요");
+    }
     // 서버
   };
+
+  // const navigate = useNavigate();
+  // const joinSubmit = async (e) =>{
+  //     e.preventDefault();
+  //     const id = e.target.id.value
+  //     const name = e.target.name.value
+  //     const phone = e.target.phone.value
+  //     const pwd = e.target.pwd.value
+  //     if(id.pwd != ""){
+  //         await axios.post(`${API_URL}/user`,{id, name, phone ,pwd})
+  //         .then(() =>{
+  //           alert("가입성공!");
+  //           navigate('/');
+  //         })
+  //         .catch(err =>{
+  //             console.error(err);
+  //         })
+  //     }else{
+  //         return alert("전부 입력해주세요");
+  //     }
+  // }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -71,12 +115,11 @@ export default function Join() {
             <Grid container spacing={2}>
             <Grid item xs={12}>
                 <TextField
-                  autoComplete="user-name"
-                  name="username"
+                  name="id"
                   required
                   fullWidth
-                  id="username"
-                  label="User Name"
+                  id="id"
+                  label="ID"
                   autoFocus
                   onChange={handleInputChange}
                 />
@@ -85,22 +128,10 @@ export default function Join() {
                 <TextField
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  onChange={handleInputChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
+                  id="pwd"
                   type="password"
-                  id="password"
-                  autoComplete="new-password"
+                  label="password"
+                  name="pwd"
                   onChange={handleInputChange}
                 />
               </Grid>
@@ -108,11 +139,10 @@ export default function Join() {
                 <TextField
                   required
                   fullWidth
-                  name="confirmPassword"
+                  name="confirmPwd"
                   label="Confirm Password"
                   type="password"
-                  id="confirmPassword"
-                  autoComplete="new-password"
+                  id="confirmPwd"
                   onChange={handleInputChange}
                 />
               </Grid>
@@ -120,15 +150,25 @@ export default function Join() {
                 <TextField
                   required
                   fullWidth
-                  name="phoneNumber"
+                  name="name"
+                  label="Name"
+                  id="name"
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="phone"
                   label="Phone Number"
-                  id="phoneNumber"
-                  autoComplete="tel"
+                  id="phone"
                   onChange={handleInputChange}
                 />
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
+                  required
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
                   label="동의하세요."
                 />

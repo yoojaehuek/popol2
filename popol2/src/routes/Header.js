@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../scss/Header.scss";
 import { NavLink } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';

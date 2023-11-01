@@ -14,6 +14,12 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Scroll from './scroll';
 
+import axios from 'axios';
+import '../scss/Login.scss';
+import { useNavigate } from "react-router-dom";
+import { setCookie } from '../cookie';
+import { API_URL } from '../config/contansts'
+
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -30,13 +36,33 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const id = data.get('email');
+    const pwd = data.get('password');
     console.log({
       email: data.get('email'),
       password: data.get('password'),
     });
+    await axios.post(`${API_URL}/login`,{id,pwd})
+			.then((res)=>{
+				if (res.status === 200) {
+					const accessToken = res.data.accessToken;
+					setCookie('accessToken',accessToken,{
+						// expires: new Date(Date.now() + setTime),
+                        // httpOnly: true,
+					});
+				}
+				
+				console.log("로그인 성공 res: ",res);
+				navigate('/');
+			})
+			.catch((error)=>{
+				console.error("로그인 실패: ",error);
+			})
   };
 
   return (
