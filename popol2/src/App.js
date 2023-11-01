@@ -10,11 +10,11 @@ import Playlist from './routes/Playlist';
 import Mypage from './routes/Mypage';
 import Musics from './routes/Musics';
 import Uploader from './routes/Uploader';
-import CheckoutPage from './routes/payment.tsx';
-import SuccessPage from './routes/success';
-import Simple from './routes/chatbot';
-import FailPage from './routes/fail';
-import Dash from './routes/dash';
+import CheckoutPage from './routes/Payment.tsx';
+import SuccessPage from './routes/Success';
+import Simple from './routes/Chatbot';
+import FailPage from './routes/Fail';
+import Dash from './routes/Dash';
 
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/Join' element={<Join></Join>}></Route>
         <Route path='/playlist' element={<Playlist></Playlist>}></Route>
-        <Route path='/mypage' element={<Mypage></Mypage>}></Route>
+        <Route path='/user/mypage' element={<Mypage></Mypage>}></Route>
         <Route path='/musics' element={<Musics></Musics>}></Route>
         <Route path='/uploader' element={<Uploader></Uploader>}></Route>
         <Route path='/payment/:id' element={<CheckoutPage />} />

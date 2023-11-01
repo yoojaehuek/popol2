@@ -1,11 +1,61 @@
 import React from "react";
+import { getCookie } from "../cookie";
+import { API_URL } from "../config/contansts";
+import useAsync from "../customHook/useAsync";
 import '../scss/Mypage.scss';
+import axios from "axios";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Mypage = () => {
+  const login = getCookie('accessToken');
+  const navigate = useNavigate();
+  
+  const getMypage = async () => {
+    // const res = await axios.post(`${ API_URL }/user/mypage`, {login})
+    try {
+      // const res = await axios.post(`${ API_URL }/user/mypage`, {login});
+      const res = await axios({
+        url: `${ API_URL }/user/mypage`,
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer '+ login
+        }
+      })
+      // console.log("getMypage res: ",res.data.name);
+      
+      return res.data;
+    } catch (error) {
+      console.error(error);
+    }
+    // if (res) {
+      
+    // }
+      // .then((res)=>{
+      //   if (res.status === 201) {
+      //     console.log("access토큰 검증 성공");
+      //   }else if(res.status === 400){
+      //     console.log("accessToken만료 or 로그인 안함");
+      //   }
+      // }).catch((err)=> {
+      //   console.error(err);
+      // });
+  }
+
+  const [state ] = useAsync(getMypage, []);
+  const { loading, data:user, error} = state; //state구조분해 
+  if(loading) return <div>로딩중 ......</div>
+  if(error){
+    alert("다시 로그인해주세요");
+    navigate('/');
+    return <div>에러가 발생했습니다.</div>
+  } 
+  if(!user){
+      return <div>로딩중입니다.</div>
+  }
   return(
     <>
        <div id="container">
-    <div id="toptop">
+    {/* <div id="toptop">
       <div id="topMenu"> 
         <div className="profile">
           <img src={'images/profile.png'}/>
@@ -13,7 +63,7 @@ const Mypage = () => {
         </div>
         <a href="#" className="logout">로그아웃</a>
       </div>
-    </div>
+    </div> */}
     
   <div id="gamssa">
       <nav id="leftMenu">
@@ -40,7 +90,7 @@ const Mypage = () => {
             <div id="wi">
               <img src={'images/human.png'}/>
               <div id="witext">
-                <p>김준녕님 환영합니다.</p>
+                <p>{user.name}님 환영합니다.</p>
                 <p>rlarorn@naver.com</p>
               </div>
             </div>

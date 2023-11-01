@@ -13,16 +13,6 @@ import DownloadIcon from '@mui/icons-material/Download'; // 다운로드 아이�
 
 const Musics = () => {
   // const [playList, setPlayList] = useState("");
-
-  const playList = [
-    {
-      name: "music.name",
-      writer: "music.singer",
-      img: "music.imageUrl",
-      src: "http://localhost:8081/upload/music/Roie Shpigler - Aluminum.mp3",
-      id: 1,
-    },
-  ]
   
   //전체곡 조회함수
   const getMusics = async () => {

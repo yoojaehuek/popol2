@@ -11,13 +11,13 @@ const Join = () => {
         e.preventDefault();
         const id = e.target.id.value
         const name = e.target.name.value
-        const phon = e.target.phon.value
+        const phone = e.target.phone.value
         const pwd = e.target.pwd.value
         if(id.pwd != ""){
-            await axios.post(`${API_URL}/user`,{id, name, phon ,pwd})
+            await axios.post(`${API_URL}/user`,{id, name, phone ,pwd})
             .then(() =>{
-                navigate('/');
-                console.log("전송됨");
+							alert("가입성공!");
+              navigate('/');
             })
             .catch(err =>{
                 console.error(err);
@@ -27,7 +27,7 @@ const Join = () => {
         }
     }
     return(
-        <form id="join-form" action="" onSubmit={joinSubmit}>
+      <form id="join-form" action="" onSubmit={joinSubmit}>
         <div id="join-form-top">
             <h2>간편하게 가입하고</h2>
             <h2>음악의 세계로 뛰어드세요</h2>
@@ -44,7 +44,7 @@ const Join = () => {
                 </li>
                 <li>
                     <h5>전화번호</h5>
-                    <input id="phon" type="text" placeholder="전화번호"/>
+                    <input id="phone" type="text" placeholder="전화번호"/>
                 </li>
                 <li>
                     <h5>비밀번호</h5>
@@ -59,7 +59,6 @@ const Join = () => {
                 </li>
             </ul>
         </div>
-
         <fieldset>
             <legend>또는</legend>
             <ul id="interwork">
@@ -67,7 +66,6 @@ const Join = () => {
                 <li><div><BsGoogle/></div><div>구글로 로그인하기</div></li>
             </ul>
         </fieldset>
-
     </form>
     
     )
