@@ -41,10 +41,11 @@ return(
 			</ul>
 			<div className="moneybottom">
 				<div>
-					<NavLink to= {`/payment/${id}`} state={amount.amount} className="moneybottoma">
-					<span className="moneybottomb">Get Started</span>
-					<span className="moneybotton"></span>
-					</NavLink>
+					<div>
+						<NavLink to= {`/payment/${id}`} state={amount.amount} className="moneybottoma">
+							Get Started
+						</NavLink>
+					</div>
 				</div>
 			</div>
 			<div className="moneyfotter">

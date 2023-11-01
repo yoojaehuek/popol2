@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Chart from 'chart.js';
+import Grid from '@mui/material/Grid';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import { NavLink } from 'react-router-dom';
 
 const Dash = () => {
   const [userData, setUserData] = useState([100, 150, 200, 180, 220, 170, 130]);
   const [categoryData, setCategoryData] = useState([50, 70, 90, 60, 80]);
   const [totalVisitors, setTotalVisitors] = useState(15000);
-  const [totalRevenue, setTotalRevenue] = useState(75000);
   const [totalSales, setTotalSales] = useState(5000);
-  const [notifications, setNotifications] = useState([
-    '새 주문이 도착했습니다.',
-    '서버에 문제가 발생했습니다.',
-    '최근 방문자 수가 증가했습니다.',
-  ]);
 
   useEffect(() => {
     const userC = document.getElementById('userChart').getContext('2d');
@@ -78,29 +76,6 @@ const Dash = () => {
       },
     });
 
-    const revenueC = document.getElementById('revenueChart').getContext('2d');
-    new Chart(revenueC, {
-      type: 'polarArea',
-      data: {
-        labels: ['월', '화', '수', '목', '금', '토', '일'],
-        datasets: [
-          {
-            label: '수익',
-            data: [200, 300, 280, 320, 270, 350, 400],
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        scales: {
-          x: {
-            type: 'category',
-          },
-        },
-      },
-    });
 
     const salesC = document.getElementById('salesChart').getContext('2d');
     new Chart(salesC, {
@@ -129,49 +104,66 @@ const Dash = () => {
 
   return (
     <div>
-      <h1>관리자 대시보드</h1>
-      <div>
-        <h2>하루 이용자</h2>
-        <div style={{ width: '300px', height: '200px' }}>
-          <canvas id="userChart" style={{ width: '100%', height: '100%' }}></canvas>
-        </div>
-      </div>
-      <div>
-        <h2>인기 카테고리</h2>
-        <div style={{ width: '300px', height: '200px' }}>
-          <canvas id="categoryChart" style={{ width: '100%', height: '100%' }}></canvas>
-        </div>
-      </div>
-      <div>
-        <h2>누적 방문자 수</h2>
-        <div style={{ width: '300px', height: '200px' }}>
-          <canvas id="visitorsChart" style={{ width: '100%', height: '100%' }}></canvas>
-        </div>
-      </div>
-      <div>
-        <h2>수익</h2>
-        <div style={{ width: '300px', height: '200px' }}>
-          <canvas id="revenueChart" style={{ width: '100%', height: '100%' }}></canvas>
-        </div>
-      </div>
-      <div>
-        <h2>상품 판매량</h2>
-        <div style={{ width: '300px', height: '200px' }}>
-          <canvas id="salesChart" style={{ width: '100%', height: '100%' }}></canvas>
-        </div>
-      </div>
-      <div>
-        <h2>알림 및 경고</h2>
-        <ul>
-          {notifications.map((notification, index) => (
-            <li key={index}>{notification}</li>
-          ))}
-        </ul>
-      </div>
+      <Grid container spacing={2}>
+        <Grid item xs={2} md={2}>
+          <List
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 2,
+              backgroundColor: '#87CEEB',
+              padding: 2,
+              textAlign: 'center',
+            }}
+          >
+            <ListItem button component={NavLink} to='/dash'>
+              일일 현황
+            </ListItem>
+            <ListItem button component={NavLink} to='/uploader' sx={{ marginBottom: 100 }}>
+              업로드
+            </ListItem>
+            <ListItem button component={NavLink} to='/'>
+              메인으로 돌아가기
+            </ListItem>
+          </List>
+        </Grid>
+        <Grid item xs={10}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={6}>
+              <h2>하루 이용자</h2>
+              <div style={{ width: '100%', height: '200px' }}>
+                <canvas id="userChart" style={{ width: '100%', height: '100%' }}></canvas>
+              </div>
+            </Grid>
+          </Grid>
+          <Grid item xs={10} md={5}>
+            <div>
+              <h2>인기 카테고리</h2>
+              <div style={{ width: '100%', height: '200px' }}>
+                <canvas id="categoryChart" style={{ width: '100%', height: '100%' }}></canvas>
+              </div>
+            </div>
+          </Grid>
+          <Grid item xs={10} md={5}>
+            <div>
+              <h2>누적 방문자 수</h2>
+              <div style={{ width: '100%', height: '200px' }}>
+                <canvas id="visitorsChart" style={{ width: '100%', height: '100%' }}></canvas>
+              </div>
+            </div>
+          </Grid>
+          <Grid item xs={10} md={5}>
+            <div>
+              <h2>상품 판매량</h2>
+              <div style={{ width: '100%', height: '200px' }}>
+                <canvas id="salesChart" style={{ width: '100%', height: '100%' }}></canvas>
+              </div>
+            </div>
+          </Grid>
+        </Grid>
+      </Grid>
     </div>
   );
 };
 
 export default Dash;
-
-//산포scatter, 버블bubble, 폴라polarArea, 레이더radar, 도넛doughnut, 선line

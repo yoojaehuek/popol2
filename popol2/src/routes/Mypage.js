@@ -1,12 +1,37 @@
-import React from "react";
+import React, { useState } from 'react';
+import { Drawer, List, ListItem, ListItemText, CssBaseline, AppBar, Toolbar, Container, Box, Grid, Typography } from '@mui/material';
+import { styled } from '@mui/system';
+import { NavLink, useNavigate } from 'react-router-dom';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import Collapse from '@mui/material/Collapse';
 import { getCookie } from "../cookie";
 import { API_URL } from "../config/contansts";
 import useAsync from "../customHook/useAsync";
-import '../scss/Mypage.scss';
 import axios from "axios";
-import { NavLink, useNavigate } from "react-router-dom";
 
-const Mypage = () => {
+const drawerWidth = 240;
+
+const DrawerContainer = styled('div')({
+  width: drawerWidth,
+  flexShrink: 0,
+});
+
+const MainContent = styled('div')({
+  flexGrow: 1,
+  padding: 20,
+});
+
+const BoxContainer = styled(Box)({
+  border: '1px solid #ccc',
+  padding: '20px',
+  borderRadius: '8px',
+  marginBottom: '20px',
+});
+
+
+const MyPage = () => {
+  const [open, setOpen] = useState(false);
   const login = getCookie('accessToken');
   const navigate = useNavigate();
   
@@ -21,24 +46,10 @@ const Mypage = () => {
           Authorization: 'Bearer '+ login
         }
       })
-      // console.log("getMypage res: ",res.data.name);
-      
       return res.data;
     } catch (error) {
       console.error(error);
     }
-    // if (res) {
-      
-    // }
-      // .then((res)=>{
-      //   if (res.status === 201) {
-      //     console.log("access토큰 검증 성공");
-      //   }else if(res.status === 400){
-      //     console.log("accessToken만료 or 로그인 안함");
-      //   }
-      // }).catch((err)=> {
-      //   console.error(err);
-      // });
   }
 
   const [state ] = useAsync(getMypage, []);
@@ -52,137 +63,80 @@ const Mypage = () => {
   if(!user){
       return <div>로딩중입니다.</div>
   }
-  return(
-    <>
-       <div id="container">
-    {/* <div id="toptop">
-      <div id="topMenu"> 
-        <div className="profile">
-          <img src={'images/profile.png'}/>
-          <p>김준녕</p>
-        </div>
-        <a href="#" className="logout">로그아웃</a>
-      </div>
-    </div> */}
-    
-  <div id="gamssa">
-      <nav id="leftMenu">
-        <div id="logo">
-          <img src={'images/logo.png'}/>
-        </div>
-        <div id="left">
-          <ul>
-            <li><a href="#">내정보 홈</a></li>
-            <li><a href="#">개인정보 관리</a></li>
-            <li><a href="#">로그인 및 보안</a></li>
-            <li><a href="#">개인정보 이용</a></li>
-          </ul>
-        </div>
-        <ul>
-          <li><a href="#">멜론이용권/결제정보</a></li>
-          <li><a href="#">이벤트 응모내역</a></li>
-        </ul>
-      </nav>
-      <div className="contents">
-        <h1>내 정보</h1>
-        <div id="grid">
-          <div id="box1">
-            <div id="wi">
-              <img src={'images/human.png'}/>
-              <div id="witext">
-                <p>{user.name}님 환영합니다.</p>
-                <p>rlarorn@naver.com</p>
-              </div>
-            </div>
-            <div id="are">
-              <h5>회원님의 등급은 <b>플레티넘</b> 입니다.</h5>
-              <p>2개월 후 <b>다이아</b>회원으로 등급 업데이트 예정입니다.</p>
-              <p>등업 후 <b>다이아</b>혜택을 누리세요.</p>
-              <div className="btn1">
-                <a href="#">멜론 라운지</a>
-              </div>
-            </div>
-          </div>
-          <div id="box2">
-            <div className="title">로그인 및 보안</div>
-            <div className="detail">
-              <p>로그인시 비밀번호를 재설정하고</p>
-              <p>로그인 보안기능을 설정합니다.</p>
-            </div>
-            <div className="bottom">
-              <div className="link">
-                <a href="#">바로가기</a>
-              </div>
-              <div className="ikon">
-                <img src={'images/Lock.png'}/>
-              </div>
-            </div>
-          </div>
-          <div id="box3">
-            <div className="title">개인정보 관리</div>
-            <div className="detail">
-              <p>닉네임, 연락처 등</p>
-              <p>개인정보를 확인하고관리합니다.</p>
-            </div>
-            <div className="bottom2">
-              <div className="link">
-                <a href="#">바로가기</a>
-              </div>
-              <div className="ikon">
-                <img src={'images/Gear.png'}/>
-              </div>
-            </div>
-          </div>
-          <div id="box4">
-            <div className="title">개인정보 이용</div>
-            <div className="detail">
-              <p>서비스 내 동의한 내역 조회 및</p>
-              <p>동의 철회를 관리합니다.</p>
-            </div>
-            <div className="bottom2">
-              <div className="link">
-                <a href="#">바로가기</a>
-              </div>
-              <div className="ikon">
-                <img src={'images/key.png'}/>
-              </div>
-            </div>
-          </div>
-          <div id="box5">
-            <div className="title">이용권/쿠폰/캐시</div>
-            <div className="detail">
-              <p>멜론에 보유한 이용권/쿠폰/캐시</p>
-              <p>내역을 확인할 수 있습니다.</p>
-            </div>
-            <div className="bottom2">
-              <div className="link">
-                <a href="#">바로가기</a>
-              </div>
-              <div className="ikon">
-                <img src={'images/gift.png'}/>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-  </div>
-      <div id="footer">
-        <div id="footer_c">
-          <ul>
-            <li><a href="#">이용약관</a></li>
-            <li><a href="#">위치기반서비스이용약관</a></li>
-            <li><a href="#">개인정보처리방침</a></li>
-          </ul>
-        </div>
-        <div id="footer_detail">
-          <p>문의전화:1566-7277(평일09:00-18:00, 유료)</p>
-          <p>@Kakao Entertainment Corp.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-    </>
-  )
-}
 
-export default Mypage;
+
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
+  return (
+    <div style={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar position="fixed" sx={{ width: `calc(100% - ${drawerWidth}px)`, marginLeft: `${drawerWidth}px` }}>
+        <Toolbar>
+          <Typography variant="h6" noWrap>
+            마이페이지
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <DrawerContainer>
+        <Toolbar />
+        <Drawer variant="permanent" sx={{ width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth } }}>
+          <Toolbar />
+          <List>
+          <ListItem button>
+              <NavLink to='/musics'><ListItemText primary="메인" /></NavLink>
+            </ListItem>
+            <ListItem button onClick={handleToggle}>
+              <ListItemText primary="내 정보" />
+              {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem button>
+                  <NavLink to='/edit'><ListItemText primary="회원정보 수정" /></NavLink>
+                </ListItem>
+                <ListItem button>
+                  <NavLink to='/member'><ListItemText primary="이용권 관리" /></NavLink>
+                </ListItem>
+              </List>
+            </Collapse>
+            <ListItem button>
+              <NavLink to='/playlist'><ListItemText primary="플레이리스트" /></NavLink>
+            </ListItem>
+          </List>
+        </Drawer>
+      </DrawerContainer>
+      <MainContent>
+        <Toolbar />
+        <Container>
+          <BoxContainer>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div style={{ marginRight: '20px' }}>
+              <img src="images/profile.png" alt="user-icon" style={{ width: '60px', height: '60px', borderRadius: '50%' }} />
+            </div>
+            <div>
+              <h3>{user.name}님 반갑습니다.</h3>
+              <p>이번달 등급은 xxx입니다.</p>
+            </div>
+          </div>
+          </BoxContainer>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <BoxContainer>
+                <NavLink to='/edit'><h2>회원정보 수정</h2></NavLink>
+              </BoxContainer>
+            </Grid>
+            <Grid item xs={6}>
+              <BoxContainer>
+                <NavLink to='/member'><h2>이용권 관리</h2></NavLink>
+              </BoxContainer>
+            </Grid>
+          </Grid>
+        </Container>
+      </MainContent>
+    </div>
+  );
+};
+
+export default MyPage;
