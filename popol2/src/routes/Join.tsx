@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react" 
+import { green } from '@mui/material/colors';
 
 function Copyright(props: any) {
   return (
@@ -50,7 +51,7 @@ export default function Join() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={defaultTheme} >
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
