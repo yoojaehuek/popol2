@@ -38,7 +38,7 @@ exports.makeRefreshToken = () =>{ //리프레쉬 토큰은 사용자 인증이 �
       JWT_KEY, 
       {
           algorithm: "HS256",
-          expiresIn: "1h"
+          expiresIn: "30m"
       }
   );
   console.log("refreshToken: ", refreshToken);

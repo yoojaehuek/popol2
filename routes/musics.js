@@ -17,7 +17,7 @@ router.route('/')
   })
   .post(async (req, res, next) => {
     try {
-      console.log(req.body)
+      console.log(req.body);
       const music = await Music.create({ //Product모델에 INSERT INTO
         imageUrl: req.body.imageUrl,
         musicUrl: req.body.musicUrl,
@@ -30,8 +30,8 @@ router.route('/')
       })
       console.log(music);
       res.status(201).end();
-    }catch{
-
+    }catch(err){
+      console.log(err);
     }
   })
 module.exports = router;

@@ -10,15 +10,18 @@ import Playlist from './routes/Playlist';
 import Mypage from './routes/Mypage';
 import Musics from './routes/Musics';
 import Uploader from './routes/Uploader';
-import CheckoutPage from './routes/payment.tsx';
+import Payment from './routes/Payment.tsx';
 import SuccessPage from './routes/Success';
-import Simple from './routes/chatbot';
-import FailPage from './routes/fail';
-import Dash from './routes/dash';
-import EditProfile from './routes/editprofile';
-import MembershipManagement from './routes/membershipmang';
-import SongDetails from './routes/songdetail'
+import Simple from './routes/Chatbot';
+import FailPage from './routes/Fail';
+import Dash from './routes/Dash';
+import EditProfile from './routes/Editprofile';
+import MembershipManagement from './routes/Membershipmang';
+import MusicDetail from './routes/MusicDetail'
 import Dj from './routes/dj';
+// import Chart from './routes/chart';
+// import Monthmusic from './routes/monthmusic';
+// import Newchart from './routes/newchart';
 
 function App() {
   const location = useLocation();
@@ -39,17 +42,17 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
-        <Route path="/payment/:id" element={<CheckoutPage />} />
+        <Route path="/payment/:id" element={<Payment />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/fail" element={<FailPage />} />
 
         {/* b */}
         <Route path="/playlist" element={<Playlist />} />
-        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/user/mypage" element={<Mypage />} />
         <Route path="/edit" element={<EditProfile />} />
         <Route path="/member" element={<MembershipManagement />} />
         <Route path="/musics" element={<Musics />} />
-        <Route path="/detail" element={<SongDetails />} />
+        <Route path="/detail" element={<MusicDetail />} />
         <Route path="/dj" element={<Dj />} />
 
         {/* c */}
