@@ -40,7 +40,7 @@ const Music = ({music}) => {
   return(
     <>
       {/* {music.musicUrl} */}
-      {/* <AudioPlayer playList={[
+      <AudioPlayer playList={[
           {
             name: music.name,
             writer: music.singer,
@@ -79,7 +79,7 @@ const Music = ({music}) => {
         >
         <button><DownloadIcon/></button>
         <button><PlaylistAddIcon/></button>
-      </AudioPlayer> */}
+      </AudioPlayer>
       <audio src={music.musicUrl} controls></audio>
     </>
   )

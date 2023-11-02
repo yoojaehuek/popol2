@@ -10,7 +10,6 @@ const drawerWidth = 245;
 const DrawerContainer = styled('div')({
   width: drawerWidth,
   flexShrink: 0,
-  color : 'white'
 });
 
 
