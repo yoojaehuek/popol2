@@ -1,10 +1,23 @@
-.my-page{
-  display: flex;
-  width: 100%;
-  height: 100vh;
+#mypageC {
+#mp2 {
+  color: black;
+  font-weight: 700;
+  font-size: 30px;
+  float: left;
+}
+h3 {
+  font-weight: 700;
+  font-size: 50px;
+  margin-left: 15px;
+}
+p {
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 15px;
 }
 
-.user-info{
-  flex: 1; /* 나머지 공간을 채움 */
-  padding:0 
-}
+#icon1 {
+  color: #000;
+  float: left;
+  margin-right: 10px;
+}}

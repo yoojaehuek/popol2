@@ -1,5 +1,5 @@
 import React from 'react';
-import Slider from './slider2';
+import Slider from './Slider2';
 import Listb from './listbar';
 import '../scss/video.scss'
 //12
@@ -14,7 +14,7 @@ const Video = () => {
           <source src="./video.mp4" type="video/mp4" />
         </video>
         <div className="video-text">
-          <h1>이젠 음악을 눈으로도 시청해보세요.</h1>
+          <h1>이젠 음악을 다양하게 감상해보세요.</h1>
           <span className="arrow">↓</span>
         </div>
         <Slider/>

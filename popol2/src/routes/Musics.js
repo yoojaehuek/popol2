@@ -46,6 +46,7 @@ const PlayIcon = styled(PlayArrowIcon)({
   transition: "opacity 0.3s ease",
 });
 
+
 const Musics = () => {
   const [playList, setPlayList] = useState([
     {
