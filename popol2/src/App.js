@@ -21,7 +21,7 @@ import SongDetails from './routes/songdetail'
 
 function App() {
   const location = useLocation();
-  const hideFooterPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader'];
+  const hideFooterPages = ['/playlist', '/user/mypage', '/musics', '/music', '/dash', '/uploader'];
 
   const HideFooter = hideFooterPages.includes(location.pathname);
 
@@ -39,7 +39,7 @@ function App() {
 
         {/* b */}
         <Route path="/playlist" element={<Playlist />} />
-        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/user/mypage" element={<Mypage />} />
         <Route path="/edit" element={<EditProfile />} />
         <Route path="/member" element={<MembershipManagement />} />
         <Route path="/musics" element={<Musics />} />
