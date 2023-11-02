@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { TextField, Button, Typography, Box, Grid } from '@mui/material';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getCookie, removeCookie } from "../cookie";
 import { API_URL } from '../config/contansts';
+
 
 const EditProfile = () => {
   const navigate = useNavigate();
@@ -40,8 +41,8 @@ const EditProfile = () => {
     password: '',
     newPassword: '',
     confirmPassword: '',
-    phoneNumber: 'phoneNumber',
-    email: 'example@example.com',
+    phoneNumber: '',
+    email: '',
   });
 
   const handleChange = (e) => {

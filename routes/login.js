@@ -34,7 +34,9 @@ router.get('/',async (req,res,next)=>{
       // })
       // console.log("accessToken: ", accessToken);
       res.status(200).json({accessToken: accessToken});
-    } 
+    }else{
+      res.status(400).end();
+    }
   } catch (error) {
     console.error(error);
   }
