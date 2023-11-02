@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "../scss/Main.scss";
 import ReactFullpage from '@fullpage/react-fullpage';
 import AccordionItem from './AccordionItem';
-import { useState, useEffect } from 'react';
 import useAsync from '../customHook/useAsync';
 import { API_URL } from '../config/contansts';
-import Amount from './amount';
+import Amount from './Amount';
 import axios from 'axios';
-import { useRef } from "react";
 import { useInView } from "framer-motion";
 import InfiniteRollingSlider from './InfiniteRollingSlider';
 

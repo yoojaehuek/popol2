@@ -9,7 +9,7 @@ const style = {
 };
 
 const Amount = (amount) => {
-	console.log("amount:", amount.amount);
+	// console.log("amount:", amount.amount);
 	const id = amount.amount.id;
 	const getAmount = async () => {
 		const res = await axios.get(`${API_URL}/amounts/${id}`);

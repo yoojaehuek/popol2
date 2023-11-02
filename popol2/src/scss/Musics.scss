@@ -1,3 +1,14 @@
-.audio-player-container{
-  padding-top: 1vw;
+#musicsC{
+  .musicImg{
+    height: 100px;
+    width: 100px;
+  }
+
+  .musicItems{
+    display: flex;
+  }
+  // img{
+  //   float: left;
+  // }
 }
+

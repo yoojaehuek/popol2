@@ -9,15 +9,15 @@ import Join from './routes/Join.tsx';
 import Playlist from './routes/Playlist';
 import Mypage from './routes/Mypage';
 import Musics from './routes/Musics';
-import Uploader from './routes/Uploader';
-import CheckoutPage from './routes/payment.tsx';
-import SuccessPage from './routes/success';
-import Simple from './routes/chatbot';
-import FailPage from './routes/fail';
-import Dash from './routes/dash';
-import EditProfile from './routes/editprofile';
-import MembershipManagement from './routes/membershipmang';
-import SongDetails from './routes/songdetail'
+import Uploader from './routes/UpLoader';
+import Payment from './routes/Payment.tsx';
+import SuccessPage from './routes/Success';
+import Simple from './routes/ChatBot';
+import FailPage from './routes/Fail';
+import Dash from './routes/Dash';
+import EditProfile from './routes/EditProfile';
+import MembershipManagement from './routes/Membershipmang';
+import MusicDetail from './routes/MusicDetail'
 
 function App() {
   const location = useLocation();
@@ -33,17 +33,17 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
-        <Route path="/payment/:id" element={<CheckoutPage />} />
+        <Route path="/payment/:id" element={<Payment />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/fail" element={<FailPage />} />
 
         {/* b */}
         <Route path="/playlist" element={<Playlist />} />
-        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/user/mypage" element={<Mypage />} />
         <Route path="/edit" element={<EditProfile />} />
         <Route path="/member" element={<MembershipManagement />} />
         <Route path="/musics" element={<Musics />} />
-        <Route path="/detail" element={<SongDetails />} />
+        <Route path="/detail" element={<MusicDetail />} />
 
         {/* c */}
         <Route path="/dash" element={<Dash />} />

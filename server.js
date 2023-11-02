@@ -14,6 +14,8 @@ const { sequelize } = require('./models');
 const musicRouter = require('./routes/musics');
 const userRouter = require('./routes/user');
 const amountRouter = require('./routes/amount');
+const loginRouter = require('./routes/login')
+const verifyTokenRouter = require('./routes/verifyToken')
 
 //상수 multer에 "multer"라이브러리 가져옴
 const multer = require("multer");
@@ -51,8 +53,8 @@ app.use(morgan('dev'));
 
 // URL-encoded방식 사용할수있게 설정
 app.use(express.urlencoded({extended:false}));  
-// json형식의 데이터를 처리할 수 있게 설정
-app.use(express.json());
+// body 데이터를 json형식으로 사용
+app.use(express.json())
 
 
 // 브라우저 cors 이슈를 막기 위해 사용(모든 브라우저의 요청 받겠다 보안이 뻥ㅋㅋㅋ)
@@ -78,12 +80,14 @@ app.post('/mp3', upload.single('file'), (req, res)=>{
   res.send({ 
     // imageUrl: "http://localhost:3000/"+file.destination+file.filename
     musicUrl: `http://localhost:${localUrl}/`+file.destination+file.filename //이미지 여기 저장했다 json형식으로 보냄
-})
+  })
 })
 
 app.use('/musics', musicRouter); 
 app.use('/user', userRouter); 
 app.use('/amounts', amountRouter);
+app.use('/login', loginRouter);
+app.use('/verify', verifyTokenRouter);
 
 // 위에서 안걸린 나머지 모든 get요청 처리
 // 예: http://localhost:8080/asdfasdfasd
