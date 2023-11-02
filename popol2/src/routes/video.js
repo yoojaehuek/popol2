@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Slider from './slider2';
 import Listb from './listbar';
 import '../scss/video.scss'
+//12
 
 const Video = () => {
 
