@@ -6,7 +6,7 @@ import { faFacebook, faTwitter, faYoutube, faGithub } from "@fortawesome/free-br
 const Footer = () => {
   return (
     <>
-      <footer class="footer-distributed">
+      <footer class="footer-distributed" style={{ backgroundColor: "black" }}>
         <div class="footer-left">
           <h3>Music<span>Hub</span></h3>
           <p class="footer-l">
