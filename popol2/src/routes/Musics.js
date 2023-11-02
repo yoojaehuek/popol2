@@ -5,8 +5,9 @@ import { API_URL } from "../config/contansts";
 import { NavLink} from 'react-router-dom';
 import '../scss/Musics.scss';
 import AudioPlayer from 'react-modern-audio-player'; 
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'; //플리 아이콘
-import DownloadIcon from '@mui/icons-material/Download'; // 다운로드 아이콘
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import DownloadIcon from '@mui/icons-material/Download';
+import Listb from "./listbar";
 
 
 
@@ -65,8 +66,9 @@ const Musics = () => {
 
   return(
     <>
+    <Listb/>
     <div id="musicsC">
-      <h1>로그인 후 메인입니다.</h1>
+      <h1>투데이</h1>
       {/* {musics.map(music => <Music key={music.id} music={music}></Music>)} */}
       {/* {musics.map(music => <audio src={music.musicUrl} controls></audio>)} */}
       
