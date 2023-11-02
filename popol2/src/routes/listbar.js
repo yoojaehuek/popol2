@@ -2,7 +2,7 @@ import React from 'react';
 import { Drawer, List, ListItem, ListItemText, CssBaseline, AppBar, Toolbar, Container, Box, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink } from 'react-router-dom';
-import SimpleChatBot from './Chatbot';
+import SimpleChatBot from './ChatBot';
 
 const drawerWidth = 240;
 
