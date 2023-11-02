@@ -8,7 +8,6 @@ import AudioPlayer from 'react-modern-audio-player';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'; //플리 아이콘
 import DownloadIcon from '@mui/icons-material/Download'; // 다운로드 아이콘
 
-
 const Musics = () => {
   const [playList, setPlayList] = useState(
     [
@@ -86,7 +85,7 @@ const Musics = () => {
       </div>
       {
         playList.name == "music.name" ? <></> : 
-      
+        
         <AudioPlayer playList={playList}
           // audioInitialState={{
           //   muted: true,

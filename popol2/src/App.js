@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div className="App">
-      {!HideHeader && <Header />}
+      {!HideHeader && <Header/>}
       <Routes>
         {/* a */}
         <Route path="/" element={<Main />} />
