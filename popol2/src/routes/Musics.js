@@ -7,7 +7,7 @@ import '../scss/Musics.scss';
 import AudioPlayer from 'react-modern-audio-player'; 
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import DownloadIcon from '@mui/icons-material/Download';
-import Listb from "./listbar";
+import Listb from "./Listbar";
 
 
 

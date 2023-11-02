@@ -1,6 +1,6 @@
 import React from 'react';
-import Slider from './slider2';
-import Listb from './listbar';
+import Slider from './Slider2';
+import Listb from './Listbar';
 import '../scss/video.scss'
 //12
 

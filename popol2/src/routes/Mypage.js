@@ -6,20 +6,46 @@ import { getCookie, removeCookie } from "../cookie";
 import { API_URL } from "../config/contansts";
 import useAsync from "../customHook/useAsync";
 import axios from "axios";
-import Listb from './listbar';
+import Listb from './Listbar';
+import '../scss/Mypage.scss';
+import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineLock } from "react-icons/ai";
+import { IoTicketOutline } from "react-icons/io5";
+
+
+
+const drawerWidth = 240;
+
+const DrawerContainer = styled('div')({
+  width: drawerWidth,
+  flexShrink: 0,
+});
 
 const MainContent = styled('div')({
   flexGrow: 1,
   padding: 20,
 });
 
+// ---------------------------------------------- 
 const BoxContainer = styled(Box)({
-  border: '1px solid #ccc',
-  padding: '20px',
+  border: '3px solid #ccc',
+  padding: '50px',
   borderRadius: '8px',
   marginBottom: '20px',
+  height: '300px',
+  display: 'flex',
+  alignItems: 'center',
 });
-
+const BoxContainer1 = styled(Box)({
+  borderBottom: '3px solid #ccc',
+  padding: '20px',
+  paddingTop: '100px',
+  marginBottom: '20px',
+  height: '300px',
+  display: 'flex',
+  alignItems: 'center',
+});
+// -----------------------------------------------
 
 const MyPage = () => {
   // const [open, setOpen] = useState(false);
@@ -56,36 +82,66 @@ const MyPage = () => {
       return <div>로딩중입니다.</div>
   }
 
+  const secession = async () => {
+    if(window.confirm("정말 탈퇴하시겠습니까?")) {
+      try {
+      const response = await axios.delete(`${API_URL}/user`, {
+        headers: {
+          Authorization: `Bearer ${login}`
+        }
+      });
+      if (response.status === 200) {
+        alert('회원 탈퇴가 완료되었습니다.');
+        removeCookie("accessToken");
+        navigate('/'); //탈퇴 성공하면 홈페이지로 이동
+      }
+    } catch (error) {
+      console.error(error);
+      alert('회원 탈퇴 중 오류가 발생했습니다.');
+    }}
+    else{
+      return;
+    }
+  };
+  const style = {
+    color: "black"
+  };
+
   return (
-    <div style={{ display: 'flex' }}>
+    <div id='mypageC' style={{ display: 'flex' }}>
       <CssBaseline />
       <Listb />
       <MainContent>
         <Toolbar />
         <Container>
-          <BoxContainer>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <div style={{ marginRight: '20px' }}>
-              <img src="images/profile.png" alt="user-icon" style={{ width: '60px', height: '60px', borderRadius: '50%' }} />
-            </div>
+          <BoxContainer1>
+            <AiOutlineUser size={200}/>
             <div>
               <h3>{user.name}님 반갑습니다.</h3>
-              <p>이번달 등급은 xxx입니다.</p>
             </div>
-          </div>
-          </BoxContainer>
+          </BoxContainer1>
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <BoxContainer>
-                <NavLink to='/edit' state={{user}}><h2>회원정보 수정</h2></NavLink>
+                <NavLink to='/edit' state={{user}}>
+                  <AiOutlineLock id='icon1' size={40}/>
+                  <div id='mp2'>회원정보 수정</div>
+                </NavLink>
               </BoxContainer>
             </Grid>
             <Grid item xs={6}>
               <BoxContainer>
-                <NavLink to='/member'><h2>이용권 관리</h2></NavLink>
+                <NavLink to='/member'>
+                <IoTicketOutline id='icon1' size={40}/>
+                  <div id='mp2'>이용권 관리</div>
+                  </NavLink>
               </BoxContainer>
             </Grid>
           </Grid>
+          <button onClick={secession} 
+          style={{ width: '80px', float: 'right', backgroundColor: '#fff'}}>
+            회원 탈퇴
+          </button>
         </Container>
       </MainContent>
     </div>

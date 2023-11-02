@@ -17,12 +17,12 @@ import Dash from './routes/Dash';
 import EditProfile from './routes/EditProfile';
 import MembershipManagement from './routes/Membershipmang';
 import MusicDetail from './routes/MusicDetail'
-import Dj from './routes/dj';
-import Chart from './routes/chart';
-import Monthmusic from './routes/monthmusic';
-import Newchart from './routes/newchart';
-import Video from './routes/video';
-// import List from './routes/listbar.js'
+import Dj from './routes/Dj.js';
+import Chart from './routes/Chart.js';
+import Monthmusic from './routes/Monthmusic.js';
+import Newchart from './routes/Newchart.js';
+import Video from './routes/Video.js';
+import UpLoader from './routes/UpLoader.js';
 
 function App() {
   const location = useLocation();
@@ -56,7 +56,7 @@ function App() {
 
         {/* c */}
         <Route path="/dash" element={<Dash/>} />
-        <Route path="/uploader" element={<Uploader />} />
+        <Route path="/uploader" element={<UpLoader />} />
 
         {/* out */}
         <Route path="/chatbot" element={<Simple />} />
