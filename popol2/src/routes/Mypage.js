@@ -39,8 +39,9 @@ const BoxContainer = styled(Box)({
 const BoxContainer1 = styled(Box)({
   borderBottom: '3px solid #ccc',
   padding: '20px',
+  paddingTop: '100px',
   marginBottom: '20px',
-  height: '400px',
+  height: '300px',
   display: 'flex',
   alignItems: 'center',
 });
@@ -113,10 +114,9 @@ const MyPage = () => {
         <Toolbar />
         <Container>
           <BoxContainer1>
-            <AiOutlineUser size={100}/>
+            <AiOutlineUser size={200}/>
             <div>
               <h3>{user.name}님 반갑습니다.</h3>
-              <p>이번달 등급은 xxx입니다.</p>
             </div>
           </BoxContainer1>
           <Grid container spacing={2}>
