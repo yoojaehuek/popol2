@@ -10,15 +10,14 @@ const drawerWidth = 245;
 const DrawerContainer = styled('div')({
   width: drawerWidth,
   flexShrink: 0,
-  color : 'white'
 });
 
 
 const Listb = () => {
   return(
 <DrawerContainer>
-  <Drawer variant="permanent" sx={{width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth } }}>
-    <List style={{height : '100%', background : 'linear-gradient(45deg, rgb(0, 0, 0), rgb(201, 52, 221), rgb(0, 0, 0)'}}>
+  <Drawer variant="permanent" sx={{width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth, zIndex:'0' } }}>
+    <List style={{height : '93%', background : 'linear-gradient(45deg, rgb(0, 0, 0), rgb(201, 52, 221), rgb(0, 0, 0)'}}>
       <h2 style={{color:'white', paddingLeft:'20px'}}>MusciHub</h2>
         <ListItem button>
           <NavLink to='/musics'><ListItemText style={{color: 'white'}} primary="투데이" /></NavLink>
