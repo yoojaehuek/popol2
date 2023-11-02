@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Drawer, List, ListItem, ListItemText, CssBaseline, AppBar, Toolbar, Container, Box, Grid, Typography } from '@mui/material';
+import React from 'react';
+import {CssBaseline,Toolbar, Container, Box, Grid} from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { getCookie } from "../cookie";
@@ -22,7 +22,7 @@ const BoxContainer = styled(Box)({
 
 
 const MyPage = () => {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const login = getCookie('accessToken');
   const navigate = useNavigate();
   
@@ -89,6 +89,7 @@ const MyPage = () => {
       </MainContent>
     </div>
   );
-};
+}
+
 
 export default MyPage;

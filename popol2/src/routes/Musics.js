@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import axios from 'axios';
 import useAsync from "../customHook/useAsync";
 import { API_URL } from "../config/contansts";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import '../scss/Musics.scss';
 import AudioPlayer from 'react-modern-audio-player'; 
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'; //플리 아이콘
 import DownloadIcon from '@mui/icons-material/Download'; // 다운로드 아이콘
+
 
 
 const Musics = () => {
@@ -85,7 +86,7 @@ const Musics = () => {
       {console.log(playList)}
       </div>
       {
-        playList.name == "music.name" ? <></> : 
+        playList.name === "music.name" ? <></> : 
       
         <AudioPlayer playList={playList}
           // audioInitialState={{

@@ -21,16 +21,17 @@ import MusicDetail from './routes/MusicDetail'
 import Dj from './routes/Dj';
 // import Chart from './routes/chart';
 // import Monthmusic from './routes/monthmusic';
-// import Newchart from './routes/newchart';
+import NewChart from './routes/NewChart';
+import Video from './routes/video';
 
 function App() {
   const location = useLocation();
-  const hideFooterPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader', '/dj'];
+  const hideFooterPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/new', '/video'];
 
   const HideFooter = hideFooterPages.includes(location.pathname);
 
   const location1 = useLocation();
-  const hideHeaderPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader', '/dj'];
+  const hideHeaderPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/new', '/video'];
 
   const HideHeader = hideHeaderPages.includes(location1.pathname);
 
@@ -54,6 +55,8 @@ function App() {
         <Route path="/musics" element={<Musics />} />
         <Route path="/detail" element={<MusicDetail />} />
         <Route path="/dj" element={<Dj />} />
+        <Route path='/new' element={<NewChart/>} />
+        <Route path='/video' element={<Video/>} />
 
         {/* c */}
         <Route path="/dash" element={<Dash/>} />
