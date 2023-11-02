@@ -12,13 +12,13 @@ import Musics from './routes/Musics';
 import Uploader from './routes/Uploader';
 import Payment from './routes/Payment.tsx';
 import SuccessPage from './routes/Success';
-import Simple from './routes/Chatbot';
+import Simple from './routes/ChatBot.js';
 import FailPage from './routes/Fail';
 import Dash from './routes/Dash';
-import EditProfile from './routes/Editprofile';
+import EditProfile from './routes/EditProfile';
 import MembershipManagement from './routes/Membershipmang';
 import MusicDetail from './routes/MusicDetail'
-import Dj from './routes/dj';
+import Dj from './routes/Dj';
 // import Chart from './routes/chart';
 // import Monthmusic from './routes/monthmusic';
 // import Newchart from './routes/newchart';
@@ -56,7 +56,7 @@ function App() {
         <Route path="/dj" element={<Dj />} />
 
         {/* c */}
-        <Route path="/dash" element={<Dash />} />
+        <Route path="/dash" element={<Dash/>} />
         <Route path="/uploader" element={<Uploader />} />
 
         {/* out */}
