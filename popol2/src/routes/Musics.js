@@ -7,7 +7,7 @@ import "../scss/Musics.scss";
 import AudioPlayer from "react-modern-audio-player";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd"; //플리 아이콘
 import DownloadIcon from "@mui/icons-material/Download"; // 다운로드 아이콘
-import Listb from "./listbar";
+import Listb from "./Listbar";
 import { CssBaseline, Container, Box, Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
@@ -121,7 +121,7 @@ const Musics = () => {
                   alt=""
                 />
                 <PlayIcon className="play-icon" fontSize="large" />
-                <NavLink to='/detail'>
+                <NavLink to='/detail' state={{music}}>
                 <Typography variant="subtitle1" gutterBottom>
                   {music.singer}
                   <br />

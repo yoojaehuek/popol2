@@ -58,7 +58,7 @@ export default function SignInSide() {
 				}
 				
 				console.log("로그인 성공 res: ",res);
-				navigate('/user/mypage');
+				navigate('/musics');
 			})
 			.catch((error)=>{
 				console.error("로그인 실패: ",error);

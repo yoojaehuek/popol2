@@ -1,7 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TextField, Button, Typography, Box, Grid } from '@mui/material';
+import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { getCookie, removeCookie } from "../cookie";
+import { API_URL } from '../config/contansts';
 
 const EditProfile = () => {
+  const navigate = useNavigate();
+  //EditProfile 들어왔을때 토큰 검증
+  useEffect(() => {
+    const verify = async () => {
+      if(getCookie('accessToken') != null){
+        const login = getCookie('accessToken');
+        await axios({
+          url: `${ API_URL }/verify`,
+          method: 'POST',
+          headers: {
+            Authorization: 'Bearer '+ login
+          }
+        }).then((res) => {
+          if (res.statusText != "OK") {
+            alert('다시 로그인 해주세요');
+            removeCookie('accessToken');
+            navigate('/');
+          }
+        }).catch((err) => {
+          console.log(err);
+        })
+      }else{
+        alert('다시 로그인 해주세요');
+        navigate("/");
+      }
+    }
+    
+    verify();
+  }, []);
+
   const [formData, setFormData] = useState({
     password: '',
     newPassword: '',
@@ -18,9 +52,40 @@ const EditProfile = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('수정된 회원 정보:', formData);
+    if(getCookie('accessToken')){
+      const login = getCookie('accessToken');
+      console.log('수정된 회원 정보:', formData);
+      if (formData.newPassword == formData.confirmPassword) {
+        const newPassword = formData.newPassword;
+        const newPhone = formData.phoneNumber;
+        const newEmail= formData.email;
+        await axios({
+          url: `${ API_URL }/user`,
+          method: 'PUT',
+          headers: {
+            Authorization: 'Bearer '+ login
+          },
+          data: {
+            newPassword: newPassword,
+            newPhone: newPhone,
+            newEmail: newEmail,
+          }
+        }).then((res)=> {
+          // if (res.statusText == ) {
+          //   alert("변경 성공");
+          //   navigate("/")
+          // }
+          console.log(res);
+        }).catch((err)=>{
+          console.log(err);
+        })
+      }
+    }else{
+      alert("다시 로그인")
+      navigate('/')
+    }
   };
 
   return (

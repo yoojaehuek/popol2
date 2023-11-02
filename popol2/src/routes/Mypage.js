@@ -6,7 +6,7 @@ import { getCookie, removeCookie } from "../cookie";
 import { API_URL } from "../config/contansts";
 import useAsync from "../customHook/useAsync";
 import axios from "axios";
-import Listb from './listbar';
+import Listb from './Listbar';
 import '../scss/Mypage.scss';
 import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineLock } from "react-icons/ai";
@@ -74,8 +74,9 @@ const MyPage = () => {
   if(loading) return <div>로딩중 ......</div>
   if(error){
     alert("다시 로그인해주세요");
-    navigate('/login');
-    // return <div>에러가 발생했습니다.</div>
+    removeCookie("accessToken");
+    navigate('/');
+    return <div>에러가 발생했습니다.</div>
   } 
   if(!user){
       return <div>로딩중입니다.</div>
@@ -122,10 +123,10 @@ const MyPage = () => {
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <BoxContainer>
-                <NavLink to='/edit'>
+                <NavLink to='/edit' state={{user}}>
                   <AiOutlineLock id='icon1' size={40}/>
                   <div id='mp2'>회원정보 수정</div>
-                  </NavLink>
+                </NavLink>
               </BoxContainer>
             </Grid>
             <Grid item xs={6}>
