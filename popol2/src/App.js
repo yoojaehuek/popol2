@@ -24,6 +24,7 @@ import Monthmusic from './routes/monthmusic';
 import Newchart from './routes/NewChart';
 import Video from './routes/video';
 
+
 function App() {
   const location = useLocation();
   const hidePages = ['/playlist', '/user/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/month', "/chart", '/video', '/new'];
