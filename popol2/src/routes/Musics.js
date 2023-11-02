@@ -1,29 +1,15 @@
-import { Drawer, List, ListItem, ListItemText, CssBaseline, AppBar, Toolbar, Container, Box, Grid, Typography } from '@mui/material';
-import { styled } from '@mui/system';
-import { NavLink } from 'react-router-dom';
+// import { Drawer, List, ListItem, ListItemText, CssBaseline, AppBar, Toolbar, Container, Box, Grid, Typography } from '@mui/material';
+// import { styled } from '@mui/system';
 import AudioPlayer from 'react-modern-audio-player'; 
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'; //플리 아이콘
 import DownloadIcon from '@mui/icons-material/Download'; // 다운로드 아이콘
-import React from "react";
+import React, {useState} from "react";
 import axios from 'axios';
 import useAsync from "../customHook/useAsync";
 import { API_URL } from "../config/contansts";
-import { NavLink, useNavigate } from 'react-router-dom';
-import '../scss/Musics.scss';
-//dsadsa
+import { NavLink} from 'react-router-dom';
 
 
-// const drawerWidth = 240;
-
-// const DrawerContainer = styled('div')({
-//   width: drawerWidth,
-//   flexShrink: 0,
-// });
-
-// const MainContent = styled('div')({
-//   flexGrow: 1,
-//   padding: 20,
-// });
 
 const Musics = () => {
   const [playList, setPlayList] = useState(
@@ -100,7 +86,7 @@ const Musics = () => {
       {console.log(playList)}
       
       {
-        playList.name == "music.name" ? <></> : 
+        playList.name === "music.name" ? <></> : 
       
         <AudioPlayer playList={playList}
           // audioInitialState={{

@@ -15,8 +15,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import '../scss/Join.scss';
-import { BsGoogle } from "react-icons/bs";
-import { AiFillMessage } from "react-icons/ai";
 import { API_URL } from '../config/contansts'
 
 function Copyright(props: any) {
@@ -57,7 +55,8 @@ export default function Join() {
     const confirmPwd = formData.confirmPwd;
     const name = formData.name;
     const phone = formData.phone;
-    if(pwd == confirmPwd && id != "" && pwd != "" && confirmPwd != "" && name != "" && phone != ""){
+  
+    if(pwd === confirmPwd && id !== "" && pwd !== "" && confirmPwd !== "" && name !== "" && phone !== ""){
         await axios.post(`${API_URL}/user`,{id, name, phone ,pwd})
         .then(() =>{
           alert("가입성공!");
