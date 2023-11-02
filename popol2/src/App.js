@@ -18,10 +18,10 @@ import Dash from './routes/Dash';
 import EditProfile from './routes/EditProfile';
 import MembershipManagement from './routes/Membershipmang';
 import MusicDetail from './routes/MusicDetail'
-import Dj from './routes/dj';
+import Dj from './routes/Dj';
 import Chart from './routes/chart';
 import Monthmusic from './routes/monthmusic';
-import Newchart from './routes/newchart';
+import Newchart from './routes/NewChart';
 import Video from './routes/video';
 
 function App() {

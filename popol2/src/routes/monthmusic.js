@@ -55,17 +55,17 @@ const playlists = [
 
 const Monthmusic = () => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', background:'black' }}>
       <CssBaseline />
       <Listb />
-      <MainContent>
+      <MainContent style={{ color : 'white'}}>
 				<div>
           <h1 style={{ paddingBottom: '1vw'}}>이달의 차트</h1>
           <Grid container spacing={1}>
             {playlists.map((playlist) => (
               <Grid item xs={12} sm={6} md={12} key={playlist.id}>
                 <NavLink to='/detail'>
-                  <PlaylistItem style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+                  <PlaylistItem style={{display:'flex', justifyContent:'space-between', alignItems:'center',  color : 'white'}}>
                     <PlaylistImage src={playlist.imageUrl} alt={playlist.title} />
                     <PlayIcon className="play-icon" fontSize="large" />
                     <Typography variant="subtitle1" gutterBottom>{playlist.artist}</Typography>
@@ -80,6 +80,7 @@ const Monthmusic = () => {
               </Grid>
             ))}
           </Grid>
+          <Footer/>
 					</div>
       </MainContent>
     </div>

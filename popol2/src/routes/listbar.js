@@ -3,7 +3,7 @@ import { Drawer, List, ListItem, ListItemText} from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink } from 'react-router-dom';
 import SimpleChatBot from './ChatBot';
-
+import LoginIcon from '@mui/icons-material/Login';
 
 const drawerWidth = 245;
 
@@ -17,9 +17,15 @@ const DrawerContainer = styled('div')({
 const Listb = () => {
   return(
 <DrawerContainer>
-  <Drawer variant="permanent" sx={{width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth } }}>
-    <List style={{height : '100%', background : 'linear-gradient(45deg, rgb(0, 0, 0), rgb(201, 52, 221), rgb(0, 0, 0)'}}>
+  <Drawer variant="permanent" sx={{width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth, zIndex:'0'} }}>
+    <List style={{height : '93%', background : 'linear-gradient(45deg, rgb(0, 0, 0), rgb(201, 52, 221), rgb(0, 0, 0)'}}>
       <h2 style={{color:'white', paddingLeft:'20px'}}>MusciHub</h2>
+        <ListItem button>
+            <NavLink to='/login' style={{ textDecoration: 'none' }}>
+              <ListItemText style={{ color: 'white', float: 'left' }} primary={"로그인"}/> 
+              <LoginIcon style={{color :'white', position:'relative' , top:'4px'}}/>
+            </NavLink>
+          </ListItem>
         <ListItem button>
           <NavLink to='/musics'><ListItemText style={{color: 'white'}} primary="투데이" /></NavLink>
         </ListItem>

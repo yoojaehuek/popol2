@@ -4,6 +4,7 @@ import { styled } from '@mui/system';
 import { NavLink } from 'react-router-dom';
 import Listb from './listbar';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import Footer from './Footer';
 
 const MainContent = styled('div')({
   flexGrow: 1,
@@ -53,7 +54,7 @@ const playlists = [
 
 const PlayList = () => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', background:'black' }}>
       <CssBaseline />
       <Listb />
       <MainContent>
@@ -62,7 +63,7 @@ const PlayList = () => {
             {playlists.map((playlist) => (
               <Grid item xs={12} sm={6} md={2} key={playlist.id}>
                 <NavLink to='/detail'>
-                  <PlaylistItem>
+                  <PlaylistItem style={{color : 'white'}} >
                     <PlaylistImage src={playlist.imageUrl} alt={playlist.title} />
                     <PlayIcon className="play-icon" fontSize="large" />
                     <Typography variant="subtitle1" gutterBottom>{playlist.artist}</Typography>
@@ -72,6 +73,7 @@ const PlayList = () => {
               </Grid>
             ))}
           </Grid>
+          <Footer/>
       </MainContent>
     </div>
   );

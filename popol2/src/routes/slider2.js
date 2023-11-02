@@ -13,7 +13,8 @@ const Slider2 = () => {
     autoplay: true, // 자동 롤링 활성화
     autoplaySpeed: 2000, // 자동 롤링 속도 (ms)
     pauseOnHover: false,
-
+    dots: false, // 점 표시 숨기기
+    arrows: false, // 버튼 숨기기
   };
 
   return (
