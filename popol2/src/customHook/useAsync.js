@@ -38,11 +38,17 @@ function useAsync(callback, deps = []) {
         dispatch({type: "LOADING"});
         try {
             const data = await callback(); //callback은 getProduct()
-            console.log("data: ", data);
+            console.log("어싱크data: ", data);
             dispatch({
                 type: "SUCCESS",
                 data: data
             })
+            if(data==false){
+                dispatch({
+                    type: "ERROR",
+                    error: "강제에러"
+                })  
+            }
         }
         catch(e){
             dispatch({

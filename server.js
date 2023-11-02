@@ -14,6 +14,8 @@ const { sequelize } = require('./models');
 const musicRouter = require('./routes/musics');
 const userRouter = require('./routes/user');
 const amountRouter = require('./routes/amount');
+const loginRouter = require('./routes/login')
+const verifyTokenRouter = require('./routes/verifyToken')
 
 //상수 multer에 "multer"라이브러리 가져옴
 const multer = require("multer");
@@ -51,13 +53,16 @@ app.use(morgan('dev'));
 
 // URL-encoded방식 사용할수있게 설정
 app.use(express.urlencoded({extended:false}));  
-// json형식의 데이터를 처리할 수 있게 설정
-app.use(express.json());
+// body 데이터를 json형식으로 사용
+app.use(express.json())
 
 
 // 브라우저 cors 이슈를 막기 위해 사용(모든 브라우저의 요청 받겠다 보안이 뻥ㅋㅋㅋ)
 const cors = require('cors');
-app.use(cors());
+app.use(cors({
+  origin: "*", // 출처 허용 옵션
+  credential: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
+}));
 
 //app.use('요청 경로', express.static('실제 경로'));
 app.use('/', express.static(path.join(__dirname, 'popol2/build'))); //POPOL2/popol2/build/ 파일 지정
@@ -84,6 +89,8 @@ app.post('/mp3', upload.single('file'), (req, res)=>{
 app.use('/musics', musicRouter); 
 app.use('/user', userRouter); 
 app.use('/amounts', amountRouter);
+app.use('/login', loginRouter);
+app.use('/verify', verifyTokenRouter);
 
 // 위에서 안걸린 나머지 모든 get요청 처리
 // 예: http://localhost:8080/asdfasdfasd

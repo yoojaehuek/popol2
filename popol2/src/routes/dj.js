@@ -41,33 +41,45 @@ const PlayIcon = styled(PlayArrowIcon)({
 });
 
 const playlists = [
-  { id: 1, imageUrl: './logo192.png', artist: '아티스트 1', title: '플레이리스트 1' },
-  { id: 2, imageUrl: './logo192.png', artist: '아티스트 2', title: '플레이리스트 2' },
-  { id: 3, imageUrl: './logo192.png', artist: '아티스트 3', title: '플레이리스트 3' },
-  { id: 4, imageUrl: './logo192.png', artist: '아티스트 4', title: '플레이리스트 4' },
-  { id: 1, imageUrl: './logo192.png', artist: '아티스트 1', title: '플레이리스트 1' },
-  { id: 2, imageUrl: './logo192.png', artist: '아티스트 2', title: '플레이리스트 2' },
-  { id: 3, imageUrl: './logo192.png', artist: '아티스트 3', title: '플레이리스트 3' },
-  { id: 4, imageUrl: './logo192.png', artist: '아티스트 4', title: '플레이리스트 4' },
+  { id: 1, imageUrl: './logo192.png'},
+  { id: 2, imageUrl: './logo192.png'},
+  { id: 3, imageUrl: './logo192.png'},
+  { id: 4, imageUrl: './logo192.png'},
+  { id: 1, imageUrl: './logo192.png'},
+  { id: 2, imageUrl: './logo192.png'},
+  { id: 3, imageUrl: './logo192.png'},
+  { id: 4, imageUrl: './logo192.png'},
 ];
 
-const PlayList = () => {
+const Dj = () => {
   return (
     <div style={{ display: 'flex' }}>
       <CssBaseline />
       <Listb />
       <MainContent>
         <Container>
-          <h1>playlist</h1>
+          <h1>DJ 스테이션</h1>
+          <h2>느낌별 스테이션</h2>
           <Grid container spacing={2}>
             {playlists.map((playlist) => (
               <Grid item xs={12} sm={6} md={2} key={playlist.id}>
                 <NavLink to='/detail'>
                   <PlaylistItem>
-                    <PlaylistImage src={playlist.imageUrl} alt={playlist.title} />
+                    <PlaylistImage src={playlist.imageUrl}/>
                     <PlayIcon className="play-icon" fontSize="large" />
-                    <Typography variant="subtitle1" gutterBottom>{playlist.artist}</Typography>
-                    <Typography variant="body1">{playlist.title}</Typography>
+                  </PlaylistItem>
+                </NavLink>
+              </Grid>
+            ))}
+          </Grid>
+          <h2>장르 스테이션</h2>
+          <Grid container spacing={2}>
+            {playlists.map((playlist) => (
+              <Grid item xs={12} sm={6} md={2} key={playlist.id}>
+                <NavLink to='/detail'>
+                  <PlaylistItem>
+                    <PlaylistImage src={playlist.imageUrl}/>
+                    <PlayIcon className="play-icon" fontSize="large" />
                   </PlaylistItem>
                 </NavLink>
               </Grid>
@@ -79,4 +91,4 @@ const PlayList = () => {
   );
 };
 
-export default PlayList;
+export default Dj;

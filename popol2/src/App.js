@@ -11,23 +11,29 @@ import Mypage from './routes/Mypage';
 import Musics from './routes/Musics';
 import Uploader from './routes/Uploader';
 import CheckoutPage from './routes/payment.tsx';
-import SuccessPage from './routes/success';
+import SuccessPage from './routes/Success';
 import Simple from './routes/chatbot';
 import FailPage from './routes/fail';
 import Dash from './routes/dash';
 import EditProfile from './routes/editprofile';
 import MembershipManagement from './routes/membershipmang';
 import SongDetails from './routes/songdetail'
+import Dj from './routes/dj';
 
 function App() {
   const location = useLocation();
-  const hideFooterPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader'];
+  const hideFooterPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader', '/dj'];
 
   const HideFooter = hideFooterPages.includes(location.pathname);
 
+  const location1 = useLocation();
+  const hideHeaderPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader', '/dj'];
+
+  const HideHeader = hideHeaderPages.includes(location1.pathname);
+
   return (
     <div className="App">
-      <Header />
+      {!HideHeader && <Header />}
       <Routes>
         {/* a */}
         <Route path="/" element={<Main />} />
@@ -44,6 +50,7 @@ function App() {
         <Route path="/member" element={<MembershipManagement />} />
         <Route path="/musics" element={<Musics />} />
         <Route path="/detail" element={<SongDetails />} />
+        <Route path="/dj" element={<Dj />} />
 
         {/* c */}
         <Route path="/dash" element={<Dash />} />
