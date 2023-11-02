@@ -57,7 +57,6 @@ const PlayList = () => {
       <CssBaseline />
       <Listb />
       <MainContent>
-        <Container>
           <h1>playlist</h1>
           <Grid container spacing={2}>
             {playlists.map((playlist) => (
@@ -73,7 +72,6 @@ const PlayList = () => {
               </Grid>
             ))}
           </Grid>
-        </Container>
       </MainContent>
     </div>
   );

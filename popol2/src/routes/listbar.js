@@ -13,11 +13,9 @@ const DrawerContainer = styled('div')({
 
 const Listb = () => {
   return(
-<DrawerContainer style={{ height: '80vh' }}>
-<Toolbar />
-<Drawer variant="permanent" sx={{ width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth } }}>
-  <Toolbar />
-  <List>
+<DrawerContainer>
+<Drawer variant="permanent" sx={{ width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth }} }>
+  <List style={{backgroundColor: 'black', height: '100%'}}>
     <ListItem button>
       <NavLink to='/musics'><ListItemText primary="투데이" /></NavLink>
     </ListItem>

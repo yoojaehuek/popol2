@@ -19,24 +19,18 @@ import EditProfile from './routes/Editprofile';
 import MembershipManagement from './routes/Membershipmang';
 import MusicDetail from './routes/MusicDetail'
 import Dj from './routes/dj';
-// import Chart from './routes/chart';
-// import Monthmusic from './routes/monthmusic';
+import Chart from './routes/chart';
+import Monthmusic from './routes/monthmusic';
 // import Newchart from './routes/newchart';
 
 function App() {
   const location = useLocation();
-  const hideFooterPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader', '/dj'];
-
-  const HideFooter = hideFooterPages.includes(location.pathname);
-
-  const location1 = useLocation();
-  const hideHeaderPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader', '/dj'];
-
-  const HideHeader = hideHeaderPages.includes(location1.pathname);
+  const hidePages = ['/playlist', '/user/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/month', "/chart"];
+  const Hide = hidePages.includes(location.pathname);
 
   return (
     <div className="App">
-      {!HideHeader && <Header />}
+      {!Hide && <Header />}
       <Routes>
         {/* a */}
         <Route path="/" element={<Main />} />
@@ -54,6 +48,8 @@ function App() {
         <Route path="/musics" element={<Musics />} />
         <Route path="/detail" element={<MusicDetail />} />
         <Route path="/dj" element={<Dj />} />
+        <Route path="/month" element={<Monthmusic />} />
+        <Route path="/chart" element={<Chart />} />
 
         {/* c */}
         <Route path="/dash" element={<Dash />} />
@@ -62,7 +58,7 @@ function App() {
         {/* out */}
         <Route path="/chatbot" element={<Simple />} />
       </Routes>
-      {!HideFooter && <Footer />}
+      {!Hide && <Footer />}
     </div>
   );
 }

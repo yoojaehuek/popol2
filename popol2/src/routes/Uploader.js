@@ -138,7 +138,7 @@ const Uploader = () => {
                         <Select name="kind" defaultValue={`상품 카테고리를 선택해주세요 (${selectedopt})`} style={{ width: 200 }}>
                             {selectedopt === 'korea' && (
                                 <OptGroup label="K-POP">
-                                    <Option value="1-1">발라드</Option>
+                                    <Option value="조선-발라드">발라드</Option>
                                     <Option value="1-2">힙합</Option>
                                     <Option value="1-3">아이돌</Option>
                                     <Option value="1-4">트로트</Option>
@@ -147,7 +147,7 @@ const Uploader = () => {
                             )}
                             {selectedopt === 'usa' && (
                                 <OptGroup label="POP">
-                                    <Option value="2-1">밴드</Option>
+                                    <Option value="외국-밴드">밴드</Option>
                                     <Option value="2-2">솔로</Option>
                                     <Option value="2-3">힙합</Option>
                                     <Option value="2-3">락</Option>
@@ -156,7 +156,7 @@ const Uploader = () => {
                             )}
                             {selectedopt === 'japan' && (
                                 <OptGroup label="J-POP">
-                                    <Option value="3-1">아이돌</Option>
+                                    <Option value="니뽄-1">아이돌</Option>
                                     <Option value="3-2">애니</Option>
                                     <Option value="3-3">가요</Option>
                                     <Option value="3-4">락</Option>
