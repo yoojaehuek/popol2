@@ -12,32 +12,26 @@ import Musics from './routes/Musics';
 import Uploader from './routes/Uploader';
 import Payment from './routes/Payment.tsx';
 import SuccessPage from './routes/Success';
-import Simple from './routes/ChatBot.js';
+import Simple from './routes/ChatBot';
 import FailPage from './routes/Fail';
 import Dash from './routes/Dash';
 import EditProfile from './routes/EditProfile';
 import MembershipManagement from './routes/Membershipmang';
 import MusicDetail from './routes/MusicDetail'
-import Dj from './routes/Dj';
-// import Chart from './routes/chart';
-// import Monthmusic from './routes/monthmusic';
-import NewChart from './routes/NewChart';
+import Dj from './routes/dj';
+import Chart from './routes/chart';
+import Monthmusic from './routes/monthmusic';
+import Newchart from './routes/newchart';
 import Video from './routes/video';
 
 function App() {
   const location = useLocation();
-  const hideFooterPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/new', '/video'];
-
-  const HideFooter = hideFooterPages.includes(location.pathname);
-
-  const location1 = useLocation();
-  const hideHeaderPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/new', '/video'];
-
-  const HideHeader = hideHeaderPages.includes(location1.pathname);
+  const hidePages = ['/playlist', '/user/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/month', "/chart", '/video', '/new'];
+  const Hide = hidePages.includes(location.pathname);
 
   return (
     <div className="App">
-      {!HideHeader && <Header />}
+      {!Hide && <Header />}
       <Routes>
         {/* a */}
         <Route path="/" element={<Main />} />
@@ -55,7 +49,9 @@ function App() {
         <Route path="/musics" element={<Musics />} />
         <Route path="/detail" element={<MusicDetail />} />
         <Route path="/dj" element={<Dj />} />
-        <Route path='/new' element={<NewChart/>} />
+        <Route path="/month" element={<Monthmusic />} />
+        <Route path="/chart" element={<Chart />} />
+        <Route path='/new' element={<Newchart/>} />
         <Route path='/video' element={<Video/>} />
 
         {/* c */}
@@ -65,7 +61,7 @@ function App() {
         {/* out */}
         <Route path="/chatbot" element={<Simple />} />
       </Routes>
-      {!HideFooter && <Footer />}
+      {!Hide && <Footer />}
     </div>
   );
 }
