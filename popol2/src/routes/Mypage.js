@@ -2,20 +2,11 @@ import React, { useState } from 'react';
 import { Drawer, List, ListItem, ListItemText, CssBaseline, AppBar, Toolbar, Container, Box, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useNavigate } from 'react-router-dom';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import Collapse from '@mui/material/Collapse';
 import { getCookie } from "../cookie";
 import { API_URL } from "../config/contansts";
 import useAsync from "../customHook/useAsync";
 import axios from "axios";
-
-const drawerWidth = 240;
-
-const DrawerContainer = styled('div')({
-  width: drawerWidth,
-  flexShrink: 0,
-});
+import Listb from './listbar';
 
 const MainContent = styled('div')({
   flexGrow: 1,
@@ -57,56 +48,17 @@ const MyPage = () => {
   if(loading) return <div>로딩중 ......</div>
   if(error){
     alert("다시 로그인해주세요");
-    navigate('/');
-    return <div>에러가 발생했습니다.</div>
+    navigate('/login');
+    // return <div>에러가 발생했습니다.</div>
   } 
   if(!user){
       return <div>로딩중입니다.</div>
   }
 
-
-  const handleToggle = () => {
-    setOpen(!open);
-  };
-
   return (
     <div style={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" sx={{ width: `calc(100% - ${drawerWidth}px)`, marginLeft: `${drawerWidth}px` }}>
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            마이페이지
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <DrawerContainer>
-        <Toolbar />
-        <Drawer variant="permanent" sx={{ width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth } }}>
-          <Toolbar />
-          <List>
-          <ListItem button>
-              <NavLink to='/musics'><ListItemText primary="메인" /></NavLink>
-            </ListItem>
-            <ListItem button onClick={handleToggle}>
-              <ListItemText primary="내 정보" />
-              {open ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                <ListItem button>
-                  <NavLink to='/edit'><ListItemText primary="회원정보 수정" /></NavLink>
-                </ListItem>
-                <ListItem button>
-                  <NavLink to='/member'><ListItemText primary="이용권 관리" /></NavLink>
-                </ListItem>
-              </List>
-            </Collapse>
-            <ListItem button>
-              <NavLink to='/playlist'><ListItemText primary="플레이리스트" /></NavLink>
-            </ListItem>
-          </List>
-        </Drawer>
-      </DrawerContainer>
+      <Listb />
       <MainContent>
         <Toolbar />
         <Container>

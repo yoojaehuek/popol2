@@ -4,7 +4,6 @@ import useAsync from "../customHook/useAsync";
 import { API_URL } from "../config/contansts";
 import { NavLink, useNavigate } from 'react-router-dom';
 import '../scss/Musics.scss';
-import Music from "./Music";
 
 import AudioPlayer from 'react-modern-audio-player'; 
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'; //플리 아이콘
