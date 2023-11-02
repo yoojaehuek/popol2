@@ -29,6 +29,25 @@ router.route('/')
       next(error);
     }
   })
+  .put(async(req,res,next)=> {
+    try{
+      console.log(req.body);
+      const {ok, id} = verify(req.headers.authorization.substring(7));
+      if (ok == true) {
+        await User.update({
+          pwd: req.body.newPassword,
+          phone: req.body.newPhone,
+          },
+          {where: {
+            id: id
+          }
+        })
+      }
+      res.json(ok);
+    } catch (error) {
+      console.error(error);
+    }
+  })
 router.route('/mypage')
   .post(async (req,res,next)=>{
     try {

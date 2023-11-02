@@ -136,7 +136,7 @@ const Main = () => {
                     <h2>스피커 및 기타 기기에서 제한 없이 마음껏 들으세요.</h2>
                   </div>
                   <div className='Moneyset3'>
-                     {amounts.map(amount => <Amount key = {amount.id} amount={amount}></Amount>)}
+                      {amounts.map(amount => <Amount key = {amount.id} amount={amount}></Amount>)}
                   </div>
                 </section>
               </div>
@@ -147,8 +147,7 @@ const Main = () => {
                       <h1>궁금한 점이 있으실까요?</h1>
                       <h2>답변 드리겠습니다!</h2>
                     </div>
-                    <AccordionItem
-                    />
+                    <AccordionItem/>
                   </div>
                 </div>
               </div>

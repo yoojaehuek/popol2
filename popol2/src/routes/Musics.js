@@ -76,9 +76,9 @@ const Musics = () => {
           <div key={music.id} className="musicItems">
             <img data-singer={music.singer} data-musicurl={music.musicUrl} data-name={music.name} data-id={music.id} onClick={onMusic} src={music.imageUrl} alt="" className="musicImg" />
             <div>
-              <NavLink to="/detail" id={music.name}>{music.name}</NavLink>
+              <NavLink to={`/detail`} state={{music}}>{music.name}</NavLink>
               <br/>
-              <NavLink to="/detail" id={music.singer}>{music.singer}</NavLink>
+              <NavLink to="/detail" >{music.singer}</NavLink>
             </div>
           </div>
         )

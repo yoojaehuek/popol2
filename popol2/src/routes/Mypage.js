@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
-import { getCookie } from "../cookie";
+import { getCookie, removeCookie } from "../cookie";
 import { API_URL } from "../config/contansts";
 import useAsync from "../customHook/useAsync";
 import axios from "axios";
@@ -57,6 +57,7 @@ const MyPage = () => {
   if(loading) return <div>로딩중 ......</div>
   if(error){
     alert("다시 로그인해주세요");
+    removeCookie("accessToken");
     navigate('/');
     return <div>에러가 발생했습니다.</div>
   } 
@@ -94,7 +95,7 @@ const MyPage = () => {
             <Collapse in={open} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 <ListItem button>
-                  <NavLink to='/edit'><ListItemText primary="회원정보 수정" /></NavLink>
+                  <NavLink to='/edit' state={user}><ListItemText primary="회원정보 수정" /></NavLink>
                 </ListItem>
                 <ListItem button>
                   <NavLink to='/member'><ListItemText primary="이용권 관리" /></NavLink>
@@ -124,7 +125,7 @@ const MyPage = () => {
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <BoxContainer>
-                <NavLink to='/edit'><h2>회원정보 수정</h2></NavLink>
+                <NavLink to='/edit' state={{user}}><h2>회원정보 수정</h2></NavLink>
               </BoxContainer>
             </Grid>
             <Grid item xs={6}>
