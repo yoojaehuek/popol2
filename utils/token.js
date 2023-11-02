@@ -32,18 +32,18 @@ exports.makeAccessToken = (Object) =>{
 
 // RefreshToken을 만드는 함수이다. RefreshToken은 회원 ID와 함께 DB에 저장되므로 payload에 빈 객체를 할당한다.
 // 따라서 빈 객체, 시크릿 키, 해싱 알고리즘 정보와 유효기간을 인자로 jwt.sign() 함수를 호출한다.
-exports.makeRefreshToken = () =>{ //리프레쉬 토큰은 사용자 인증이 아닌 새로운 액세스 토큰을 생성하는 용도로만 사용
-  const refreshToken = jwt.sign(
-      {},  
-      JWT_KEY, 
-      {
-          algorithm: "HS256",
-          expiresIn: "30m"
-      }
-  );
-  console.log("refreshToken: ", refreshToken);
-  return refreshToken;
-};
+// exports.makeRefreshToken = () =>{ //리프레쉬 토큰은 사용자 인증이 아닌 새로운 액세스 토큰을 생성하는 용도로만 사용
+//   const refreshToken = jwt.sign(
+//       {},  
+//       JWT_KEY, 
+//       {
+//           algorithm: "HS256",
+//           expiresIn: "30m"
+//       }
+//   );
+//   console.log("refreshToken: ", refreshToken);
+//   return refreshToken;
+// };
 
 
 
