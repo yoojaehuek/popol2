@@ -21,11 +21,12 @@ import MusicDetail from './routes/MusicDetail'
 import Dj from './routes/dj';
 import Chart from './routes/chart';
 import Monthmusic from './routes/monthmusic';
-// import Newchart from './routes/newchart';
+import Newchart from './routes/newchart';
+import Video from './routes/video';
 
 function App() {
   const location = useLocation();
-  const hidePages = ['/playlist', '/user/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/month', "/chart"];
+  const hidePages = ['/playlist', '/user/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/month', "/chart", '/video', '/new'];
   const Hide = hidePages.includes(location.pathname);
 
   return (
@@ -50,6 +51,8 @@ function App() {
         <Route path="/dj" element={<Dj />} />
         <Route path="/month" element={<Monthmusic />} />
         <Route path="/chart" element={<Chart />} />
+        <Route path='/new' element={<Newchart/>} />
+        <Route path='/video' element={<Video/>} />
 
         {/* c */}
         <Route path="/dash" element={<Dash/>} />

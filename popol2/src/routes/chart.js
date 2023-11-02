@@ -4,9 +4,6 @@ import { styled } from '@mui/system';
 import { NavLink } from 'react-router-dom';
 import Listb from './listbar';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import FastForwardIcon from '@mui/icons-material/FastForward';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import MoreHorizSharpIcon from '@mui/icons-material/MoreHorizSharp';
 
 const MainContent = styled('div')({
   padding: '2vw',

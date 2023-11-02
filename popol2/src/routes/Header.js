@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 export default function Header() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: '#45e8bc' }}>
+      <AppBar position="static" sx={{ backgroundColor: '#90EE90' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <NavLink to='/'>
             <Typography variant="h6" component="div">

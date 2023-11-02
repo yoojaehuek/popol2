@@ -55,7 +55,8 @@ export default function Join() {
     const confirmPwd = formData.confirmPwd;
     const name = formData.name;
     const phone = formData.phone;
-    if(pwd == confirmPwd && id != "" && pwd != "" && confirmPwd != "" && name != "" && phone != ""){
+  
+    if(pwd === confirmPwd && id !== "" && pwd !== "" && confirmPwd !== "" && name !== "" && phone !== ""){
         await axios.post(`${API_URL}/user`,{id, name, phone ,pwd})
         .then(() =>{
           alert("가입성공!");
@@ -92,7 +93,7 @@ export default function Join() {
   // }
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={defaultTheme} >
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
