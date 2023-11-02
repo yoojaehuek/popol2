@@ -86,9 +86,9 @@ const Uploader = () => {
             alert("등록 성공");
             navigate("/");
         })
-            .catch(e => {
-                console.log(e);
-            })
+        .catch(e => {
+            console.log(e);
+        })
     }
 
     return (

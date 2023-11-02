@@ -10,40 +10,50 @@ import Playlist from './routes/Playlist';
 import Mypage from './routes/Mypage';
 import Musics from './routes/Musics';
 import Uploader from './routes/Uploader';
-import CheckoutPage from './routes/Payment.tsx';
+import Payment from './routes/Payment.tsx';
 import SuccessPage from './routes/Success';
-import Simple from './routes/ChatBot';
+import Simple from './routes/ChatBot.js';
 import FailPage from './routes/Fail';
 import Dash from './routes/Dash';
 import EditProfile from './routes/EditProfile';
 import MembershipManagement from './routes/Membershipmang';
-import SongDetails from './routes/MusicDetail'
+import MusicDetail from './routes/MusicDetail'
+import Dj from './routes/Dj';
+// import Chart from './routes/chart';
+// import Monthmusic from './routes/monthmusic';
+// import Newchart from './routes/newchart';
 
 function App() {
   const location = useLocation();
-  const hideFooterPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader'];
+  const hideFooterPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader', '/dj'];
 
   const HideFooter = hideFooterPages.includes(location.pathname);
 
+  const location1 = useLocation();
+  const hideHeaderPages = ['/playlist', '/mypage', '/musics', '/music', '/dash', '/uploader', '/dj'];
+
+  const HideHeader = hideHeaderPages.includes(location1.pathname);
+
   return (
     <div className="App">
-      <Header />
+      {!HideHeader && <Header />}
       <Routes>
         {/* a */}
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
-        <Route path="/payment/:id" element={<CheckoutPage />} />
+        <Route path="/payment/:id" element={<Payment />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/fail" element={<FailPage />} />
 
         {/* b */}
         <Route path="/playlist" element={<Playlist />} />
-        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/user/mypage" element={<Mypage />} />
         <Route path="/edit" element={<EditProfile />} />
         <Route path="/member" element={<MembershipManagement />} />
         <Route path="/musics" element={<Musics />} />
-        <Route path="/detail" element={<SongDetails />} />
+        <Route path="/detail" element={<MusicDetail />} />
+        <Route path="/dj" element={<Dj />} />
 
         {/* c */}
         <Route path="/dash" element={<Dash/>} />
