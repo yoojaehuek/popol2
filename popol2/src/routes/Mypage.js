@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-import { Drawer, List, ListItem, ListItemText, CssBaseline, AppBar, Toolbar, Container, Box, Grid, Typography } from '@mui/material';
+import React from 'react';
+import {CssBaseline,Toolbar, Container, Box, Grid} from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useNavigate } from 'react-router-dom';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import Collapse from '@mui/material/Collapse';
 import { getCookie, removeCookie } from "../cookie";
 import { API_URL } from "../config/contansts";
 import useAsync from "../customHook/useAsync";
 import axios from "axios";
+import Listb from './listbar';
 import '../scss/Mypage.scss';
 import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineLock } from "react-icons/ai";
@@ -49,7 +47,7 @@ const BoxContainer1 = styled(Box)({
 // -----------------------------------------------
 
 const MyPage = () => {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const login = getCookie('accessToken');
   const navigate = useNavigate();
   
@@ -75,17 +73,12 @@ const MyPage = () => {
   if(loading) return <div>로딩중 ......</div>
   if(error){
     alert("다시 로그인해주세요");
-    navigate('/');
-    return <div>에러가 발생했습니다.</div>
+    navigate('/login');
+    // return <div>에러가 발생했습니다.</div>
   } 
   if(!user){
       return <div>로딩중입니다.</div>
   }
-
-
-  const handleToggle = () => {
-    setOpen(!open);
-  };
 
   const secession = async () => {
     if(window.confirm("정말 탈퇴하시겠습니까?")) {
@@ -113,43 +106,9 @@ const MyPage = () => {
   };
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div id='mypageC' style={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" sx={{ width: `calc(100% - ${drawerWidth}px)`, marginLeft: `${drawerWidth}px` }}>
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            마이페이지
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <DrawerContainer>
-        <Toolbar />
-        <Drawer variant="permanent" sx={{ width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth } }}>
-          <Toolbar />
-          <List>
-          <ListItem button>
-              <NavLink to='/musics'><ListItemText primary="메인" /></NavLink>
-            </ListItem>
-            <ListItem button onClick={handleToggle}>
-              <ListItemText primary="내 정보" />
-              {open ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                <ListItem button>
-                  <NavLink to='/edit'><ListItemText primary="회원정보 수정" /></NavLink>
-                </ListItem>
-                <ListItem button>
-                  <NavLink to='/member'><ListItemText primary="이용권 관리" /></NavLink>
-                </ListItem>
-              </List>
-            </Collapse>
-            <ListItem button>
-              <NavLink to='/playlist'><ListItemText primary="플레이리스트" /></NavLink>
-            </ListItem>
-          </List>
-        </Drawer>
-      </DrawerContainer>
+      <Listb />
       <MainContent>
         <Toolbar />
         <Container>
@@ -165,7 +124,7 @@ const MyPage = () => {
               <BoxContainer>
                 <NavLink to='/edit'>
                   <AiOutlineLock id='icon1' size={40}/>
-                  <h2>회원정보 수정</h2>
+                  <div id='mp2'>회원정보 수정</div>
                   </NavLink>
               </BoxContainer>
             </Grid>
@@ -173,7 +132,7 @@ const MyPage = () => {
               <BoxContainer>
                 <NavLink to='/member'>
                 <IoTicketOutline id='icon1' size={40}/>
-                  <h2>이용권 관리</h2>
+                  <div id='mp2'>이용권 관리</div>
                   </NavLink>
               </BoxContainer>
             </Grid>
@@ -186,6 +145,7 @@ const MyPage = () => {
       </MainContent>
     </div>
   );
-};
+}
+
 
 export default MyPage;

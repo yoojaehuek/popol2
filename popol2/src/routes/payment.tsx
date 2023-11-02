@@ -10,7 +10,7 @@ import { useParams, useLocation } from 'react-router-dom';
 const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm"
 const customerKey = "cF_qY0QYTa9_AQYoQ2Ede"
 
-export function CheckoutPage() {
+export function Payment() {
   const location = useLocation();
   const { state } = location;
   console.log("state:", state);
@@ -113,4 +113,4 @@ export function CheckoutPage() {
     </div>
   )
 }
-export default CheckoutPage;
+export default Payment;

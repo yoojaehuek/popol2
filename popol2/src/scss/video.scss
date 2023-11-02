@@ -1,0 +1,43 @@
+.video-container{
+  background: black;
+  display: flex;
+  position: relative;
+}
+
+.video-main{
+  background: black;
+  width: 100%;
+  height: 150vh;
+}
+
+.video{
+  height: 100vh;
+}
+
+.video-text{
+  position: absolute;
+  top: 60%;
+  left: 70%;
+  transform: translate(-90%, -90%);
+  text-align: center;
+  color: #fff;
+  font-size: 0.5rem;
+}
+
+.arrow {
+  font-size: 3rem;
+  animation: moveArrow 2s linear infinite; /* 화살표 애니메이션 설정 */
+  display: inline-block;
+}
+
+@keyframes moveArrow {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(30px); /* 화살표를 아래로 이동 */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

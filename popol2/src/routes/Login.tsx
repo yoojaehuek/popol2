@@ -12,7 +12,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Scroll from './scroll';
+import Scroll from './Scroll';
 
 import axios from 'axios';
 import '../scss/Login.scss';
@@ -58,7 +58,7 @@ export default function SignInSide() {
 				}
 				
 				console.log("로그인 성공 res: ",res);
-				navigate('/');
+				navigate('/user/mypage');
 			})
 			.catch((error)=>{
 				console.error("로그인 실패: ",error);

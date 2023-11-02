@@ -10,30 +10,34 @@ import Playlist from './routes/Playlist';
 import Mypage from './routes/Mypage';
 import Musics from './routes/Musics';
 import Uploader from './routes/Uploader';
-import CheckoutPage from './routes/payment.tsx';
+import Payment from './routes/Payment.tsx';
 import SuccessPage from './routes/Success';
-import Simple from './routes/chatbot';
-import FailPage from './routes/fail';
-import Dash from './routes/dash';
-import EditProfile from './routes/editprofile';
-import MembershipManagement from './routes/membershipmang';
-import SongDetails from './routes/songdetail'
+import Simple from './routes/ChatBot';
+import FailPage from './routes/Fail';
+import Dash from './routes/Dash';
+import EditProfile from './routes/EditProfile';
+import MembershipManagement from './routes/Membershipmang';
+import MusicDetail from './routes/MusicDetail'
+import Dj from './routes/Dj';
+import Chart from './routes/Chart';
+import Monthmusic from './routes/Monthmusic';
+import Newchart from './routes/Newchart';
+import Video from './routes/Video';
 
 function App() {
   const location = useLocation();
-  const hideFooterPages = ['/playlist', '/user/mypage', '/musics', '/music', '/dash', '/uploader'];
-
-  const HideFooter = hideFooterPages.includes(location.pathname);
+  const hidePages = ['/playlist', '/user/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/month', "/chart", '/video', '/new'];
+  const Hide = hidePages.includes(location.pathname);
 
   return (
     <div className="App">
-      <Header />
+      {!Hide && <Header />}
       <Routes>
         {/* a */}
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
-        <Route path="/payment/:id" element={<CheckoutPage />} />
+        <Route path="/payment/:id" element={<Payment />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/fail" element={<FailPage />} />
 
@@ -43,16 +47,21 @@ function App() {
         <Route path="/edit" element={<EditProfile />} />
         <Route path="/member" element={<MembershipManagement />} />
         <Route path="/musics" element={<Musics />} />
-        <Route path="/detail" element={<SongDetails />} />
+        <Route path="/detail" element={<MusicDetail />} />
+        <Route path="/dj" element={<Dj />} />
+        <Route path="/month" element={<Monthmusic />} />
+        <Route path="/chart" element={<Chart />} />
+        <Route path='/new' element={<Newchart/>} />
+        <Route path='/video' element={<Video/>} />
 
         {/* c */}
-        <Route path="/dash" element={<Dash />} />
+        <Route path="/dash" element={<Dash/>} />
         <Route path="/uploader" element={<Uploader />} />
 
         {/* out */}
         <Route path="/chatbot" element={<Simple />} />
       </Routes>
-      {!HideFooter && <Footer />}
+      {!Hide && <Footer />}
     </div>
   );
 }
