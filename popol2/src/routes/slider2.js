@@ -23,70 +23,63 @@ const Slider2 = () => {
       <Sliders {...settings} className="sliders2">
         <div>
           <img
-            className="phoneImage"
-            alt="이미지"
-            src="images/all/k-pop/bts.png"
-          />
-        </div>
-        <div>
-          <img
-            className="phoneImage"
+            className="phoneImages"
             alt="이미지"
             src="images/all/k-pop/aespa.jpg"
           />
         </div>
         <div>
           <img
-            className="phoneImage"
+            className="phoneImages"
             alt="이미지"
             src="images/all/k-pop/ENHYPEN.jpg"
           />
         </div>
         <div>
           <img
-            className="phoneImage"
+            className="phoneImages"
             alt="이미지"
             src="images/all/k-pop/ive.jpg"
           />
         </div>
         <div>
           <img
-            className="phoneImage"
+            className="phoneImages"
             alt="이미지"
             src="images/all/k-pop/reper.jpg"
           />
         </div>
         <div>
           <img
-            className="phoneImage"
+            className="phoneImages"
             alt="이미지"
             src="images/all/k-pop/NCT U.jpg"
           />
         </div>
         <div>
           <img
-            className="phoneImage"
+            className="phoneImages"
             alt="이미지"
             src="images/all/k-pop/Seven.jpg"
           />
         </div>
         <div>
           <img
-            className="phoneImage"
+            className="phoneImages"
             alt="이미지"
             src="images/all/k-pop/Stray Kids.jpg"
           />
         </div>
         <div>
           <img
-            className="phoneImage"
+            className="phoneImages"
             alt="이미지"
             src="images/all/k-pop/Tomorrw.jpg"
           />
         </div>
         <div>
           <img
-            className="phoneImage"
+            className="phoneImages"
             alt="이미지"
             src="images/all/k-pop/TWICE.jpg"
           />

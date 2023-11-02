@@ -1,13 +1,12 @@
-// import { Drawer, List, ListItem, ListItemText, CssBaseline, AppBar, Toolbar, Container, Box, Grid, Typography } from '@mui/material';
-// import { styled } from '@mui/system';
-import AudioPlayer from 'react-modern-audio-player'; 
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'; //플리 아이콘
-import DownloadIcon from '@mui/icons-material/Download'; // 다운로드 아이콘
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import useAsync from "../customHook/useAsync";
 import { API_URL } from "../config/contansts";
 import { NavLink} from 'react-router-dom';
+import '../scss/Musics.scss';
+import AudioPlayer from 'react-modern-audio-player'; 
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'; //플리 아이콘
+import DownloadIcon from '@mui/icons-material/Download'; // 다운로드 아이콘
 
 
 
@@ -55,7 +54,7 @@ const Musics = () => {
     return res.data;
   }
 
-  const [state ] = useAsync(getMusics, []);
+  const [state] = useAsync(getMusics, []);
   const { loading, data:musics, error} = state; //state구조분해 
   if(loading) return <div>로딩중 ......</div>
   if(error) return <div>에러가 발생했습니다.</div>
@@ -65,26 +64,27 @@ const Musics = () => {
 
 
   return(
+    <>
     <div id="musicsC">
       <h1>로그인 후 메인입니다.</h1>
       {/* {musics.map(music => <Music key={music.id} music={music}></Music>)} */}
       {/* {musics.map(music => <audio src={music.musicUrl} controls></audio>)} */}
       
-      {
-        musics.map(music => 
+      <div id="musics-grid">
+        {musics.map(music => 
           <div key={music.id} className="musicItems">
-            <img data-singer={music.singer} data-musicurl={music.musicUrl} data-name={music.name} data-id={music.id} onClick={onMusic} src={music.imageUrl} alt="" className="musicImg" />
-            <div>
-              <NavLink to="/detail" id={music.name}>{music.name}</NavLink>
-              <br/>
+            <img data-singer={music.singer} data-musicurl={music.musicUrl} data-name={music.name} 
+            data-id={music.id} onClick={onMusic} src={music.imageUrl} alt="" className="musicImg" />
+            <div id="singer-name">
+              <NavLink to="/detail" id={music.name}>{music.name}</NavLink><br/>
               <NavLink to="/detail" id={music.singer}>{music.singer}</NavLink>
             </div>
           </div>
-        )
-      }
+        )}
+      </div>
 
       {console.log(playList)}
-      
+      </div>
       {
         playList.name === "music.name" ? <></> : 
       
@@ -128,94 +128,7 @@ const Musics = () => {
         </AudioPlayer>
       }
 
-
-
-        
-      {/* <AudioPlayer playList={
-          [
-            {
-              name: "music.name",
-              writer: "music.singer",
-              img: "music.imageUrl",
-              src: `${arr[0]}`,
-              id: 1,
-            },
-          ]
-        } 
-        activeUI={{ // 넣을 버튼 설정
-          playButton: true, //재생 버튼
-          playList: false, //플레이리스트 버튼
-          prevNnext: false, // 이전/다음 버튼
-          volume: true, //소리 킴/끔
-          volumeSlider: false, //볼륨 조정
-          repeatType: true, //무한재생
-          trackTime: true, //음악 시간
-          trackInfo: true, //음악 이름, 설명
-          artwork: true, //이미지
-          progress: "bar", //재생 바
-        }}
-        placement={{
-          // VolumeSliderPlacement : "top",
-          interface:{
-            templateArea: {
-              artwork: "row1-1",
-              trackInfo: "row1-2",
-              playButton: "row1-3",
-              trackTimeCurrent: "row1-4",
-              trackTimeDuration: "row1-5",
-              progress: "row1-6",
-              repeatType: "row1-7",
-              volume: "row1-8",
-            }
-          }
-        }}
-        >
-        <button><DownloadIcon/></button>
-        <button><PlaylistAddIcon/></button>
-      </AudioPlayer>
-      <AudioPlayer playList={
-          [
-            {
-              name: "music.name",
-              writer: "music.singer",
-              img: "music.imageUrl",
-              src: `${arr[1]}`,
-              id: 1,
-            },
-          ]
-        } 
-        activeUI={{ // 넣을 버튼 설정
-          playButton: true, //재생 버튼
-          playList: false, //플레이리스트 버튼
-          prevNnext: false, // 이전/다음 버튼
-          volume: true, //소리 킴/끔
-          volumeSlider: false, //볼륨 조정
-          repeatType: true, //무한재생
-          trackTime: true, //음악 시간
-          trackInfo: true, //음악 이름, 설명
-          artwork: true, //이미지
-          progress: "bar", //재생 바
-        }}
-        placement={{
-          // VolumeSliderPlacement : "top",
-          interface:{
-            templateArea: {
-              artwork: "row1-1",
-              trackInfo: "row1-2",
-              playButton: "row1-3",
-              trackTimeCurrent: "row1-4",
-              trackTimeDuration: "row1-5",
-              progress: "row1-6",
-              repeatType: "row1-7",
-              volume: "row1-8",
-            }
-          }
-        }}
-        >
-        <button><DownloadIcon/></button>
-        <button><PlaylistAddIcon/></button>
-      </AudioPlayer> */}
-    </div>
+</>
   )
 }
 

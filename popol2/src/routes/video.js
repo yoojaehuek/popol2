@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Slider from './slider2';
 import Listb from './listbar';
 import '../scss/video.scss'
