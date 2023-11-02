@@ -19,10 +19,11 @@ import EditProfile from './routes/EditProfile';
 import MembershipManagement from './routes/Membershipmang';
 import MusicDetail from './routes/MusicDetail'
 import Dj from './routes/Dj';
-import Chart from './routes/Chart';
-import Monthmusic from './routes/Monthmusic';
-import Newchart from './routes/Newchart';
-import Video from './routes/Video';
+import Chart from './routes/chart';
+import Monthmusic from './routes/monthmusic';
+import Newchart from './routes/NewChart';
+import Video from './routes/video';
+
 
 function App() {
   const location = useLocation();

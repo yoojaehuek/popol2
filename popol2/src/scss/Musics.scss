@@ -2,21 +2,17 @@
   width: 1000px;
   height: 900px;
   margin: auto;
+  display: flex;
   #musics-grid{
-    //상품목록을 가로4칸 세로 2칸으로 정렬함
     display: grid;
     grid-template-columns: repeat(4,  minmax(250px, auto));
     grid-template-rows: repeat(2,  minmax(250px, auto));
     row-gap: 30px;
     column-gap: 20px;
   }
-  .musicItems{
-  }
   .musicImg{
     height: 250px;
     width: 250px;
-  }
-  img{
   }
 }
 

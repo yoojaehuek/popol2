@@ -4,6 +4,7 @@ import { styled } from '@mui/system';
 import { NavLink } from 'react-router-dom';
 import Listb from './listbar';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import Footer from './Footer';
 
 const MainContent = styled('div')({
   padding: '2vw',
@@ -53,10 +54,10 @@ const playlists = [
 
 const Chartmusic = () => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', background:'black'}}>
       <CssBaseline />
       <Listb />
-      <MainContent>
+      <MainContent style={{color : 'white'}}>
 				<div>
           <h1 style={{ paddingBottom: '1vw'}}>차트</h1>
 					<h2 style={{ paddingBottom: '1vw'}}>오늘의 TOP 100</h2>
@@ -64,7 +65,7 @@ const Chartmusic = () => {
             {playlists.map((playlist) => (
               <Grid item xs={12} sm={6} md={4} key={playlist.id}>
                 <NavLink to='/detail'>
-                  <PlaylistItem style={{display:'flex', alignItems:'center'}}>
+                  <PlaylistItem style={{display:'flex', alignItems:'center', color : 'white'}}>
                     <PlaylistImage src={playlist.imageUrl} alt={playlist.title} />
                     <PlayIcon className="play-icon" fontSize="large" />
                     <Typography variant="subtitle1" gutterBottom>{playlist.artist}<br/>{playlist.title}</Typography>
@@ -80,7 +81,7 @@ const Chartmusic = () => {
             {playlists.map((playlist) => (
               <Grid item xs={12} sm={6} md={4} key={playlist.id}>
                 <NavLink to='/detail'>
-                  <PlaylistItem style={{display:'flex', alignItems:'center'}}>
+                  <PlaylistItem style={{display:'flex', alignItems:'center', color : 'white'}}>
                     <PlaylistImage src={playlist.imageUrl} alt={playlist.title} />
                     <PlayIcon className="play-icon" fontSize="large" />
                     <Typography variant="subtitle1" gutterBottom>{playlist.artist}<br/>{playlist.title}</Typography>
@@ -96,7 +97,7 @@ const Chartmusic = () => {
             {playlists.map((playlist) => (
               <Grid item xs={12} sm={6} md={4} key={playlist.id}>
                 <NavLink to='/detail'>
-                  <PlaylistItem style={{display:'flex', alignItems:'center'}}>
+                  <PlaylistItem style={{display:'flex', alignItems:'center',color : 'white'}}>
                     <PlaylistImage src={playlist.imageUrl} alt={playlist.title} />
                     <PlayIcon className="play-icon" fontSize="large" />
                     <Typography variant="subtitle1" gutterBottom>{playlist.artist}<br/>{playlist.title}</Typography>
@@ -106,6 +107,7 @@ const Chartmusic = () => {
             ))}
           </Grid>
 					</div>
+          <Footer/>
       </MainContent>
     </div>
   );
