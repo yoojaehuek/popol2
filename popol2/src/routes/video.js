@@ -1,5 +1,5 @@
 import React from 'react';
-import Slider from './slider2';
+import Slider from './Slider2';
 import Listb from './listbar';
 import '../scss/video.scss'
 //12

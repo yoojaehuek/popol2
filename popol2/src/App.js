@@ -18,11 +18,11 @@ import Dash from './routes/Dash';
 import EditProfile from './routes/EditProfile';
 import MembershipManagement from './routes/Membershipmang';
 import MusicDetail from './routes/MusicDetail'
-import Dj from './routes/dj';
-import Chart from './routes/chart';
-import Monthmusic from './routes/monthmusic';
-import Newchart from './routes/newchart';
-import Video from './routes/video';
+import Dj from './routes/Dj';
+import Chart from './routes/Chart';
+import Monthmusic from './routes/Monthmusic';
+import Newchart from './routes/Newchart';
+import Video from './routes/Video';
 
 function App() {
   const location = useLocation();
