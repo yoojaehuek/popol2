@@ -29,10 +29,45 @@ router.route('/')
       next(error);
     }
   })
+  .put(async(req,res,next)=> {
+    try{
+      console.log(req.body);
+      const {ok, id} = verify(req.headers.authorization.substring(7));
+      if (ok == true) {
+        await User.update({
+          pwd: req.body.newPassword,
+          phone: req.body.newPhone,
+          },
+          {where: {
+            id: id
+          }
+        })
+      }
+      res.json(ok);
+    } catch (error) {
+      console.error(error);
+    }
+  })
+  .delete(async(req,res,next)=>{
+    try {
+      const {ok, id} = verify(req.headers.authorization.substring(7));
+      if (ok == true) {
+        const user = await User.destroy({
+          where: {
+            id: id
+          }
+        })
+        res.status(200).end();
+      } 
+    } catch (error) {
+      console.error(error);
+    }
+  })
 router.route('/mypage')
   .post(async (req,res,next)=>{
     try {
       const {ok, id} = verify(req.headers.authorization.substring(7));
+      console.log(id);
       if (ok == true) {
         const user = await User.findOne({
           attributes: ['name'],
@@ -40,6 +75,7 @@ router.route('/mypage')
             id: id
           }
         })
+        console.log("user.js /mypage", user);
         res.status(200).json(user);
       }else {
         res.send(false);

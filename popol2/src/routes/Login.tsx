@@ -56,12 +56,12 @@ export default function SignInSide() {
                         // httpOnly: true,
 					});
 				}
-				
 				console.log("로그인 성공 res: ",res);
-				navigate('/user/mypage');
+				navigate('/musics');
 			})
 			.catch((error)=>{
 				console.error("로그인 실패: ",error);
+        alert("아이디나 비밀번호가 틀렸습니다.");
 			})
   };
 

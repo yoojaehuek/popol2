@@ -76,9 +76,9 @@ const Main = () => {
                     <h1>저희 비발디 파크를 찾아주셔서 감사합니다.</h1>
                   </div>
                 ) : (
-                  <div className="main-page2">
+                  <div className="main-page">
                     <div className={`main-page3 ${showMainPage ? 'fade-in' : ''}`}>
-                      <section className='Money'>
+                      <section className='Money2'>
                         <div className='txt'>
                           <h1>저희 비발디 파크를 이용해야 하는 이유!</h1>
                         </div>
@@ -137,7 +137,7 @@ const Main = () => {
                     <h2>스피커 및 기타 기기에서 제한 없이 마음껏 들으세요.</h2>
                   </div>
                   <div className='Moneyset3'>
-                     {amounts.map(amount => <Amount key = {amount.id} amount={amount}></Amount>)}
+                      {amounts.map(amount => <Amount key = {amount.id} amount={amount}></Amount>)}
                   </div>
                 </section>
               </div>
@@ -148,8 +148,7 @@ const Main = () => {
                       <h1>궁금한 점이 있으실까요?</h1>
                       <h2>답변 드리겠습니다!</h2>
                     </div>
-                    <AccordionItem
-                    />
+                    <AccordionItem/>
                   </div>
                 </div>
               </div>

@@ -6,7 +6,6 @@ const Pay = require('./pay');
 const Amount = require('./amount');
 const PlayHistory = require('./history');
 const PlayList = require('./playList');
-const Token = require('./token');
 
 const env = process.env.NODE_ENV || 'development'; //상수 env에 NODE_ENV없으면 'development' 넣음
 const config = require('../config/config')[env]; //상수config에 ../config/config파일에서 env(development) 불러옴
@@ -26,7 +25,6 @@ db.Amount = Amount;
 db.Music = Music;
 db.PlayHistory = PlayHistory;
 db.PlayList = PlayList;
-db.Token = Token;
 
 User.initiate(sequelize);
 Employee.initiate(sequelize);
@@ -35,7 +33,6 @@ Amount.initiate(sequelize);
 Music.initiate(sequelize);
 PlayHistory.initiate(sequelize);
 PlayList.initiate(sequelize);
-Token.initiate(sequelize);
 
 User.associate(db);
 Employee.associate(db);
@@ -44,7 +41,6 @@ Amount.associate(db);
 Music.associate(db);
 PlayHistory.associate(db);
 PlayList.associate(db);
-Token.associate(db);
 
 
 module.exports = db;
