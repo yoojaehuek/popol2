@@ -1,31 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "../scss/Main.scss";
 import ReactFullpage from '@fullpage/react-fullpage';
 import AccordionItem from './AccordionItem';
-import { useState, useEffect } from 'react';
 import useAsync from '../customHook/useAsync';
 import { API_URL } from '../config/contansts';
-import Amount from './amount';
+import Amount from './Amount';
 import axios from 'axios';
-import { useRef } from "react";
 import { useInView } from "framer-motion";
 import InfiniteRollingSlider from './InfiniteRollingSlider';
-import SimpleChatBot from './chatbot';
 
 
 const Main = () => {
   const [showWelcome, setShowWelcome] = useState(true);
   const [showMainPage, setShowMainPage] = useState(false);
-  // asjdhbfkhdbkjakfnlksnl
 
   useEffect(() => {
     // 1초 후에 환영 메시지를 천천히 사라지게 합니다.
-    const fadeOutTimer = setTimeout(() => {
+    const timeout = setTimeout(() => {
       setShowWelcome(false);
     }, 2000);
 
     return () => {
-      clearTimeout(fadeOutTimer);
+      clearTimeout(timeout);
     };
     }, []);
 
@@ -118,7 +114,6 @@ const Main = () => {
                         </ul>
                       </section>
                       <div>
-                      <SimpleChatBot />
                       </div>
                     </div>
                   </div>

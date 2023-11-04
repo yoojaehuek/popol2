@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../scss/Header.scss";
 import { NavLink } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 export default function Header() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: 'red' }}>
+      <AppBar position="static" sx={{ backgroundColor: '#45e8bc' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <NavLink to='/'>
             <Typography variant="h6" component="div">

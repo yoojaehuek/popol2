@@ -9,7 +9,7 @@ const style = {
 };
 
 const Amount = (amount) => {
-	console.log("amount:", amount.amount);
+	// console.log("amount:", amount.amount);
 	const id = amount.amount.id;
 	const getAmount = async () => {
 		const res = await axios.get(`${API_URL}/amounts/${id}`);
@@ -41,10 +41,11 @@ return(
 			</ul>
 			<div className="moneybottom">
 				<div>
-					<NavLink to= {`/payment/${id}`} state={amount.amount} className="moneybottoma">
-					<span className="moneybottomb">Get Started</span>
-					<span className="moneybotton"></span>
-					</NavLink>
+					<div>
+						<NavLink to= {`/payment/${id}`} state={amount.amount} className="moneybottoma">
+							Get Started
+						</NavLink>
+					</div>
 				</div>
 			</div>
 			<div className="moneyfotter">
