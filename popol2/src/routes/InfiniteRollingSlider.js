@@ -13,6 +13,8 @@ const InfiniteRollingSlider = () => {
     autoplay: true, // 자동 롤링 활성화
     autoplaySpeed: 2000, // 자동 롤링 속도 (ms)
     pauseOnHover: false,
+		dots: false, // 점 표시 숨기기
+ 		arrows: false, // 버튼 숨기기
   };
 
   const customSettings = {
@@ -24,6 +26,8 @@ const InfiniteRollingSlider = () => {
     autoplaySpeed: 2000, // 자동 롤링 속도 (ms)
     pauseOnHover: false,
     rtl: true, // 역방향 슬라이딩
+		dots: false, // 점 표시 숨기기
+  	arrows: false, // 버튼 숨기기
   };
 
   return (
@@ -63,7 +67,7 @@ const InfiniteRollingSlider = () => {
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/k-pop/reper.jpg"
           />
         </div>
         <div>
@@ -108,63 +112,70 @@ const InfiniteRollingSlider = () => {
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/pop/david.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/pop/dreak.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/pop/flowers.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/pop/sam.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/pop/sate.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/pop/sh.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/pop/sos.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/pop/sper.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/pop/star.jpg"
+          />
+        </div>
+				<div>
+          <img
+            className="phoneImage"
+            alt="이미지"
+            src="images/all/pop/XL.jpg"
           />
         </div>
       </Slider>
@@ -174,63 +185,70 @@ const InfiniteRollingSlider = () => {
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/j-pop/B.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/j-pop/bug.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/j-pop/enz.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/j-pop/imes.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/j-pop/kensi.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/j-pop/ki.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/j-pop/king.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/j-pop/me.jpg"
           />
         </div>
         <div>
           <img
             className="phoneImage"
             alt="이미지"
-            src="images/all/k-pop/bts.png"
+            src="images/all/j-pop/vind.jpg"
+          />
+        </div>
+				<div>
+          <img
+            className="phoneImage"
+            alt="이미지"
+            src="images/all/j-pop/yo.jpg"
           />
         </div>
       </Slider>

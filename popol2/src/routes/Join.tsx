@@ -30,10 +30,14 @@ function Copyright(props: any) {
   );
 }
 
+// 기본 테마 생성
 const defaultTheme = createTheme();
 
+// 회원가입 페이지 컴포넌트
 export default function Join() {
   const navigate = useNavigate();
+  
+  // 폼 데이터를 담는 상태 변수 선언 및 초기화
   const [formData, setFormData] = useState({
     id: '',
     pwd: '',
@@ -42,32 +46,37 @@ export default function Join() {
     phone: '',
   });
 
+  // 입력 필드 값 변경 핸들러
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  // 폼 제출 핸들러
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formData);
+    // 입력값 추출
     const id = formData.id;
     const pwd = formData.pwd;
     const confirmPwd = formData.confirmPwd;
     const name = formData.name;
     const phone = formData.phone;
-    if(pwd == confirmPwd && id != "" && pwd != "" && confirmPwd != "" && name != "" && phone != ""){
-        await axios.post(`${API_URL}/user`,{id, name, phone ,pwd})
-        .then(() =>{
-          alert("가입성공!");
-          navigate('/');  
+
+    // 입력값 유효성 검사 및 서버에 회원가입 요청
+    if(pwd === confirmPwd && id !== "" && pwd !== "" && confirmPwd !== "" && name !== "" && phone !== ""){
+      // 서버에 POST 요청을 보내어 회원가입 처리
+      await axios.post(`${API_URL}/user`, { id, name, phone, pwd })
+        .then(() => {
+          alert("가입 성공!");
+          navigate('/');
         })
-        .catch(err =>{
-            console.error(err);
-        })
-    }else{
-        return alert("전부 입력해주세요");
+        .catch(err => {
+          console.error(err);
+        });
+    } else {
+      // 필수 입력값이 비어있거나 비밀번호가 일치하지 않는 경우 경고 메시지 출력
+      return alert("모든 필수 항목을 입력해주세요.");
     }
-    // 서버
   };
 
   // const navigate = useNavigate();
@@ -92,7 +101,7 @@ export default function Join() {
   // }
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={defaultTheme} >
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

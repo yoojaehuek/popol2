@@ -72,7 +72,7 @@ const Uploader = () => {
     const onSubmit = (values) => { //이미지 선택하고 확인 버튼 눌렀을때
         console.log("values", values);
         // 서버로 데이터 전송하기
-        axios.post(`${API_URL}/music`, {
+        axios.post(`${API_URL}/musics`, {
             imageUrl: imageUrl,
             musicUrl: musicUrl,
             name: values.name,
@@ -86,9 +86,9 @@ const Uploader = () => {
             alert("등록 성공");
             navigate("/");
         })
-            .catch(e => {
-                console.log(e);
-            })
+        .catch(e => {
+            console.log(e);
+        })
     }
 
     return (
@@ -138,28 +138,28 @@ const Uploader = () => {
                         <Select name="kind" defaultValue={`상품 카테고리를 선택해주세요 (${selectedopt})`} style={{ width: 200 }}>
                             {selectedopt === 'korea' && (
                                 <OptGroup label="K-POP">
-                                    <Option value="1-1">발라드</Option>
-                                    <Option value="1-2">힙합</Option>
-                                    <Option value="1-3">아이돌</Option>
-                                    <Option value="1-4">트로트</Option>
-                                    <Option value="1-5">동요</Option>
+                                    <Option value="한국-발라드">발라드</Option>
+                                    <Option value="한국-힙합">힙합</Option>
+                                    <Option value="한국-아이돌">아이돌</Option>
+                                    <Option value="한국-트로트">트로트</Option>
+                                    <Option value="한국-동요">동요</Option>
                                 </OptGroup>
                             )}
                             {selectedopt === 'usa' && (
                                 <OptGroup label="POP">
-                                    <Option value="2-1">밴드</Option>
-                                    <Option value="2-2">솔로</Option>
-                                    <Option value="2-3">힙합</Option>
-                                    <Option value="2-3">락</Option>
-                                    <Option value="2-4">OST</Option>
+                                    <Option value="POP-밴드">밴드</Option>
+                                    <Option value="POP-솔로">솔로</Option>
+                                    <Option value="POP-힙합">힙합</Option>
+                                    <Option value="POP-락">락</Option>
+                                    <Option value="POP-OST">OST</Option>
                                 </OptGroup>
                             )}
                             {selectedopt === 'japan' && (
                                 <OptGroup label="J-POP">
-                                    <Option value="3-1">아이돌</Option>
-                                    <Option value="3-2">애니</Option>
-                                    <Option value="3-3">가요</Option>
-                                    <Option value="3-4">락</Option>
+                                    <Option value="일본-아이돌">아이돌</Option>
+                                    <Option value="일본-애니">애니</Option>
+                                    <Option value="일본-가요">가요</Option>
+                                    <Option value="일본-락">락</Option>
                                 </OptGroup>
                             )}
                         </Select>

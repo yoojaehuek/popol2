@@ -1,0 +1,28 @@
+
+
+.djmain{
+  color: white;
+  background-color: black;
+  display: flex;
+  width: 100%; /* 전체 너비 사용 */
+}
+
+.dj-item {
+  width: 100%;
+  padding: 1vw 2vw;
+  margin: 0; /* 요소 간의 마진을 없앰 */
+}
+
+.dj-cotainer{
+  padding-bottom: 50px;
+}
+
+h1 {
+  font-size: 3vw;
+  line-height: 5.25rem;
+}
+
+h2{
+  padding-top: 30px;
+  line-height: 60px;
+}
