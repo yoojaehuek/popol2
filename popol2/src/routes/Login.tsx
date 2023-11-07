@@ -51,8 +51,11 @@ export default function SignInSide() {
 			.then((res)=>{
 				if (res.status === 200) {
 					const accessToken = res.data.accessToken;
+          const time = 3600; //1시간
+          const expiration = new Date(Date.now() + time * 1000);
+          // console.log("expiration",expiration);
 					setCookie('accessToken',accessToken,{
-						// expires: new Date(Date.now() + setTime),
+						expires: expiration,
                         // httpOnly: true,
 					});
 				}
