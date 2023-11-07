@@ -17,7 +17,7 @@ import Dash from './routes/Dash';
 import EditProfile from './routes/EditProfile';
 import MembershipManagement from './routes/Membershipmang';
 import MusicDetail from './routes/MusicDetail'
-import Dj from './routes/Dj.js';
+import Dj from './routes/Dj';
 import Chart from './routes/Chart.js';
 import Monthmusic from './routes/Monthmusic.js';
 import Newchart from './routes/Newchart.js';

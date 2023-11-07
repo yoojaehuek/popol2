@@ -13,7 +13,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Scroll from './Scroll';
-
 import axios from 'axios';
 import '../scss/Login.scss';
 import { useNavigate } from "react-router-dom";
@@ -33,11 +32,14 @@ function Copyright(props: any) {
   );
 }
 
+// 기본 테마 생성
 const defaultTheme = createTheme();
 
+// 로그인 페이지 컴포넌트
 export default function SignInSide() {
   const navigate = useNavigate();
-
+  
+// 로그인 폼 제출 핸들러
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -47,9 +49,11 @@ export default function SignInSide() {
       email: data.get('email'),
       password: data.get('password'),
     });
+    // 서버로 로그인 요청을 보내어 처리
     await axios.post(`${API_URL}/login`,{id,pwd})
 			.then((res)=>{
 				if (res.status === 200) {
+          // 로그인 성공 시 서버에서 받은 토큰을 쿠키에 저장
 					const accessToken = res.data.accessToken;
           const time = 3600; //1시간
           const expiration = new Date(Date.now() + time * 1000);
@@ -60,10 +64,12 @@ export default function SignInSide() {
 					});
 				}
 				console.log("로그인 성공 res: ",res);
+        // 로그인 성공 시 음악 목록 페이지로 이동
 				navigate('/musics');
 			})
 			.catch((error)=>{
 				console.error("로그인 실패: ",error);
+        // 로그인 실패 시 경고 메시지 출력
         alert("아이디나 비밀번호가 틀렸습니다.");
 			})
   };
