@@ -92,6 +92,7 @@ const PlayList = () => {
     // .catch(err => {
     //     console.error("음악 불러오기 에러: ", err);
     // });
+    // 뀨><
     console.log("res.data:", res.data);
     return res.data;
   };
