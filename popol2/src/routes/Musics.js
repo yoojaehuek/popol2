@@ -4,6 +4,9 @@ import useAsync from "../customHook/useAsync";
 import { API_URL } from "../config/contansts";
 import { NavLink } from "react-router-dom";
 import "../scss/Musics.scss";
+import AudioPlayer from "react-modern-audio-player";
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd"; //플리 아이콘
+import DownloadIcon from "@mui/icons-material/Download"; // 다운로드 아이콘
 import Listb from "./Listbar";
 import { CssBaseline, Container, Box, Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";

@@ -52,8 +52,6 @@ const Listb = () => {
             <ListItem button>
               <NavLink to='/video'><ListItemText style={{color: 'white'}} primary="내돈내산" /></NavLink>
             </ListItem>
-            <ListItem style={{ paddingTop: '8vw' }}>
-            </ListItem>
         </List>
       </Drawer>
     </DrawerContainer>

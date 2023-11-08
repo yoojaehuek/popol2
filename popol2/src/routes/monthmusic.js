@@ -31,7 +31,7 @@ const PlaylistItem = styled(Box)({
   '&:hover img': {
     opacity: 0.8,
   },
-});
+});       
 
 const PlaylistImage = styled('img')({
   width: '5%',
