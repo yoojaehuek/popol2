@@ -53,6 +53,7 @@ const Musics = () => {
       writer: "재생 버튼을 클릭해보세요",
       img: "images/defaultMusicImg.png",
       src: `${API_URL}/upload/music/RoieShpigler-Aluminum.mp3`,
+      musicId: '999999',
       id: 1,
     },
   ]);
@@ -68,6 +69,7 @@ const Musics = () => {
         writer: e.target.dataset.singer,
         img: e.target.src,
         src: e.target.dataset.musicurl,
+        musicId: Number(e.target.dataset.id),
         id: 1,
       },
     ]);
@@ -90,7 +92,9 @@ const Musics = () => {
   const [state] = useAsync(getMusics, []);
   const { loading, data: musics, error } = state; //state구조분해
   if (loading) return <div>로딩중 ......</div>;
-  if (error) return <div>에러가 발생했습니다.</div>;
+  if (error) {
+    return <div>에러가 발생했습니다.</div>;
+  }
   if (!musics) {
     return <div>로딩중입니다.</div>;
   }
@@ -136,11 +140,9 @@ const Musics = () => {
       </MainContent>
       {console.log(playList)}
 
-      {playList.name === "music.name" ? (
-        <></>
-      ) : (
+      {
         <CustomAudioPlayer playList={playList} />
-      )}
+      }
     </div>
   );
 };
