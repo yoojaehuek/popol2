@@ -26,7 +26,7 @@ import UpLoader from './routes/UpLoader.js';
 
 function App() {
   const location = useLocation();
-  const hidePages = ['/playlist', '/user/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/month', "/chart", '/video', '/new'];
+  const hidePages = ['/detail', '/playlist', '/user/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/month', "/chart", '/video', '/new'];
   const Hide = hidePages.includes(location.pathname);
 
   return (

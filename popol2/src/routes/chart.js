@@ -133,8 +133,11 @@ const [playList, setPlayList] = useState([
 ]);
 
 // 특정 음악 장르에 해당하는 음악만 필터링하여 반환하는 함수
-const getFilteredMusics = (kind) => {
-  return musics.filter((music) => music.kind === kind);
+const getFilteredMusics = (kinds) => {
+  console.log("kind: ", kinds);
+  const arr = musics.filter((music) => kinds.includes(music.kind));
+  console.log("arr: ", arr);
+  return arr;
 };
 
 // useAsync 커스텀 훅을 사용하여 음악 데이터를 비동기적으로 가져오는 로직
@@ -162,7 +165,7 @@ if (!musics) {
           <h1 style={{ paddingBottom: '1vw'}}>차트</h1>
 					<h2 style={{ paddingBottom: '1vw'}}>오늘의 TOP 100</h2>
           <Grid container spacing={1}>
-            {getFilteredMusics('한국-발라드', '한국-힙합', '한국-트로트', '한국-동요', '한국-아이돌').map((music) => (
+            {getFilteredMusics(['한국-발라드', '한국-힙합', '한국-트로트', '한국-동요', '한국-아이돌']).map((music) => (
               <Grid item xs={12} sm={6} md={4} key={music.id}>
                 <NavLink to='/detail' state={{music}}>
                   <PlaylistItem style={{display:'flex', alignItems:'center', color : 'white'}}>
@@ -178,7 +181,7 @@ if (!musics) {
 				<div style={{ paddingTop: '2vw'}}>
 					<h2 style={{ paddingBottom: '1vw'}}>BILLBOARD TOP 100</h2>
           <Grid container spacing={1}>
-            {getFilteredMusics('POP-솔로', 'POP-힙합', 'POP-락', 'POP-OST').map((music) => (
+            {getFilteredMusics(['POP-솔로', 'POP-힙합', 'POP-락', 'POP-OST']).map((music) => (
               <Grid item xs={12} sm={6} md={4} key={music.id}>
                 <NavLink to='/detail'>
                   <PlaylistItem style={{display:'flex', alignItems:'center', color : 'white'}}>
@@ -194,7 +197,7 @@ if (!musics) {
 				<div style={{ paddingTop: '2vw'}}>
 					<h2 style={{ paddingBottom: '1vw'}}>J-POP TOP 100</h2>
           <Grid container spacing={1}>
-            {getFilteredMusics('일본-아이돌', '일본-애니', '일본-가요', '일본-락').map((music) => (
+            {getFilteredMusics(['일본-아이돌', '일본-애니', '일본-가요', '일본-락']).map((music) => (
               <Grid item xs={12} sm={6} md={4} key={music.id}>
                 <NavLink to='/detail'>
                   <PlaylistItem style={{display:'flex', alignItems:'center',color : 'white'}}>

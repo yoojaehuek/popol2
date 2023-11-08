@@ -103,11 +103,11 @@ const Musics = () => {
       <Listb />
       <MainContent>
         <h1 style={{ color: 'white' }}>투데이</h1>
-        <div style={{border:'solid 1px black', padding:'2vw', backgroundColor:'purple'}}>
-        <img style={{objectFit:'cover', width:'10vw', height:'auto', float:'left', marginRight:'5vw'}}src="./images/Gear.png"></img>
-        <h1>다시 엔진을 켜는, 임헌성</h1>
-        <h3 style={{paddingTop:'2vw'}}>2차 프로젝트엔 임헌성의 풀스택 챕터를 향해 시동을 거는 듯한 MusicHub 프로젝트 외에도 여러 기술과 새로운 장르의 도전까지,<br/>
-        다양한 컬러로 채운 성숙한 변신이 가득한다. 팬덤을 생각하며 항상 엔진을 켜두는 임헌성의 또 다른 출발</h3>
+        <div style={{padding:'2vw', backgroundColor:'black'}}>
+        <img style={{objectFit:'cover', width:'10vw', height:'auto', float:'left', marginRight:'5vw'}}src="./images/aespa.png"></img>
+        <h1 style={{color:'white'}}>다시 엔진을 켜는, 에스파</h1>
+        <h3 style={{paddingTop:'2vw', color:'white'}}>2차엔 에스파의 다음 챕터를 향해 시동을 거는 듯한 MusicHub 프로젝트 외에도 여러 기술과 새로운 장르의 도전까지,<br/>
+        다양한 컬러로 채운 성숙한 변신이 가득한다. 팬덤을 생각하며 항상 엔진을 켜두는 에스파의 또 다른 출발</h3>
         </div>
         <h2 style={{ color: 'white' }}>VIBE 추천 플레이리스트</h2>
         <Grid container spacing={2}>
@@ -125,7 +125,7 @@ const Musics = () => {
                 />
                 <PlayIcon className="play-icon" fontSize="large" />
                 <NavLink to='/detail' state={{music}}>
-                <Typography variant="subtitle1" gutterBottom>
+                <Typography style={{color:'white'}} variant="subtitle1" gutterBottom>
                   {music.singer}
                   <br />
                   {music.name}

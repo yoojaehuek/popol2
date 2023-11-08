@@ -82,7 +82,7 @@ const Main = () => {
             <div className="section">
               {showWelcome ? (
                 <div className={`headertxt ${showWelcome ? '' : 'fade-out'}`}>
-                  <h1>저희 비발디 파크를 찾아주셔서 감사합니다.</h1>
+                  <h1>저희 Music Hub를 찾아주셔서 감사합니다.</h1>
                 </div>
               ) : (
                 <div className="main-page">
