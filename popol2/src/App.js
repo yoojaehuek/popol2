@@ -14,7 +14,7 @@ import SuccessPage from './routes/Success';
 import Simple from './routes/ChatBot';
 import FailPage from './routes/Fail';
 import Dash from './routes/Dash';
-import EditProfile from './routes/EditProfile';
+import EditProfile from './routes/EditProfile.js';
 import MembershipManagement from './routes/Membershipmang';
 import MusicDetail from './routes/MusicDetail'
 import Dj from './routes/Dj.js';

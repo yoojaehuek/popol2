@@ -121,31 +121,6 @@ const MyPage = () => {
     color: "black"
   };
 
-  const secession = async () => {
-    if(window.confirm("정말 탈퇴하시겠습니까?")) {
-      try {
-      const response = await axios.delete(`${API_URL}/user`, {
-        headers: {
-          Authorization: `Bearer ${login}`
-        }
-      });
-      if (response.status === 200) {
-        alert('회원 탈퇴가 완료되었습니다.');
-        removeCookie("accessToken");
-        navigate('/'); //탈퇴 성공하면 홈페이지로 이동
-      }
-    } catch (error) {
-      console.error(error);
-      alert('회원 탈퇴 중 오류가 발생했습니다.');
-    }}
-    else{
-      return;
-    }
-  };
-  const style = {
-    color: "black"
-  };
-
   return (
     <div id='mypageC' style={{ display: 'flex' }}>
       <CssBaseline />
