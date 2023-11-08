@@ -89,7 +89,7 @@ const Main = () => {
                   <div className={`main-page3 ${showMainPage ? 'fade-in' : ''}`}>
                     <section className='Money2'>
                       <div className='txt'>
-                        <h1>저희 Music Hub를 이용해야 하는 이유!</h1>
+                        <h1>저희 비발디 파크를 이용해야 하는 이유!</h1>
                       </div>
                       <ul className='section1'>
                         <li className='section2'>
