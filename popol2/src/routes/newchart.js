@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { CssBaseline, Container, Box, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Listb from './Listbar';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Footer from './Footer';
-
+import CustomAudioPlayer from "./Audio";
 import axios from 'axios';
 import { getCookie, removeCookie } from "../cookie";
 import { API_URL } from '../config/contansts';
@@ -72,36 +72,45 @@ const getMusics = async () => {
 };
 
 const NewChart = () => {
-  const navigate = useNavigate();
+  const [playList, setPlayList] = useState([
+    {
+      name: "오늘 뭐 듣지?",
+      writer: "재생 버튼을 클릭해보세요",
+      img: "images/defaultMusicImg.png",
+      src: `${API_URL}/upload/music/RoieShpigler-Aluminum.mp3`,
+      id: 1,
+    },
+  ]);
 
-  //EditProfile 들어왔을때 토큰 검증
-  useEffect(() => {
-    const verify = async () => {
-      if(getCookie('accessToken') != null){
-        const login = getCookie('accessToken');
-        await axios({
-          url: `${ API_URL }/verify`,
-          method: 'POST',
-          headers: {
-            Authorization: 'Bearer '+ login
-          }
-        }).then((res) => {
-          if (res.statusText != "OK") {
-            alert('다시 로그인 해주세요');
-            removeCookie('accessToken');
-            navigate('/');
-          }
-        }).catch((err) => {
-          console.log(err);
-        })
-      }else{
-        alert('다시 로그인 해주세요');
-        navigate("/");
-      }
-    }
-    
-    verify();
-  }, []);
+  // 음악을 클릭했을 때 재생목록에 추가하는 함수
+  const onMusic = (e) => {
+    // e.preventDefault();
+    // console.log(e.target.value);
+    console.log(e.target.dataset);
+    setPlayList([
+      {
+        name: e.target.dataset.name,
+        writer: e.target.dataset.singer,
+        img: e.target.src,
+        src: e.target.dataset.musicurl,
+        id: 1,
+      },
+    ]);
+  };
+
+  //전체곡 조회함수
+  const getMusics = async () => {
+    const res = await axios.get(`${API_URL}/musics`);
+    // .then(() => {
+    //   // alert("음악 전체 조회 성공.");
+    //   console.log("조회성공 res데이터: ",res.data);
+    // })
+    // .catch(err => {
+    //     console.error("음악 불러오기 에러: ", err);
+    // });
+    console.log("res.data:", res.data);
+    return res.data;
+  };
 
   const [state] = useAsync(getMusics, []);
   const { loading, data: musics, error } = state; //state구조분해
@@ -135,6 +144,7 @@ const NewChart = () => {
           <Footer/>
         </div>
       </MainContent>
+      <CustomAudioPlayer playList={playList} />
     </div>
   );
 };

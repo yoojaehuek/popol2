@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState } from "react";
+import axios from "axios";
+import useAsync from "../customHook/useAsync";
+import { API_URL } from "../config/contansts";
 import { CssBaseline, Container, Box, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Listb from './Listbar';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Footer from './Footer';
-import useAsync from '../customHook/useAsync';
-
-import axios from "axios";
-import { API_URL } from "../config/contansts";
 import { getCookie, removeCookie } from "../cookie";
+import CustomAudioPlayer from "./Audio"
+import '../scss/Playlist.scss'
 
 const MainContent = styled('div')({
   flexGrow: 1,
@@ -62,24 +63,35 @@ const PlayIcon = styled(PlayArrowIcon)({
 
 const PlayList = () => {
   const navigate = useNavigate();
+
+  const [playList, setPlayList] = useState([
+    {
+      name: "오늘 뭐 듣지?",
+      writer: "재생 버튼을 클릭해보세요",
+      img: "images/defaultMusicImg.png",
+      src: `${API_URL}/upload/music/RoieShpigler-Aluminum.mp3`,
+      id: 1,
+    },
+  ]);
+
   //전체곡 조회함수
-const getPlayList = async () => {
-  const login = getCookie('accessToken');
-  if (getCookie('accessToken') != null) {
-    const res = await axios({
-      url: `${API_URL}/playlist`,
-      method: 'GET',
-      headers: {
-        Authorization: 'Bearer ' + login
-      }
-    })
-    console.log("res.data:", res.data);
-    return res.data;
-  }else {
-    alert('다시 로그인해주세요');
-    removeCookie('accessToken');
-    navigate('/');
-  }
+  const getPlayList = async () => {
+    const login = getCookie('accessToken');
+    if (getCookie('accessToken') != null) {
+      const res = await axios({
+        url: `${API_URL}/playlist`,
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer ' + login
+        }
+      })
+      console.log("res.data:", res.data);
+      return res.data;
+    }else {
+      alert('다시 로그인해주세요');
+      removeCookie('accessToken');
+      navigate('/');
+    }
   };
 
   const [state] = useAsync(getPlayList, []);
@@ -90,13 +102,32 @@ const getPlayList = async () => {
   }
   if (!musics) {
     return <div>로딩중입니다.</div>;
-  }else 
+  }
   // const location = useLocation();
   // const musicData = location.state ? location.state.musicData : null;
   // const musicData = location.state.musicData;
   // if (!musicData) {
   //   return <div>데이터가 없습니다.</div>;
   // }
+  
+
+  // 음악을 클릭했을 때 재생목록에 추가하는 함수
+  const onMusic = (e) => {
+    // e.preventDefault();
+    // console.log(e.target.value);
+    console.log(e.target.dataset);
+    setPlayList([
+      {
+        name: e.target.dataset.name,
+        writer: e.target.dataset.singer,
+        img: e.target.src,
+        src: e.target.dataset.musicurl,
+        id: 1,
+      },
+    ]);
+  };
+
+
   return (
     <div style={{ display: 'flex', background:'black' }}>
       <CssBaseline />
@@ -106,19 +137,28 @@ const getPlayList = async () => {
           <Grid container spacing={2}>
             {musics.map((playlist) => (
               <Grid item xs={12} sm={6} md={2} key={playlist.Music.id}>
-                <NavLink to='/detail' state={{music: playlist.Music}}>
                   <PlaylistItem style={{color : 'white'}} >
-                    <PlaylistImage src={playlist.Music.imageUrl} alt={playlist.Music.name} />
+                    <PlaylistImage 
+                      src={playlist.Music.imageUrl}
+                      alt={playlist.Music.name}
+                      data-singer={playlist.Music.singer}
+                      data-musicurl={playlist.Music.musicUrl}
+                      data-name={playlist.Music.name}
+                      data-id={playlist.Music.id}
+                      onClick={onMusic}
+                      />
                     <PlayIcon className="play-icon" fontSize="large" />
-                    <Typography variant="subtitle1" gutterBottom>{playlist.Music.singer}</Typography>
-                    <Typography variant="body1">{playlist.Music.name}</Typography>
+                    <NavLink to='/detail' state={{music: playlist.Music}} style={{color: "#fff"}}>
+                      <Typography variant="subtitle1" gutterBottom>{playlist.Music.singer}</Typography>
+                      <Typography variant="body1">{playlist.Music.name}</Typography>
+                    </NavLink>
                   </PlaylistItem>
-                </NavLink>
               </Grid>
             ))}
           </Grid>
           <Footer/>
       </MainContent>
+      <CustomAudioPlayer playList={playList} />
     </div>
   );
 };

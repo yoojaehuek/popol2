@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from "react";
+import axios from "axios";
+import useAsync from "../customHook/useAsync";
+import { API_URL } from "../config/contansts";
 import { CssBaseline, Box, Grid} from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink } from 'react-router-dom';
@@ -6,6 +9,7 @@ import Listb from './Listbar';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import "../scss/dj.scss"
 import Footer from './Footer';
+import CustomAudioPlayer from "./Audio";
 
 const PlaylistItem = styled(Box)({
   // border: '1px solid #ccc',
@@ -83,6 +87,53 @@ const playlist = [
 ];
 
 const Dj = () => {
+  const [playList, setPlayList] = useState([
+    {
+      name: "오늘 뭐 듣지?",
+      writer: "재생 버튼을 클릭해보세요",
+      img: "images/defaultMusicImg.png",
+      src: `${API_URL}/upload/music/RoieShpigler-Aluminum.mp3`,
+      id: 1,
+    },
+  ]);
+
+  // 음악을 클릭했을 때 재생목록에 추가하는 함수
+  const onMusic = (e) => {
+    // e.preventDefault();
+    // console.log(e.target.value);
+    console.log(e.target.dataset);
+    setPlayList([
+      {
+        name: e.target.dataset.name,
+        writer: e.target.dataset.singer,
+        img: e.target.src,
+        src: e.target.dataset.musicurl,
+        id: 1,
+      },
+    ]);
+  };
+
+  //전체곡 조회함수
+  const getMusics = async () => {
+    const res = await axios.get(`${API_URL}/musics`);
+    // .then(() => {
+    //   // alert("음악 전체 조회 성공.");
+    //   console.log("조회성공 res데이터: ",res.data);
+    // })
+    // .catch(err => {
+    //     console.error("음악 불러오기 에러: ", err);
+    // });
+    console.log("res.data:", res.data);
+    return res.data;
+  };
+
+  const [state] = useAsync(getMusics, []);
+  const { loading, data: musics, error } = state; //state구조분해
+  if (loading) return <div>로딩중 ......</div>;
+  if (error) return <div>에러가 발생했습니다.</div>;
+  if (!musics) {
+    return <div>로딩중입니다.</div>;
+  }
   return (
     <div className='djmain'>
       <CssBaseline />
@@ -119,6 +170,7 @@ const Dj = () => {
         </div>
         <Footer/>
       </div>
+      <CustomAudioPlayer playList={playList} />
     </div>
   );
 };
