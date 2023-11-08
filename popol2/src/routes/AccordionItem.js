@@ -6,18 +6,22 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import "../scss/drop.scss"
 
+// Accordion 컴포넌트를 정의한 함수형 컴포넌트
 export default function ControlledAccordions() {
+  // 현재 확장된 Accordion 패널의 상태를 관리하는 useState 훅을 사용
   const [expanded, setExpanded] = React.useState(false);
-
+// Accordion 패널이 확장 또는 축소될 때 호출되는 함수
   const handleChange = (panel) => (event, isExpanded) => {
+    // 현재 확장된 패널의 상태를 업데이트
     setExpanded(isExpanded ? panel : false);
   };
 
   return (
     <div className='drop'>
+      {/* 첫 번째 Accordion 패널입니다. */}
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon />} // 확장 아이콘을 나타내는 부분
           aria-controls="panel1bh-content"
           id="panel2bh-header"
         >

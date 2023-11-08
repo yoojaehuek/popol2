@@ -2,7 +2,6 @@ import React from 'react';
 import { Drawer, List, ListItem, ListItemText} from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink } from 'react-router-dom';
-import SimpleChatBot from './ChatBot';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { removeCookie } from "../cookie";
 
@@ -52,10 +51,6 @@ const Listb = () => {
             </ListItem>
             <ListItem button>
               <NavLink to='/video'><ListItemText style={{color: 'white'}} primary="내돈내산" /></NavLink>
-            </ListItem>
-            <ListItem style={{ paddingTop: '8vw' }}>
-              <SimpleChatBot />
-              <button>로그아웃</button>
             </ListItem>
         </List>
       </Drawer>

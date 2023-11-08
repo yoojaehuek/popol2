@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { CssBaseline, Container, Box, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -78,28 +78,32 @@ const Monthmusic = () => {
   //EditProfile 들어왔을때 토큰 검증
   useEffect(() => {
     const verify = async () => {
-      if(getCookie('accessToken') != null){
+      // 쿠키에 accessToken이 존재하는지 확인
+      if (getCookie('accessToken') != null) {
         const login = getCookie('accessToken');
+        // 토큰을 사용하여 서버에 인증 요청
         await axios({
-          url: `${ API_URL }/verify`,
+          url: `${API_URL}/verify`,
           method: 'POST',
           headers: {
-            Authorization: 'Bearer '+ login
+            Authorization: 'Bearer ' + login
           }
         }).then((res) => {
-          if (res.statusText != "OK") {
+          // 응답이 OK가 아닌 경우 로그인 페이지로 리다이렉션
+          if (res.statusText !== "OK") {
             alert('다시 로그인 해주세요');
             removeCookie('accessToken');
             navigate('/');
           }
         }).catch((err) => {
           console.log(err);
-        })
-      }else{
+        });
+      } else {
+        // 쿠키에 accessToken이 없는 경우 로그인 페이지로 리다이렉션
         alert('다시 로그인 해주세요');
         navigate("/");
       }
-    }
+    };
     
     verify();
   }, []);
@@ -113,33 +117,40 @@ const Monthmusic = () => {
   }
 
   return (
-    <div style={{ display: 'flex', background:'black' }}>
+    <div style={{ display: 'flex', background: 'black' }}>
       <CssBaseline />
       <Listb />
-      <MainContent style={{ color : 'white'}}>
-				<div>
-          <h1 style={{ paddingBottom: '1vw'}}>이달의 차트</h1>
+      <MainContent style={{ color: 'white' }}>
+        <div>
+          <h1 style={{ paddingBottom: '1vw' }}>이달의 차트</h1>
           <Grid container spacing={1}>
             {musics.map((music) => (
               <Grid item xs={12} sm={6} md={12} key={music.id}>
-                <NavLink to='/detail' state={{music}}>
-                  <PlaylistItem style={{display:'flex', justifyContent:'space-between', alignItems:'center',  color : 'white'}}>
+                <NavLink to='/detail' state={{ music }}>
+                  <PlaylistItem style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'white' }}>
                     <PlaylistImage src={music.imageUrl} alt={music.name} />
                     <PlayIcon className="play-icon" fontSize="large" />
                     <Typography variant="subtitle1" gutterBottom>{music.singer}</Typography>
-										<Typography variant="subtitle" gutterBottom>{music.name}</Typography>
-										<div>
-										<FastForwardIcon style={{marginRight: '1vw'}}/>
-										<FavoriteIcon style={{marginRight: '1vw'}}/>
-										<MoreHorizSharpIcon/>
-										</div>
-									</PlaylistItem>
+                    <Typography variant="subtitle" gutterBottom>{music.name}</Typography>
+                    <div>
+                      <FastForwardIcon style={{ marginRight: '1vw' }} />
+                      {/* <NavLink
+                        to={{
+                          pathname: '/playlist',
+                          state: { musicData: music },
+                        }}
+                      > */}
+                        <FavoriteIcon style={{ marginRight: '1vw' }} />
+                      {/* </NavLink> */}
+                      <MoreHorizSharpIcon />
+                    </div>
+                  </PlaylistItem>
                 </NavLink>
               </Grid>
             ))}
           </Grid>
-          <Footer/>
-					</div>
+          <Footer />
+        </div>
       </MainContent>
     </div>
   );
