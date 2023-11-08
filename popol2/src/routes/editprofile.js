@@ -82,6 +82,7 @@ const EditProfile = () => {
             newPhone: newPhone,
             newEmail: newEmail,
           }
+
         }).then((res) => {
           // 응답 상태가 OK인 경우 회원 정보가 성공적으로 수정되었다는 메시지 출력
           if (res.statusText === "OK") {

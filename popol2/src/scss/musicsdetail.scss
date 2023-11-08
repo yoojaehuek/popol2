@@ -1,0 +1,29 @@
+.song-details{
+    width: 800px;
+    height: 1000px;
+    margin: 30px auto;
+    #detail-out{
+        display: flex;
+        margin-bottom: 30px;
+        img{
+            height: 250px;
+            width: 250px;
+            // border: 1px solid #000;
+        }
+        #details-in{
+            p{
+                font-size: 20px;
+            }
+            width: 500px;
+            height: 250px;
+            margin-left: 50px;
+        }   
+    }
+    #lyrics{
+        border-top: 1px solid #000;
+        margin: auto;
+        p{
+            font-size: 20px;
+        }
+    }
+}

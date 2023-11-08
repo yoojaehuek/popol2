@@ -26,6 +26,7 @@ const MainContent = styled('div')({
   padding: 20,
 });
 
+// ---------------------------------------------- 
 const BoxContainer = styled(Box)({
   border: '3px solid #ccc',
   padding: '50px',
@@ -80,6 +81,9 @@ const MyPage = () => {
     removeCookie("accessToken");
     navigate('/');
     return <div>에러가 발생했습니다.</div>
+  } 
+  if(!user){
+      return <div>로딩중입니다.</div>
   }
   // 마이페이지 정보가 없을 때 로딩 메시지 표시
   if (!user) {
@@ -110,6 +114,31 @@ const MyPage = () => {
     }
     else {
       // 사용자가 회원 탈퇴를 취소한 경우
+      return;
+    }
+  };
+  const style = {
+    color: "black"
+  };
+
+  const secession = async () => {
+    if(window.confirm("정말 탈퇴하시겠습니까?")) {
+      try {
+      const response = await axios.delete(`${API_URL}/user`, {
+        headers: {
+          Authorization: `Bearer ${login}`
+        }
+      });
+      if (response.status === 200) {
+        alert('회원 탈퇴가 완료되었습니다.');
+        removeCookie("accessToken");
+        navigate('/'); //탈퇴 성공하면 홈페이지로 이동
+      }
+    } catch (error) {
+      console.error(error);
+      alert('회원 탈퇴 중 오류가 발생했습니다.');
+    }}
+    else{
       return;
     }
   };
