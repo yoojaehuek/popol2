@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation  } from 'react-router-dom';
+import '../scss/musicsdetail.scss';
 
 const MusicDetails = () => {
   const location = useLocation();
@@ -11,16 +12,23 @@ const MusicDetails = () => {
     setShowLyrics(!showLyrics);
   };
 
-
   return (
     <div className="song-details">
-      <img src={state.music.imageUrl} alt="노래 이미지" style={{height: "100px", width: "100px"}}/>
-      <h2>{state.music.singer}</h2>
-      <p>작곡가: {state.music.composer}</p>
-      <p>제목: {state.music.name}</p>
-      <p>장르: {state.music.kind}</p>
-      <button onClick={handleToggleLyrics}>가사 보기</button>
-      {showLyrics && <p>가사: {state.music.lyrics}</p>}
+      <div id='detail-out'>
+        <img src={state.music.imageUrl} alt="노래 이미지"/>
+        <div id='details-in'>
+          <h1> {state.music.name}</h1>
+          <p>작곡가: {state.music.composer}</p>
+          <p>가수: {state.music.singer}</p>
+          <p>장르: {state.music.kind}</p>
+        </div>
+      </div>
+      <div id='lyrics'>
+        {/* <button onClick={handleToggleLyrics}>가사 보기</button> */}
+        {/* {showLyrics && } */}
+        <h2>가사</h2>
+        <p> {state.music.lyrics}</p>
+      </div>
     </div>
   );
 };
