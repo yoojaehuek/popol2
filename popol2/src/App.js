@@ -9,7 +9,6 @@ import Join from './routes/Join.tsx';
 import Playlist from './routes/Playlist';
 import Mypage from './routes/Mypage';
 import Musics from './routes/Musics';
-import Uploader from './routes/Uploader';
 import Payment from './routes/Payment.tsx';
 import SuccessPage from './routes/Success';
 import Simple from './routes/ChatBot';
@@ -19,15 +18,15 @@ import EditProfile from './routes/EditProfile';
 import MembershipManagement from './routes/Membershipmang';
 import MusicDetail from './routes/MusicDetail'
 import Dj from './routes/Dj';
-import Chart from './routes/Chart';
-import Monthmusic from './routes/Monthmusic';
-import Newchart from './routes/Newchart';
-import Video from './routes/Video';
-
+import Chart from './routes/Chart.js';
+import Monthmusic from './routes/Monthmusic.js';
+import Newchart from './routes/Newchart.js';
+import Video from './routes/Video.js';
+import UpLoader from './routes/UpLoader.js';
 
 function App() {
   const location = useLocation();
-  const hidePages = ['/playlist', '/user/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/month', "/chart", '/video', '/new'];
+  const hidePages = ['/detail', '/playlist', '/user/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/month', "/chart", '/video', '/new'];
   const Hide = hidePages.includes(location.pathname);
 
   return (
@@ -57,7 +56,7 @@ function App() {
 
         {/* c */}
         <Route path="/dash" element={<Dash/>} />
-        <Route path="/uploader" element={<Uploader />} />
+        <Route path="/uploader" element={<UpLoader />} />
 
         {/* out */}
         <Route path="/chatbot" element={<Simple />} />
