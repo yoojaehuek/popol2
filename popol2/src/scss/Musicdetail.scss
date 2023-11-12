@@ -1,7 +1,18 @@
+.song-main{
+    padding-top: 5vw;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+    background-color: #000;
+}
+
 .song-details{
-    width: 800px;
-    height: 1000px;
-    margin: 30px auto;
+    // width: 800px;
+    display: flex;
+    color: #fff;
+    background-color: #000;
+    flex-direction: column;
+    
     #detail-out{
         display: flex;
         margin-bottom: 30px;
@@ -20,6 +31,7 @@
         }   
     }
     #lyrics{
+        
         border-top: 1px solid #000;
         margin: auto;
         p{

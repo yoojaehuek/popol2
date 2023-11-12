@@ -36,4 +36,19 @@ router.route('/')
     }
   });
 
+router.route('/new')
+.get(async (req, res, next) => { // 음악 전체 조회
+  try {
+    const musics = await Music.findAll({
+      order: [ ['regdate', 'DESC'] ],
+      limit: 10,
+    }); // 모든 음악 데이터 조회
+    console.log("musics", musics);
+    res.json(musics); // 조회된 음악 데이터를 클라이언트에 응답으로 전송
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+})
+
 module.exports = router;

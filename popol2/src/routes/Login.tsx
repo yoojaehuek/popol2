@@ -55,8 +55,11 @@ export default function SignInSide() {
 				if (res.status === 200) {
           // 로그인 성공 시 서버에서 받은 토큰을 쿠키에 저장
 					const accessToken = res.data.accessToken;
+          const time = 3600; //1시간
+          const expiration = new Date(Date.now() + time * 1000);
+          // console.log("expiration",expiration);
 					setCookie('accessToken',accessToken,{
-						// expires: new Date(Date.now() + setTime),
+						expires: expiration,
                         // httpOnly: true,
 					});
 				}

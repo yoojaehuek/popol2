@@ -59,7 +59,7 @@ const PlayIcon = styled(PlayArrowIcon)({
 
 //전체곡 조회함수
 const getMusics = async () => {
-  const res = await axios.get(`${API_URL}/musics`);
+  const res = await axios.get(`${API_URL}/musics/new`);
   // .then(() => {
   //   // alert("음악 전체 조회 성공.");
   //   console.log("조회성공 res데이터: ",res.data);

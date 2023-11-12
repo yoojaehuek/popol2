@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Listb from './Listbar';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import FastForwardIcon from '@mui/icons-material/FastForward';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import MoreHorizSharpIcon from '@mui/icons-material/MoreHorizSharp';
 import Footer from './Footer'
 import CustomAudioPlayer from "./Audio";
@@ -145,7 +145,7 @@ const Monthmusic = () => {
                           state: { musicData: music },
                         }}
                       > */}
-                        <FavoriteIcon style={{ marginRight: '1vw' }} />
+                        <PlaylistAddIcon style={{ marginRight: '1vw' }} />
                       {/* </NavLink> */}
                       <MoreHorizSharpIcon />
                     </div>

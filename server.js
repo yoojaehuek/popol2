@@ -16,6 +16,7 @@ const userRouter = require('./routes/user');
 const amountRouter = require('./routes/amount');
 const loginRouter = require('./routes/login');
 const verifyRouter = require('./routes/verify');
+const playlistRouter = require('./routes/playlist')
 
 //상수 multer에 "multer"라이브러리 가져옴
 const multer = require("multer");
@@ -88,6 +89,7 @@ app.use('/user', userRouter);
 app.use('/amounts', amountRouter);
 app.use('/login', loginRouter);
 app.use('/verify', verifyRouter);
+app.use('/playlist', playlistRouter);
 
 // 위에서 안걸린 나머지 모든 get요청 처리
 // 예: http://localhost:8080/asdfasdfasd

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { makeAccessToken, makeRefreshToken, refreshVerif, verify } = require("../utils/token");
+const { verify } = require("../utils/token");
 
 // POST 요청을 처리하는 라우터 핸들러
 router.post('/', async (req, res, next) => {

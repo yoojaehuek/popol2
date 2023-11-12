@@ -4,11 +4,13 @@ import useAsync from "../customHook/useAsync";
 import { API_URL } from "../config/contansts";
 import { CssBaseline, Container, Box, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Listb from './Listbar';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Footer from './Footer';
-import CustomAudioPlayer from "./Audio";
+import { getCookie, removeCookie } from "../cookie";
+import CustomAudioPlayer from "./Audio"
+import '../scss/Playlist.scss'
 
 const MainContent = styled('div')({
   flexGrow: 1,
@@ -45,17 +47,23 @@ const PlayIcon = styled(PlayArrowIcon)({
   transition: 'opacity 0.3s ease',
 });
 
-const playlists = [
-  { id: 1, imageUrl: './images/VIBE.png', artist: 'test', title: 'test' },
-];
+// const playlists = [
+//   { id: 1, imageUrl: './logo192.png', artist: '아티스트 1', title: '플레이리스트 1' },
+//   { id: 2, imageUrl: './logo192.png', artist: '아티스트 2', title: '플레이리스트 2' },
+//   { id: 3, imageUrl: './logo192.png', artist: '아티스트 3', title: '플레이리스트 3' },
+//   { id: 4, imageUrl: './logo192.png', artist: '아티스트 4', title: '플레이리스트 4' },
+//   { id: 1, imageUrl: './logo192.png', artist: '아티스트 1', title: '플레이리스트 1' },
+//   { id: 2, imageUrl: './logo192.png', artist: '아티스트 2', title: '플레이리스트 2' },
+//   { id: 3, imageUrl: './logo192.png', artist: '아티스트 3', title: '플레이리스트 3' },
+//   { id: 4, imageUrl: './logo192.png', artist: '아티스트 4', title: '플레이리스트 4' },
+// ];
+
+
+
 
 const PlayList = () => {
-  // const location = useLocation();
-  // const musicData = location.state ? location.state.musicData : null;
-  // const musicData = location.state.musicData;
-  // if (!musicData) {
-  //   return <div>데이터가 없습니다.</div>;
-  // }
+  const navigate = useNavigate();
+
   const [playList, setPlayList] = useState([
     {
       name: "오늘 뭐 듣지?",
@@ -65,6 +73,43 @@ const PlayList = () => {
       id: 1,
     },
   ]);
+
+  //전체곡 조회함수
+  const getPlayList = async () => {
+    const login = getCookie('accessToken');
+    if (getCookie('accessToken') != null) {
+      const res = await axios({
+        url: `${API_URL}/playlist`,
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer ' + login
+        }
+      })
+      console.log("res.data:", res.data);
+      return res.data;
+    }else {
+      alert('다시 로그인해주세요');
+      removeCookie('accessToken');
+      navigate('/');
+    }
+  };
+
+  const [state] = useAsync(getPlayList, []);
+  const { loading, data: musics, error } = state; //state구조분해
+  if (loading) return <div>로딩중 ......</div>;
+  if (error) {
+    return <div>playlist가 비어있습니다</div>;
+  }
+  if (!musics) {
+    return <div>로딩중입니다.</div>;
+  }
+  // const location = useLocation();
+  // const musicData = location.state ? location.state.musicData : null;
+  // const musicData = location.state.musicData;
+  // if (!musicData) {
+  //   return <div>데이터가 없습니다.</div>;
+  // }
+  
 
   // 음악을 클릭했을 때 재생목록에 추가하는 함수
   const onMusic = (e) => {
@@ -82,28 +127,7 @@ const PlayList = () => {
     ]);
   };
 
-  //전체곡 조회함수
-  const getMusics = async () => {
-    const res = await axios.get(`${API_URL}/musics`);
-    // .then(() => {
-    //   // alert("음악 전체 조회 성공.");
-    //   console.log("조회성공 res데이터: ",res.data);
-    // })
-    // .catch(err => {
-    //     console.error("음악 불러오기 에러: ", err);
-    // });
-    // 뀨><><
-    console.log("res.data:", res.data);
-    return res.data;
-  };
 
-  const [state] = useAsync(getMusics, []);
-  const { loading, data: musics, error } = state; //state구조분해
-  if (loading) return <div>로딩중 ......</div>;
-  if (error) return <div>에러가 발생했습니다.</div>;
-  if (!musics) {
-    return <div>로딩중입니다.</div>;
-  }
   return (
     <div style={{ display: 'flex', background:'black' }}>
       <CssBaseline />
@@ -111,16 +135,24 @@ const PlayList = () => {
       <MainContent>
           <h1 style={{ color: 'white' }}>playlist</h1>
           <Grid container spacing={2}>
-            {playlists.map((playlist) => (
-              <Grid item xs={12} sm={6} md={2} key={playlist.id}>
-                <NavLink to='/detail'>
+            {musics.map((playlist) => (
+              <Grid item xs={12} sm={6} md={2} key={playlist.Music.id}>
                   <PlaylistItem style={{color : 'white'}} >
-                    <PlaylistImage src={playlist.imageUrl} alt={playlist.title} />
+                    <PlaylistImage 
+                      src={playlist.Music.imageUrl}
+                      alt={playlist.Music.name}
+                      data-singer={playlist.Music.singer}
+                      data-musicurl={playlist.Music.musicUrl}
+                      data-name={playlist.Music.name}
+                      data-id={playlist.Music.id}
+                      onClick={onMusic}
+                      />
                     <PlayIcon className="play-icon" fontSize="large" />
-                    <Typography variant="subtitle1" gutterBottom>{playlist.artist}</Typography>
-                    <Typography variant="body1">{playlist.title}</Typography>
+                    <NavLink to='/detail' state={{music: playlist.Music}} style={{color: "#fff"}}>
+                      <Typography variant="subtitle1" gutterBottom>{playlist.Music.singer}</Typography>
+                      <Typography variant="body1">{playlist.Music.name}</Typography>
+                    </NavLink>
                   </PlaylistItem>
-                </NavLink>
               </Grid>
             ))}
           </Grid>

@@ -1,6 +1,6 @@
 const express = require('express');
 const User = require('../models/user');
-const { makeAccessToken, makeRefreshToken, refreshVerif, verify } = require("../utils/token");
+const { verify } = require("../utils/token");
 
 const router = express.Router();
 
