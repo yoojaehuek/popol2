@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const PlayList = require('../models/playList'); // 음악 모델 import
 const Music = require('../models/music'); // 음악 모델 import
-const { makeAccessToken, makeRefreshToken, refreshVerif, verify } = require("../utils/token");
+const { verify } = require("../utils/token");
 
 router.route('/')
   .get(async (req,res,next)=>{
