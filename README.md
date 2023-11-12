@@ -175,7 +175,7 @@ npm start
 
 #### 🧩 ERD
 
-![erd](/readme-img/foodingERD.png)
+![erd](/readme-img/ERD.png)
 
 ### ✔️ 페이지 구성
 
