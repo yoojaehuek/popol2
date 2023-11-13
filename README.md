@@ -153,15 +153,20 @@ npm start
 
 > 페이지별 구조
 
-- Products 페이지 기반으로 구현된 서비스.
-
-* Main Products : 처음 접속 했을떄 보이는 전체 상품 목록을 보여주는 페이지.
-* Join : 회원가 페이지
-* Login : 로그인 페이지.
-* MyPage : 회원 정보, 상품등록 페이지로 가는 버튼이 있는 페이지.
-* DetailProd: 상품 목록에서 상품 클릭시 상품의 상세정보를 보여주고 상품결제, 장바구니 등록 기능이 있는 페이지
-* Cart: 장바구니에 담긴 상품들을 보여주고 결제할 수 있는 페이지  
-
+- Main 페이지 기반으로 구현된 서비스.
+* Main : 처음 / 경로로 접속시 라우팅되는 서비스 소개 페이지 
+* Mypage : 회원의 계정 정보를 확인할 수 있는 페이지
+* Payment : 월정액 결제 페이지
+* Uploader : 관리자가 음원을 등록하는 페이지
+* MembershipManagement: 월정액 취소, 변경등 맴버쉽 관리 페이지
+* EditProfile: 사용자 정보 변경 페이지
+* Musics: 전체 음원 조회 페이지
+* Chart: 음원을 카테고리별로 분류하여 보여주는 페이지
+* Newchart: 최신 음원 순으로 정렬하여 보여주는 페이지
+* Monthmusic: 조회수 기준 순위를 보여주는 페이지 
+* DJ: 
+* Playlist: 플레이리스트에 담긴 음원만 보여누는 페이지
+* Video: 광고 페이지
 #### 🧩 back-end
 
 ![back-end](/readme-img/back.png)
@@ -169,9 +174,10 @@ npm start
 > 로직 구조
 
 - config : 환경변수 설정
-- model : DB와 연동
+- model : Sequelize 사용해 DB 연동
 - routes : 요청받은 정보를 알맞게 가공하고 사용자가 입력한 데이터나 사용자에게 출력할 데이터 질의
 - upload : 상품등록에 첨부한 이미지 저장하는 디렉터리
+- utils/token: JWT토큰 생성, 회원 인증
 
 #### 🧩 ERD
 
