@@ -32,7 +32,7 @@ const LoginMain = () => {
     {
       name: "오늘 뭐 듣지?",
       writer: "재생 버튼을 클릭해보세요",
-      img: "images/defaultMusicImg.png",
+      img: "/images/defaultMusicImg.png",
       src: `${API_URL}/upload/music/RoieShpigler-Aluminum.mp3`,
       id: 1,
     },
@@ -47,8 +47,8 @@ const LoginMain = () => {
       {
         name: music.name,
         writer: music.singer,
-        img: music.imageUrl,
-        src: music.musicUrl,
+        img: API_URL+music.imageUrl,
+        src: API_URL+music.musicUrl,
         musicId: music.id,
         id: 1,
       },
@@ -60,17 +60,17 @@ const LoginMain = () => {
       <Listb id='Listb'/>
       <div id='loginMain-content'>
         <Routes>
-          <Route path="/playlist" element={<Playlist />} />
+          <Route path="/playlist" element={<Playlist onMusic={onMusic} />} />
           <Route path="/user/mypage" element={<Mypage />} />
           <Route path="/edit" element={<EditProfile />} />
           <Route path="/member" element={<MembershipManagement />} />
           <Route path="/musics" element={<Musics onMusic={onMusic} />} />
-          <Route path="/detail" element={<MusicDetail />} />
-          <Route path="/dj" element={<Dj />} />
-          <Route path="/month" element={<Monthmusic />} />
-          <Route path="/chart" element={<Chart />} />
-          <Route path='/new' element={<Newchart/>} />
-          <Route path='/video' element={<Video/>} />
+          <Route path="/detail" element={<MusicDetail onMusic={onMusic} />} />
+          <Route path="/dj" element={<Dj onMusic={onMusic} />} />
+          <Route path="/month" element={<Monthmusic onMusic={onMusic} />} />
+          <Route path="/chart" element={<Chart onMusic={onMusic} />} />
+          <Route path='/new' element={<Newchart onMusic={onMusic} />} />
+          <Route path='/video' element={<Video onMusic={onMusic} />} />
         </Routes>
       </div>
       <CustomAudioPlayer playList={playList} />

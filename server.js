@@ -31,7 +31,7 @@ const upload = multer({
             }
         },
         filename: function(req, file, cb){ // 어떤 이름으로 저장할거야?
-            cb(null, file.originalname) // 업로드한 file의 오리지널 이름으로 저장하겠다.
+            cb(null, path.basename(file.originalname, path.extname(file.originalname)) + new Date().valueOf() + path.extname(file.originalname)) // 업로드한 file의 오리지널 이름으로 저장하겠다.
         }
     })
 })
@@ -72,7 +72,7 @@ app.post('/image', upload.single('image'), (req, res)=>{
   console.log("post(/image) file:",file);
   res.send({ 
       // imageUrl: "http://localhost:3000/"+file.destination+file.filename
-      imageUrl: `http://localhost:${localUrl}/`+file.destination+file.filename //이미지 여기 저장했다 json형식으로 보냄
+      imageUrl: `/`+file.destination+file.filename //이미지 여기 저장했다 json형식으로 보냄
   })
 })
 app.post('/mp3', upload.single('file'), (req, res)=>{ 
@@ -80,9 +80,15 @@ app.post('/mp3', upload.single('file'), (req, res)=>{
   console.log("post(/mp3) file:",file);
   res.send({ 
     // imageUrl: "http://localhost:3000/"+file.destination+file.filename
-    musicUrl: `http://localhost:${localUrl}/`+file.destination+file.filename //이미지 여기 저장했다 json형식으로 보냄
+    musicUrl: `/`+file.destination+file.filename //이미지 여기 저장했다 json형식으로 보냄
   })
 })
+
+app.get('/mp3', (req, res)=>{ 
+  const {url} = req.query;
+  console.log(url);
+  res.download(url.substring(1));
+});
 
 app.use('/api/musics', musicRouter); 
 app.use('/api/user', userRouter); 
