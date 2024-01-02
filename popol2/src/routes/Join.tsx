@@ -78,27 +78,6 @@ export default function Join() {
     }
   };
 
-  // const navigate = useNavigate();
-  // const joinSubmit = async (e) =>{
-  //     e.preventDefault();
-  //     const id = e.target.id.value
-  //     const name = e.target.name.value
-  //     const phone = e.target.phone.value
-  //     const pwd = e.target.pwd.value
-  //     if(id.pwd != ""){
-  //         await axios.post(`${API_URL}/user`,{id, name, phone ,pwd})
-  //         .then(() =>{
-  //           alert("가입성공!");
-  //           navigate('/');
-  //         })
-  //         .catch(err =>{
-  //             console.error(err);
-  //         })
-  //     }else{
-  //         return alert("전부 입력해주세요");
-  //     }
-  // }
-
   return (
     <ThemeProvider theme={defaultTheme} >
       <Container component="main" maxWidth="xs">
