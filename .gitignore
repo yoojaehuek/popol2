@@ -1,4 +1,4 @@
 node_modules
-/config
-/upload
+/upload/image/
+/upload/music/
 popol2/node_modules
