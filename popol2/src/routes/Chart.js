@@ -163,7 +163,7 @@ if (!musics) {
       <MainContent style={{color : 'white'}}>
 				<div>
           <h1 style={{ paddingBottom: '1vw'}}>차트</h1>
-					<h2 style={{ paddingBottom: '1vw'}}>오늘의 TOP 100</h2>
+					<h2 style={{ paddingBottom: '1vw'}}>오늘의 TOP 10</h2>
           <Grid container spacing={1}>
             {getFilteredMusics(['한국-발라드', '한국-힙합', '한국-트로트', '한국-동요', '한국-아이돌']).map((music) => (
               <Grid item xs={12} sm={6} md={4} key={music.id}>
@@ -179,7 +179,7 @@ if (!musics) {
           </Grid>
 				</div>
 				<div style={{ paddingTop: '2vw'}}>
-					<h2 style={{ paddingBottom: '1vw'}}>BILLBOARD TOP 100</h2>
+					<h2 style={{ paddingBottom: '1vw'}}>BILLBOARD TOP 10</h2>
           <Grid container spacing={1}>
             {getFilteredMusics(['POP-솔로', 'POP-힙합', 'POP-락', 'POP-OST']).map((music) => (
               <Grid item xs={12} sm={6} md={4} key={music.id}>
@@ -195,7 +195,7 @@ if (!musics) {
           </Grid>
 				</div>
 				<div style={{ paddingTop: '2vw'}}>
-					<h2 style={{ paddingBottom: '1vw'}}>J-POP TOP 100</h2>
+					<h2 style={{ paddingBottom: '1vw'}}>J-POP TOP 10</h2>
           <Grid container spacing={1}>
             {getFilteredMusics(['일본-아이돌', '일본-애니', '일본-가요', '일본-락']).map((music) => (
               <Grid item xs={12} sm={6} md={4} key={music.id}>
