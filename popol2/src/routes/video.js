@@ -8,7 +8,7 @@ const Video = () => {
 
   return (
     <div className="video-container">
-      <Listb />
+      {/* <Listb /> */}
       <div className='video-main'>
         <video className='video' autoPlay loop muted>
           <source src="./video.mp4" type="video/mp4" />

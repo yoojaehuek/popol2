@@ -60,7 +60,7 @@ const PlayIcon = styled(PlayArrowIcon)({
 
 //전체곡 조회함수
 const getMusics = async () => {
-  const res = await axios.get(`${API_URL}/musics`);
+  const res = await axios.get(`${API_URL}/api/musics`);
   // .then(() => {
   //   // alert("음악 전체 조회 성공.");
   //   console.log("조회성공 res데이터: ",res.data);
@@ -86,7 +86,7 @@ const Chartmusic = () => {
       if(token != null) {
         try {
           // 서버에 인증 요청을 보냄
-          const response = await axios.post(`${API_URL}/verify`, null, {
+          const response = await axios.post(`${API_URL}/api/verify`, null, {
             headers: {
               Authorization: 'Bearer ' + token
             }
@@ -159,7 +159,7 @@ if (!musics) {
   return (
     <div style={{ display: 'flex', background:'black'}}>
       <CssBaseline />
-      <Listb />
+      {/* <Listb /> */}
       <MainContent style={{color : 'white'}}>
 				<div>
           <h1 style={{ paddingBottom: '1vw'}}>차트</h1>
@@ -167,13 +167,13 @@ if (!musics) {
           <Grid container spacing={1}>
             {getFilteredMusics(['한국-발라드', '한국-힙합', '한국-트로트', '한국-동요', '한국-아이돌']).map((music) => (
               <Grid item xs={12} sm={6} md={4} key={music.id}>
-                <NavLink to='/detail' state={{music}}>
-                  <PlaylistItem style={{display:'flex', alignItems:'center', color : 'white'}}>
-                    <PlaylistImage src={music.imageUrl} alt={music.name} />
-                    <PlayIcon className="play-icon" fontSize="large" />
+                <PlaylistItem style={{display:'flex', alignItems:'center', color : 'white'}}>
+                  <PlaylistImage src={music.imageUrl} alt={music.name} />
+                  <PlayIcon className="play-icon" fontSize="large" />
+                  <NavLink to='/detail' state={{music}}>
                     <Typography variant="subtitle1" gutterBottom>{music.singer}<br/>{music.name}</Typography>
+                  </NavLink>
                 </PlaylistItem>
-                </NavLink>
               </Grid>
             ))}
           </Grid>
@@ -212,7 +212,7 @@ if (!musics) {
 				</div>
         <Footer/>
       </MainContent>
-      <CustomAudioPlayer playList={playList} />
+      {/* <CustomAudioPlayer playList={playList} /> */}
     </div>
   );
 };

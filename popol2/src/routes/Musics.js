@@ -49,7 +49,7 @@ const PlayIcon = styled(PlayArrowIcon)({
 });
 
 
-const Musics = () => {
+const Musics = (props) => {
   const [playList, setPlayList] = useState([
     {
       name: "오늘 뭐 듣지?",
@@ -80,7 +80,7 @@ const Musics = () => {
 
   //전체곡 조회함수
   const getMusics = async () => {
-    const res = await axios.get(`${API_URL}/musics`);
+    const res = await axios.get(`${API_URL}/api/musics`);
     // .then(() => {
     //   // alert("음악 전체 조회 성공.");
     //   console.log("조회성공 res데이터: ",res.data);
@@ -103,12 +103,13 @@ const Musics = () => {
   }
 
   return (
-    <div style={{ display: "flex", backgroundColor: 'black' }}>
-      <Listb />
+    // <div style={{ display: "flex", backgroundColor: 'black' }}>
+    <div style={{ backgroundColor: 'black' }}>
+      {/* <Listb /> */}
       <MainContent>
         <h1 style={{ color: 'white' }}>투데이</h1>
         <div style={{padding:'2vw', backgroundColor:'black'}}>
-        <img style={{objectFit:'cover', width:'10vw', height:'auto', float:'left', marginRight:'5vw'}}src="./images/aespa.png"></img>
+        <img style={{objectFit:'cover', width:'10vw', height:'auto', float:'left', marginRight:'5vw'}}src="/images/aespa.png"></img>
         <h1 style={{color:'white'}}>다시 엔진을 켜는, 에스파</h1>
         <h3 style={{paddingTop:'2vw', color:'white'}}>2차엔 에스파의 다음 챕터를 향해 시동을 거는 듯한 MusicHub 프로젝트 외에도 여러 기술과 새로운 장르의 도전까지,<br/>
         다양한 컬러로 채운 성숙한 변신이 가득한다. 팬덤을 생각하며 항상 엔진을 켜두는 에스파의 또 다른 출발</h3>
@@ -116,7 +117,7 @@ const Musics = () => {
         <h2 style={{ color: 'white' }}>VIBE 추천 플레이리스트</h2>
         <Grid container spacing={2}>
           {musics.map((music) => (
-            <Grid item xs={12} sm={6} md={3} key={music.id}>
+            <Grid item xs={12} sm={6} md={4} key={music.id}>
               <PlaylistItem>
                 <PlaylistImage
                   src={music.imageUrl}
@@ -124,7 +125,7 @@ const Musics = () => {
                   data-musicurl={music.musicUrl}
                   data-name={music.name}
                   data-id={music.id}
-                  onClick={onMusic}
+                  onClick={() => {props.onMusic(music)}}
                   alt=""
                 />
                 <PlayIcon className="play-icon" fontSize="large" />
@@ -141,11 +142,10 @@ const Musics = () => {
         </Grid>
         <Footer/>
       </MainContent>
-      {console.log(playList)}
 
-      {
-        <CustomAudioPlayer playList={playList} />
-      }
+      
+      {/* <CustomAudioPlayer playList={playList} /> */}
+      
     </div>
   );
 };

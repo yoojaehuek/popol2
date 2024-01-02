@@ -16,26 +16,11 @@ const Music = ({music}) => {
       name: music.name,
       writer: music.singer,
       img: music.imageUrl,
-      src: "http://localhost:8081/upload/music/Roie Shpigler - Aluminum.mp3",
+      src: `${API_URL}/upload/music/Roie Shpigler - Aluminum.mp3`,
       id: music.id,
     },
   ]
 
-	// const id = amount.amount.id;
-	// const getAmount = async () => {
-	// 	const res = await axios.get(`${API_URL}/amounts/${id}`);
-	// 	return res.data;
-	// }
-
-	// const [state ] = useAsync(getAmount, []);
-  //   const { loading, data:detailAmount, error} = state; //state구조분해 
-  //   if(loading) return <div>로딩중 ......</div>
-  //   if(error) return <div>에러가 발생했습니다.</div>
-  //   if(!detailAmount){
-  //       return <div>로딩중입니다.</div>
-  //   }
-	// 	const tempprice = Number(detailAmount.price);
-	// 	// console.log(typeof(tempprice)); 타입 알고싶으면 typeof
 
   return(
     <>

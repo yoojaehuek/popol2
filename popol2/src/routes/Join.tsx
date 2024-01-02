@@ -64,7 +64,7 @@ export default function Join() {
     // 입력값 유효성 검사 및 서버에 회원가입 요청
     if(pwd === confirmPwd && id !== "" && pwd !== "" && confirmPwd !== "" && name !== "" && phone !== ""){
       // 서버에 POST 요청을 보내어 회원가입 처리
-      await axios.post(`${API_URL}/user`, { id, name, phone, pwd })
+      await axios.post(`${API_URL}/api/user`, { id, name, phone, pwd })
         .then(() => {
           alert("가입 성공!");
           navigate('/');
@@ -77,27 +77,6 @@ export default function Join() {
       return alert("모든 필수 항목을 입력해주세요.");
     }
   };
-
-  // const navigate = useNavigate();
-  // const joinSubmit = async (e) =>{
-  //     e.preventDefault();
-  //     const id = e.target.id.value
-  //     const name = e.target.name.value
-  //     const phone = e.target.phone.value
-  //     const pwd = e.target.pwd.value
-  //     if(id.pwd != ""){
-  //         await axios.post(`${API_URL}/user`,{id, name, phone ,pwd})
-  //         .then(() =>{
-  //           alert("가입성공!");
-  //           navigate('/');
-  //         })
-  //         .catch(err =>{
-  //             console.error(err);
-  //         })
-  //     }else{
-  //         return alert("전부 입력해주세요");
-  //     }
-  // }
 
   return (
     <ThemeProvider theme={defaultTheme} >

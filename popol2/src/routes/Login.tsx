@@ -50,7 +50,7 @@ export default function SignInSide() {
       password: data.get('password'),
     });
     // 서버로 로그인 요청을 보내어 처리
-    await axios.post(`${API_URL}/login`,{id,pwd})
+    await axios.post(`${API_URL}/api/login`,{id,pwd})
 			.then((res)=>{
 				if (res.status === 200) {
           // 로그인 성공 시 서버에서 받은 토큰을 쿠키에 저장
@@ -65,7 +65,7 @@ export default function SignInSide() {
 				}
 				console.log("로그인 성공 res: ",res);
         // 로그인 성공 시 음악 목록 페이지로 이동
-				navigate('/musics');
+				navigate('/login-main/musics');
 			})
 			.catch((error)=>{
 				console.error("로그인 실패: ",error);

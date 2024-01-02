@@ -21,7 +21,7 @@ const MusicDetails = () => {
   // 음악 상세 정보를 화면에 렌더링
   return (
     <div className='song-main'>
-      <Listb/>
+      {/* <Listb/> */}
       <div className="song-details">
         <div id='detail-out'>
           {/* 음악 이미지 표시 */}

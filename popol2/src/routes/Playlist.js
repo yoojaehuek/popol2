@@ -79,7 +79,7 @@ const PlayList = () => {
     const login = getCookie('accessToken');
     if (getCookie('accessToken') != null) {
       const res = await axios({
-        url: `${API_URL}/playlist`,
+        url: `${API_URL}/api/playlist`,
         method: 'GET',
         headers: {
           Authorization: 'Bearer ' + login
@@ -131,7 +131,7 @@ const PlayList = () => {
   return (
     <div style={{ display: 'flex', background:'black' }}>
       <CssBaseline />
-      <Listb />
+      {/* <Listb /> */}
       <MainContent>
           <h1 style={{ color: 'white' }}>playlist</h1>
           <Grid container spacing={2}>
@@ -158,7 +158,7 @@ const PlayList = () => {
           </Grid>
           <Footer/>
       </MainContent>
-      <CustomAudioPlayer playList={playList} />
+      {/* <CustomAudioPlayer playList={playList} /> */}
     </div>
   );
 };

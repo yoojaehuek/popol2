@@ -13,9 +13,9 @@ const CustomAudioPlayer = ({ playList }) => {
   const addPlayList = async () => {
     const login = getCookie('accessToken');
     if (getCookie('accessToken') != null) {
-      // await axios.post(`${API_URL}/playlist`, { playList: playList[0], cookie});
+      // await axios.post(`${API_URL}/api/playlist`, { playList: playList[0], cookie});
       await axios({
-        url: `${API_URL}/playlist`,
+        url: `${API_URL}/api/playlist`,
         method: 'POST',
         headers: {
           Authorization: 'Bearer ' + login
@@ -32,43 +32,45 @@ const CustomAudioPlayer = ({ playList }) => {
   }
 
   return (
-    <AudioPlayer
-      playList={playList}
-      activeUI={{
-        playButton: true,
-        playList: false,
-        prevNnext: false,
-        volume: true,
-        volumeSlider: false,
-        repeatType: true,
-        trackTime: true,
-        trackInfo: true,
-        artwork: true,
-        progress: "bar",
-      }}
-      placement={{
-        interface: {
-          templateArea: {
-            artwork: "row1-1",
-            trackInfo: "row1-2",
-            playButton: "row1-3",
-            trackTimeCurrent: "row1-4",
-            trackTimeDuration: "row1-5",
-            progress: "row1-6",
-            repeatType: "row1-7",
-            volume: "row1-8",
+    <div id="Audio">
+      <AudioPlayer
+        playList={playList}
+        activeUI={{
+          playButton: true,
+          playList: false,
+          prevNnext: false,
+          volume: true,
+          volumeSlider: false,
+          repeatType: true,
+          trackTime: true,
+          trackInfo: true,
+          artwork: true,
+          progress: "bar",
+        }}
+        placement={{
+          interface: {
+            templateArea: {
+              artwork: "row1-1",
+              trackInfo: "row1-2",
+              playButton: "row1-3",
+              trackTimeCurrent: "row1-4",
+              trackTimeDuration: "row1-5",
+              progress: "row1-6",
+              repeatType: "row1-7",
+              volume: "row1-8",
+            },
           },
-        },
-        player: "bottom",
-      }}
-    >
-      <button>
-        <DownloadIcon />
-      </button>
-      <button onClick={addPlayList}>
-        <PlaylistAddIcon />
-      </button>
-    </AudioPlayer>
+          player: "bottom",
+        }}
+      >
+        <button>
+          <DownloadIcon />
+        </button>
+        <button onClick={addPlayList}>
+          <PlaylistAddIcon />
+        </button>
+      </AudioPlayer>
+    </div>
   );
 };
 

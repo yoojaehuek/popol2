@@ -45,45 +45,45 @@ const PlayIcon = styled(PlayArrowIcon) ({
 });
 
 const playlists = [
-  { id: 1, imageUrl: './images/dj/1.png'},
-  { id: 2, imageUrl: './images/dj//2.png'},
-  { id: 3, imageUrl: './images/dj//3.png'},
-  { id: 4, imageUrl: './images/dj//4.png'},
-  { id: 1, imageUrl: './images/dj//5.png'},
-  { id: 2, imageUrl: './images/dj//6.png'},
-  { id: 3, imageUrl: './images/dj//7.png'},
-  { id: 4, imageUrl: './images/dj//8.png'},
-  { id: 1, imageUrl: './images/dj//9.png'},
-  { id: 2, imageUrl: './images/dj//10.png'},
-  { id: 3, imageUrl: './images/dj//11.png'},
-  { id: 4, imageUrl: './images/dj//12.png'},
+  { id: 1, imageUrl: '/images/dj/1.png'},
+  { id: 2, imageUrl: '/images/dj//2.png'},
+  { id: 3, imageUrl: '/images/dj//3.png'},
+  { id: 4, imageUrl: '/images/dj//4.png'},
+  { id: 1, imageUrl: '/images/dj//5.png'},
+  { id: 2, imageUrl: '/images/dj//6.png'},
+  { id: 3, imageUrl: '/images/dj//7.png'},
+  { id: 4, imageUrl: '/images/dj//8.png'},
+  { id: 1, imageUrl: '/images/dj//9.png'},
+  { id: 2, imageUrl: '/images/dj//10.png'},
+  { id: 3, imageUrl: '/images/dj//11.png'},
+  { id: 4, imageUrl: '/images/dj//12.png'},
 ];
 
 const playlist = [
-  { id: 1, imageUrl: './images/dj2/1.png'},
-  { id: 2, imageUrl: './images/dj2/2.png'},
-  { id: 3, imageUrl: './images/dj2/3.png'},
-  { id: 4, imageUrl: './images/dj2/4.png'},
-  { id: 1, imageUrl: './images/dj2/5.png'},
-  { id: 2, imageUrl: './images/dj2/6.png'},
-  { id: 3, imageUrl: './images/dj2/7.png'},
-  { id: 4, imageUrl: './images/dj2/8.png'},
-  { id: 1, imageUrl: './images/dj2/9.png'},
-  { id: 2, imageUrl: './images/dj2/10.png'},
-  { id: 3, imageUrl: './images/dj2/11.png'},
-  { id: 4, imageUrl: './images/dj2/12.png'},
-  { id: 1, imageUrl: './images/dj2/13.png'},
-  { id: 2, imageUrl: './images/dj2/14.png'},
-  { id: 3, imageUrl: './images/dj2/15.png'},
-  { id: 4, imageUrl: './images/dj2/16.png'},
-  { id: 1, imageUrl: './images/dj2/17.png'},
-  { id: 2, imageUrl: './images/dj2/18.png'},
-  { id: 3, imageUrl: './images/dj2/19.png'},
-  { id: 4, imageUrl: './images/dj2/20.png'},
-  { id: 1, imageUrl: './images/dj2/21.png'},
-  { id: 2, imageUrl: './images/dj2/22.png'},
-  { id: 3, imageUrl: './images/dj2/23.png'},
-  { id: 4, imageUrl: './images/dj2/24.png'},
+  { id: 1, imageUrl: '/images/dj2/1.png'},
+  { id: 2, imageUrl: '/images/dj2/2.png'},
+  { id: 3, imageUrl: '/images/dj2/3.png'},
+  { id: 4, imageUrl: '/images/dj2/4.png'},
+  { id: 1, imageUrl: '/images/dj2/5.png'},
+  { id: 2, imageUrl: '/images/dj2/6.png'},
+  { id: 3, imageUrl: '/images/dj2/7.png'},
+  { id: 4, imageUrl: '/images/dj2/8.png'},
+  { id: 1, imageUrl: '/images/dj2/9.png'},
+  { id: 2, imageUrl: '/images/dj2/10.png'},
+  { id: 3, imageUrl: '/images/dj2/11.png'},
+  { id: 4, imageUrl: '/images/dj2/12.png'},
+  { id: 1, imageUrl: '/images/dj2/13.png'},
+  { id: 2, imageUrl: '/images/dj2/14.png'},
+  { id: 3, imageUrl: '/images/dj2/15.png'},
+  { id: 4, imageUrl: '/images/dj2/16.png'},
+  { id: 1, imageUrl: '/images/dj2/17.png'},
+  { id: 2, imageUrl: '/images/dj2/18.png'},
+  { id: 3, imageUrl: '/images/dj2/19.png'},
+  { id: 4, imageUrl: '/images/dj2/20.png'},
+  { id: 1, imageUrl: '/images/dj2/21.png'},
+  { id: 2, imageUrl: '/images/dj2/22.png'},
+  { id: 3, imageUrl: '/images/dj2/23.png'},
+  { id: 4, imageUrl: '/images/dj2/24.png'},
 ];
 
 const Dj = () => {
@@ -115,7 +115,7 @@ const Dj = () => {
 
   //전체곡 조회함수
   const getMusics = async () => {
-    const res = await axios.get(`${API_URL}/musics`);
+    const res = await axios.get(`${API_URL}/api/musics`);
     // .then(() => {
     //   // alert("음악 전체 조회 성공.");
     //   console.log("조회성공 res데이터: ",res.data);
@@ -137,7 +137,7 @@ const Dj = () => {
   return (
     <div className='djmain'>
       <CssBaseline />
-      <Listb />
+      {/* <Listb /> */}
       <div className='dj-item'>
         <div className='dj-cotainer'>
           <h1>DJ 스테이션</h1>
@@ -170,7 +170,7 @@ const Dj = () => {
         </div>
         <Footer/>
       </div>
-      <CustomAudioPlayer playList={playList} />
+      {/* <CustomAudioPlayer playList={playList} /> */}
     </div>
   );
 };

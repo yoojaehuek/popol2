@@ -8,7 +8,7 @@ const path = require('path');
 const app = express();
 const morgan = require('morgan');
 const index = path.join(__dirname, 'popol2/build/index.html')
-const localUrl = 8081; 
+const localUrl = 8001; 
 
 const { sequelize } = require('./models');
 const musicRouter = require('./routes/musics');
@@ -58,7 +58,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json())
 
 
-// 브라우저 cors 이슈를 막기 위해 사용(모든 브라우저의 요청 받겠다 보안이 뻥ㅋㅋㅋ)
+// 브라우저 cors 이슈를 막기 위해 사용(모든 브라우저의 요청 받겠다 보안이 취약)
 const cors = require('cors');
 app.use(cors());
 
@@ -84,12 +84,12 @@ app.post('/mp3', upload.single('file'), (req, res)=>{
   })
 })
 
-app.use('/musics', musicRouter); 
-app.use('/user', userRouter); 
-app.use('/amounts', amountRouter);
-app.use('/login', loginRouter);
-app.use('/verify', verifyRouter);
-app.use('/playlist', playlistRouter);
+app.use('/api/musics', musicRouter); 
+app.use('/api/user', userRouter); 
+app.use('/api/amounts', amountRouter);
+app.use('/api/login', loginRouter);
+app.use('/api/verify', verifyRouter);
+app.use('/api/playlist', playlistRouter);
 
 // 위에서 안걸린 나머지 모든 get요청 처리
 // 예: http://localhost:8080/asdfasdfasd
