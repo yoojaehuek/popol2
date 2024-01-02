@@ -183,7 +183,7 @@ if (!musics) {
           <Grid container spacing={1}>
             {getFilteredMusics(['POP-솔로', 'POP-힙합', 'POP-락', 'POP-OST']).map((music) => (
               <Grid item xs={12} sm={6} md={4} key={music.id}>
-                <NavLink to='/detail'>
+                <NavLink to='/detail' state={{music}}>
                   <PlaylistItem style={{display:'flex', alignItems:'center', color : 'white'}}>
                     <PlaylistImage src={music.imageUrl} alt={music.name} />
                     <PlayIcon className="play-icon" fontSize="large" />
@@ -199,7 +199,7 @@ if (!musics) {
           <Grid container spacing={1}>
             {getFilteredMusics(['일본-아이돌', '일본-애니', '일본-가요', '일본-락']).map((music) => (
               <Grid item xs={12} sm={6} md={4} key={music.id}>
-                <NavLink to='/detail'>
+                <NavLink to='/detail' state={{music}}>
                   <PlaylistItem style={{display:'flex', alignItems:'center',color : 'white'}}>
                     <PlaylistImage src={music.imageUrl} alt={music.name} />
                     <PlayIcon className="play-icon" fontSize="large" />
