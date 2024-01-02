@@ -1,0 +1,36 @@
+.sidebar {
+  top: 0; /* 화면 상단에 고정 */
+  left: 0; /* 화면 왼쪽에 고정 */
+  width: 250px; /* 원하는 너비로 조정 */
+  height: 100%; /* 화면 높이만큼 설정 또는 필요에 따라 조정 */
+  background-color: #333; /* 배경 색상 설정 */
+  color: #fff; /* 텍스트 색상 설정 */
+  padding: 20px; /* 내용과의 간격 설정 */
+  z-index: 1; /* 다른 요소 위에 표시 */
+  flex: 0 0 250px; /* 사이드바 고정 너비 */
+}
+
+/* 메뉴 항목 스타일 */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+/* 링크 스타일 */
+.sidebar a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* 필요한 경우 스크롤바 스타일을 조절합니다. */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #666;
+}

@@ -1,0 +1,79 @@
+
+$b: #000;
+
+#header {
+  background-color: $b;
+  width: 100%;
+  height: 70px;
+  padding: 1vw;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+#header .inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20vw;
+}
+
+.nav{
+  display: flex;
+  margin: 0;
+  li{
+    font-size: 20px;
+    margin: 0 1vw;
+  }
+}
+
+
+
+
+#header ul {
+  display: flex;
+}
+
+#header ul i {
+  color: rgb(255, 255, 255);
+  margin: 0px;
+  cursor: pointer;
+}
+
+#header ul li a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+#header ul li a:hover {
+  color: rgb(111, 234, 236);
+  font-weight: 500;
+}
+
+#header ul li i:hover {
+  color: rgb(111, 234, 236);
+}
+
+.headerimg{
+  width: 50px;
+}
+
+.research{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.research input{
+  background-color: black;
+  border: black;
+  width: 80%;
+  padding:1vw;
+  margin: 0 1vw;
+}
+
+.research span {
+  cursor: pointer;
+}
