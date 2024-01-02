@@ -8,6 +8,7 @@ const MusicDetails = () => {
   const location = useLocation();
   // location에서 전달된 state를 추출
   const { state } = location;
+  console.log("location: ", location);
   
   // 가사 보기 상태를 관리하는 상태 변수 및 토글 함수
   const [showLyrics, setShowLyrics] = useState(false);
