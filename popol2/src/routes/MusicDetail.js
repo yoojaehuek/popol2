@@ -80,9 +80,9 @@ const MusicDetails = (props) => {
         <div id="detail-out">
           <img src={API_URL + state.music.imageUrl} alt="노래 이미지" />
           <div id="details-in">
-            <h2>{state.music.singer}</h2>
+            <h2>{state.music.name}</h2>
+            <Typography variant="body1">가수: {state.music.singer}</Typography>
             <Typography variant="body1">작곡가: {state.music.composer}</Typography>
-            <Typography variant="body1">제목: {state.music.name}</Typography>
             <Typography variant="body1">장르: {state.music.kind}</Typography>
             <Button onClick={() => props.onMusic(state.music)}>재생 아이콘</Button>
             <Button onClick={addPlayList}>플리 아이콘</Button>
@@ -90,7 +90,7 @@ const MusicDetails = (props) => {
           </div>
         </div>
         <div id="lyrics">
-          <h2 style={{marginTop:'50px'}}>가사</h2>
+          <h2 style={{marginTop:'50px', borderTop:"solid 1px gray", paddingTop:'30px'}}>가사</h2>
           {showLyrics && (
             <Typography variant="body2" style={{ whiteSpace: 'pre-line' }}>
               {state.music.lyrics}
