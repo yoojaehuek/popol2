@@ -13,7 +13,7 @@ import HeadsetIcon from '@mui/icons-material/Headset';
 import MovieIcon from '@mui/icons-material/Movie';
 import { removeCookie } from "../cookie";
 
-const drawerWidth = 245;
+const drawerWidth = 250;
 
 const DrawerContainer = styled('div')({
   width: drawerWidth,
@@ -38,7 +38,7 @@ const Listb = () => {
         <List style={{height : '100%', background : 'rgb(0, 0, 0)'}}>
           <h2 style={{color:'white', paddingLeft:'20px'}}>MusciHub</h2>
           <ListItem button>
-            <NavLink to='/user/mypage' style={{color: '#fff'}}>
+            <NavLink to='/login-main/user/mypage' style={{color: '#fff'}}>
               <ListItemContainer>
                 <PersonIcon style={{ color: 'white', marginRight: '5px' }} /> 
                 <ListItemText style={{color: 'white'}} primary="Mypage" />
@@ -46,7 +46,7 @@ const Listb = () => {
             </NavLink>
           </ListItem>
           <ListItem button style={{ marginTop: '2vw' }}>
-            <NavLink to='/musics'>
+            <NavLink to='/login-main/musics'>
               <ListItemContainer>
                 <TodayIcon style={{ color: 'white', marginRight: '5px' }} /> 
                 <ListItemText style={{color: 'white'}} primary="투데이" />
@@ -54,7 +54,7 @@ const Listb = () => {
             </NavLink>
           </ListItem>
           <ListItem button>
-            <NavLink to='/chart'>
+            <NavLink to='/login-main/chart'>
               <ListItemContainer>
                 <BarChartIcon style={{ color: 'white', marginRight: '5px' }} /> 
                 <ListItemText style={{color: 'white'}} primary="차트" />
@@ -62,7 +62,7 @@ const Listb = () => {
             </NavLink>
           </ListItem>
           <ListItem button>
-            <NavLink to='/new'>
+            <NavLink to='/login-main/new'>
               <ListItemContainer>
                 <NewReleasesIcon style={{ color: 'white', marginRight: '5px' }} /> 
                 <ListItemText style={{color: 'white'}} primary="최신 음악" />
@@ -70,7 +70,7 @@ const Listb = () => {
             </NavLink>
           </ListItem>
           <ListItem button>
-            <NavLink to='/month'>
+            <NavLink to='/login-main/month'>
               <ListItemContainer>
                 <EventNoteIcon style={{ color: 'white', marginRight: '5px' }} /> 
                 <ListItemText style={{color: 'white'}} primary="이달의 노래" />
@@ -78,7 +78,7 @@ const Listb = () => {
             </NavLink>
           </ListItem>
           <ListItem button>
-            <NavLink to='/dj'>
+            <NavLink to='/login-main/dj'>
               <ListItemContainer>
                 <HeadsetIcon style={{ color: 'white', marginRight: '5px' }} /> 
                 <ListItemText style={{color: 'white'}} primary="DJ 스테이션" />
@@ -86,7 +86,7 @@ const Listb = () => {
             </NavLink>
           </ListItem>
           <ListItem button style={{ marginTop: '2vw' }}>
-            <NavLink to='/playlist'>
+            <NavLink to='/login-main/playlist'>
               <ListItemContainer>
                 <ListAltIcon style={{ color: 'white', marginRight: '5px' }} /> 
                 <ListItemText style={{color: 'white'}} primary="플레이리스트" />
@@ -94,14 +94,14 @@ const Listb = () => {
             </NavLink>
           </ListItem>
           <ListItem button>
-            <NavLink to='/video'>
+            <NavLink to='/login-main/video'>
               <ListItemContainer>
                 <MovieIcon style={{ color: 'white', marginRight: '5px' }} /> 
                 <ListItemText style={{color: 'white'}} primary="내돈내산" />
               </ListItemContainer>
             </NavLink>
           </ListItem>
-          <ListItem button style={{ marginTop: '10vw' }}>
+          <ListItem button style={{ marginTop: '5vw' }}>
             <NavLink onClick={logout} style={{ textDecoration: 'none' }}>
               <ListItemContainer>
                 <LogoutIcon style={{color :'white', marginRight: '5px', position:'relative' , top:'4px'}}/>
