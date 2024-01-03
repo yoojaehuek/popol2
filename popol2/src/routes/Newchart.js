@@ -23,6 +23,7 @@ const PlaylistItem = styled(Box)({
   '&:hover .play-icon': {
     opacity: 1,
     cursor: 'pointer',
+    color:'red',
   },
   '&:hover img': {
     opacity: 0.8,
@@ -32,13 +33,14 @@ const PlaylistItem = styled(Box)({
 
 const PlaylistImage = styled('img')({
   marginBottom: '10px',
-  width: '80%',
+  width: '100%',
+  height:'12vw',
   transition: 'opacity 0.3s ease',
 });
 
 const PlayIcon = styled(PlayArrowIcon)({
   position: 'absolute',
-  top: '50%',
+  top: '40%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   opacity: 0,
@@ -93,8 +95,8 @@ const NewChart = (props) => {
                   <PlaylistImage src={API_URL+music.imageUrl} alt={music.name} onClick={() => {props.onMusic(music)}} />
                   <PlayIcon className="play-icon" fontSize="large" onClick={() => {props.onMusic(music)}}/>
                   <NavLink to='/login-main/detail' state={{music}}>
-                    <Typography variant="subtitle1" gutterBottom>{music.singer}</Typography>
-                    <Typography variant="body1">{music.name}</Typography>
+                    <Typography variant="subtitle1" gutterBottom><span style={{color:'white', fontWeight:"550", fontSize:'22px'}}>{music.name}</span></Typography>
+                    <Typography variant="body1"><span style={{color:'white'}}>{music.singer}</span></Typography>
                   </NavLink>
                 </PlaylistItem>
               </Grid>

@@ -19,7 +19,7 @@ const CustomButton = styled(Button)({
 });
 
 
-const Slider2 = () => {
+const Slider3 = () => {
   const [openModal, setOpenModal] = useState(false);
   const [videoId, setVideoId] = useState("");
 
@@ -47,17 +47,16 @@ const Slider2 = () => {
 
   return (
     <div className="sliders">
-      <h1>Music<span style={{color:'lightseagreen'}}>Hub</span> 비디오 콘텐츠</h1>
-      <h2>지브리를 지금 감상해보세요</h2>
+      <h2> 코믹스 웨이브를 지금 감상해보세요</h2>
       <Sliders {...settings} className="sliders2">
         <div>
           <img
             className="phoneImages"
             alt="이미지"
-            src="/images/video/ge.jpg"
+            src="/images/slider2/1.png"
           />
           <br></br>
-          <CustomButton onClick={() => handleOpenModal("RURusloLi-s")}>
+          <CustomButton onClick={() => handleOpenModal("nya6BDcJYZw")}>
             감상하기
           </CustomButton>
         </div>
@@ -65,10 +64,10 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="/images/video/ge2.jpg"
+            src="/images/slider2/2.png"
           />
           <br></br>
-          <CustomButton onClick={() => handleOpenModal("pfGDfDjAdSE")}>
+          <CustomButton onClick={() => handleOpenModal("jKg-Cp0ux5Q")}>
             감상하기
           </CustomButton>
         </div>
@@ -76,10 +75,10 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="/images/video/ge3.jpg"
+            src="/images/slider2/3.png"
           />
           <br></br>
-          <CustomButton onClick={() => handleOpenModal("92a7Hj0ijLs")}>
+          <CustomButton onClick={() => handleOpenModal("gcLIOSNS4jc")}>
             감상하기
           </CustomButton>
         </div>
@@ -87,10 +86,10 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="/images/video/ge4.jpg"
+            src="/images/slider2/4.png"
           />
           <br></br>
-          <CustomButton onClick={() => handleOpenModal("cObkRSVathg")}>
+          <CustomButton onClick={() => handleOpenModal("eA7nDGE_E00")}>
             감상하기
           </CustomButton>
         </div>
@@ -98,10 +97,10 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="/images/video/ge5.jpg"
+            src="/images/slider2/5.png"
           />
           <br></br>
-          <CustomButton onClick={() => handleOpenModal("iwROgK94zcM")}>
+          <CustomButton onClick={() => handleOpenModal("-shnk7ityoY")}>
             감상하기
           </CustomButton>
         </div>
@@ -109,10 +108,10 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="/images/video/ge6.jpg"
+            src="/images/slider2/6.png"
           />
           <br></br>
-          <CustomButton onClick={() => handleOpenModal("lwrG3HQXTFw")}>
+          <CustomButton onClick={() => handleOpenModal("tBk3B6nDQSQ")}>
             감상하기
           </CustomButton>
         </div>
@@ -120,7 +119,7 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="/images/video/ge7.jpg"
+            src="/images/slider2/7.png"
           />
           <br></br>
           <CustomButton onClick={() => handleOpenModal("VlMe7PavaRQ")}>
@@ -131,10 +130,21 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="/images/video/ge8.jpg"
+            src="/images/slider2/8.png"
           />
           <br></br>
-          <CustomButton onClick={() => handleOpenModal("-rvt5cOh-Ys")}>
+          <CustomButton onClick={() => handleOpenModal("ILQl1Q4jizc")}>
+            감상하기
+          </CustomButton>
+        </div>
+        <div>
+          <img
+            className="phoneImages"
+            alt="이미지"
+            src="/images/slider2/9.png"
+          />
+          <br></br>
+          <CustomButton onClick={() => handleOpenModal("UUpk0wnNhtU")}>
             감상하기
           </CustomButton>
         </div>
@@ -155,7 +165,7 @@ const Slider2 = () => {
           }}
         >
           <img
-            src="/images/video/gbl.png"
+            src="/images/slider2/comix.png"
             alt="감상 이미지"
             style={{ width: "15%", height: "50%" }}
           />
@@ -174,4 +184,4 @@ const Slider2 = () => {
   );
 };
 
-export default Slider2;
+export default Slider3;
