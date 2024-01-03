@@ -24,7 +24,7 @@ const LoginMain = () => {
   //   console.log("location: ", location);
   //   if(!getCookie('login')){
   //     alert('다시 로그인 해주세요');
-  //     navigate('/admin/login');
+  //     navigate('/');
   //   }
   // }, [location]);
 
