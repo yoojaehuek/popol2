@@ -87,7 +87,7 @@ const NewChart = (props) => {
       <CssBaseline />
       <MainContent>
         <div>
-          <h1 style={{color : 'white'}}>최신 앨범</h1>
+          <h1 style={{color : 'white'}}>최신 음악</h1>
           <Grid container spacing={2}>
             {musics.map((music) => (
               <Grid item xs={12} sm={6} md={2} key={music.id}>

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { getCookie, removeCookie } from "../cookie";
 import { API_URL } from '../config/contansts';
+import '../scss/EditProfile.scss'
 
 const EditProfile = () => {
   const navigate = useNavigate();
@@ -103,15 +104,16 @@ const EditProfile = () => {
 
   // JSX 반환
   return (
-    <Box sx={{ border: '1px solid #ccc', padding: '20px', borderRadius: '8px', textAlign: 'center' }}>
-      <Typography variant="h6" gutterBottom>
+    <Box sx={{ padding: '20px', borderRadius: '8px', textAlign: 'center' }}>
+      <Typography variant="h6" gutterBottom style={{color: 'white', paddingTop: '130px'}}>
         회원정보 수정
       </Typography>
-      <form onSubmit={handleSubmit}>
+      <form className="Fields" onSubmit={handleSubmit} style={{paddingTop: '30px'}}>
         <Grid container spacing={2} direction="column" justifyContent="center">
           {/* 비밀번호 입력 필드 */}
           <Grid item xs={12} md={6}>
-            <TextField
+            <input id='tf' 
+              placeholder='비밀번호'             
               fullWidth
               label="비밀번호"
               type="password"
@@ -124,7 +126,8 @@ const EditProfile = () => {
           </Grid>
           {/* 새 비밀번호 입력 필드 */}
           <Grid item xs={12} md={6}>
-            <TextField
+            <input id='tf'
+              placeholder='새 비밀번호'
               fullWidth
               label="새 비밀번호"
               type="password"
@@ -137,7 +140,8 @@ const EditProfile = () => {
           </Grid>
           {/* 비밀번호 확인 입력 필드 */}
           <Grid item xs={12} md={6}>
-            <TextField
+            <input id='tf'
+              placeholder='비밀번호 확인'
               fullWidth
               label="비밀번호 확인"
               type="password"
@@ -150,7 +154,8 @@ const EditProfile = () => {
           </Grid>
           {/* 전화번호 입력 필드 */}
           <Grid item xs={12} md={6}>
-            <TextField
+            <input id='tf'
+              placeholder='전화번호'
               fullWidth
               label="전화번호"
               name="phoneNumber"
@@ -162,7 +167,8 @@ const EditProfile = () => {
           </Grid>
           {/* 이메일 입력 필드 */}
           <Grid item xs={12} md={6}>
-            <TextField
+            <input id='tf'
+              placeholder='이메일'
               fullWidth
               label="이메일"
               type="email"

@@ -209,7 +209,7 @@ const Uploader = () => {
                     </Button>
                 </Form.Item>
             </Form>
-            <Button id="submit-button" size="large" onClick={() => {navigate('/login-main')}}>
+            <Button id="submit-button" size="large" onClick={() => {navigate('/login-main/musics')}}>
                 취소
             </Button>
         </div>

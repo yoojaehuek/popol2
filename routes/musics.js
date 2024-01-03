@@ -57,10 +57,9 @@ router.route('/new')
       const {kind, limit} = req.query;
       console.log(kind);
       const musics = await Music.findAll({
-        // where: {
-        //   kind: {[Op.like]: `%${kind}%`}
-        // },
-        order: [ ['kind', 'ASC'] ],
+        where: {
+          kind: {[Op.like]: `%${kind}%`}
+        },
         limit: parseInt(limit)
       });
       res.status(200).json(musics);

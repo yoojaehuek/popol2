@@ -11,6 +11,7 @@ import NewReleasesIcon from '@mui/icons-material/NewReleases';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import HeadsetIcon from '@mui/icons-material/Headset';
 import MovieIcon from '@mui/icons-material/Movie';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 import { removeCookie } from "../cookie";
 
 const drawerWidth = 250;
@@ -37,7 +38,7 @@ const Listb = () => {
       <Drawer variant="permanent" sx={{width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth, zIndex:'0'} }}>
         <List style={{height : '100%', background : 'rgb(0, 0, 0)'}}>
           <NavLink to='/login-main/musics'><h2 style={{color: 'white', textAlign: 'center', fontSize: '2rem', marginBottom: '2vw', marginTop: '1vw'}}>Music<span style={{color:  "lightseagreen"}}>Hub</span></h2></NavLink>
-          <ListItem button>
+          <ListItem button  style={{ padding: '8px 16px', justifyContent: 'start' }}>
             <NavLink to='/login-main/user/mypage' style={{color: '#fff'}}>
               <ListItemContainer>
                 <PersonIcon style={{ color: 'white', marginRight: '5px' }} /> 
@@ -45,7 +46,7 @@ const Listb = () => {
               </ListItemContainer>
             </NavLink>
           </ListItem>
-          <ListItem button style={{ marginTop: '2vw' }}>
+          <ListItem button  style={{ marginTop: '2vw', padding: '8px 16px', justifyContent: 'start' }}>
             <NavLink to='/login-main/musics'>
               <ListItemContainer>
                 <TodayIcon style={{ color: 'white', marginRight: '5px' }} /> 
@@ -53,7 +54,7 @@ const Listb = () => {
               </ListItemContainer>
             </NavLink>
           </ListItem>
-          <ListItem button>
+          <ListItem button  style={{ padding: '8px 16px', justifyContent: 'start' }}>
             <NavLink to='/login-main/chart'>
               <ListItemContainer>
                 <BarChartIcon style={{ color: 'white', marginRight: '5px' }} /> 
@@ -61,7 +62,7 @@ const Listb = () => {
               </ListItemContainer>
             </NavLink>
           </ListItem>
-          <ListItem button>
+          <ListItem button  style={{ padding: '8px 16px', justifyContent: 'start' }}>
             <NavLink to='/login-main/new'>
               <ListItemContainer>
                 <NewReleasesIcon style={{ color: 'white', marginRight: '5px' }} /> 
@@ -69,7 +70,7 @@ const Listb = () => {
               </ListItemContainer>
             </NavLink>
           </ListItem>
-          <ListItem button>
+          <ListItem button  style={{ padding: '8px 16px', justifyContent: 'start' }}>
             <NavLink to='/login-main/month'>
               <ListItemContainer>
                 <EventNoteIcon style={{ color: 'white', marginRight: '5px' }} /> 
@@ -77,7 +78,7 @@ const Listb = () => {
               </ListItemContainer>
             </NavLink>
           </ListItem>
-          <ListItem button>
+          <ListItem button  style={{ padding: '8px 16px', justifyContent: 'start' }}>
             <NavLink to='/login-main/dj'>
               <ListItemContainer>
                 <HeadsetIcon style={{ color: 'white', marginRight: '5px' }} /> 
@@ -85,7 +86,7 @@ const Listb = () => {
               </ListItemContainer>
             </NavLink>
           </ListItem>
-          <ListItem button style={{ marginTop: '2vw' }}>
+          <ListItem button style={{ marginTop: '2vw', padding: '8px 16px', justifyContent: 'start' }}>
             <NavLink to='/login-main/playlist'>
               <ListItemContainer>
                 <ListAltIcon style={{ color: 'white', marginRight: '5px' }} /> 
@@ -93,7 +94,7 @@ const Listb = () => {
               </ListItemContainer>
             </NavLink>
           </ListItem>
-          <ListItem button>
+          <ListItem button style={{ padding: '8px 16px', justifyContent: 'start' }}>
             <NavLink to='/login-main/video'>
               <ListItemContainer>
                 <MovieIcon style={{ color: 'white', marginRight: '5px' }} /> 
@@ -104,12 +105,12 @@ const Listb = () => {
           <ListItem button>
             <NavLink to='/uploader'>
               <ListItemContainer>
-                <MovieIcon style={{ color: 'white', marginRight: '5px' }} /> 
+                <FileUploadIcon style={{ color: 'white', marginRight: '5px' }} /> 
                 <ListItemText style={{color: 'white'}} primary="음악 업로드" />
               </ListItemContainer>
             </NavLink>
           </ListItem>
-          <ListItem button style={{ marginTop: '5vw' }}>
+          <ListItem button  style={{ marginTop: '5vw', padding: '8px 16px', justifyContent: 'start' }}>
             <NavLink onClick={logout} style={{ textDecoration: 'none' }}>
               <ListItemContainer>
                 <LogoutIcon style={{color :'white', marginRight: '5px', position:'relative' , top:'4px'}}/>
