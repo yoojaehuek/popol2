@@ -84,7 +84,6 @@ const Musics = (props) => {
         <h3 style={{paddingTop:'2vw', color:'white'}}>2차엔 에스파의 다음 챕터를 향해 시동을 거는 듯한 MusicHub 프로젝트 외에도 여러 기술과 새로운 장르의 도전까지,<br/>
         다양한 컬러로 채운 성숙한 변신이 가득한다. 팬덤을 생각하며 항상 엔진을 켜두는 에스파의 또 다른 출발</h3>
         </div>
-        <h2 style={{ color: 'white' }}>VIBE 추천 플레이리스트</h2>
         <Grid container spacing={2}>
           {musics.map((music) => (
             <Grid item xs={12} sm={6} md={4} key={music.id}>
