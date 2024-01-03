@@ -102,7 +102,7 @@ export default function Join() {
     // 입력값 유효성 검사 및 서버에 회원가입 요청
     if(pwd === confirmPwd && id !== "" && pwd !== "" && confirmPwd !== "" && name !== "" && phone !== ""){
       // 서버에 POST 요청을 보내어 회원가입 처리
-      await axios.post(`${API_URL}/user`, { id, name, phone, pwd })
+      await axios.post(`${API_URL}/api/user`, { id, name, phone, pwd })
         .then(() => {
           alert("가입 성공!");
           navigate('/');

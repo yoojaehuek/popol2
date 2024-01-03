@@ -16,7 +16,7 @@ const EditProfile = () => {
         const login = getCookie('accessToken');
         // 토큰을 사용하여 서버에 인증 요청
         await axios({
-          url: `${API_URL}/verify`,
+          url: `${API_URL}/api/verify`,
           method: 'POST',
           headers: {
             Authorization: 'Bearer ' + login
@@ -72,7 +72,7 @@ const EditProfile = () => {
         const newEmail = formData.email;
         // 서버에 회원 정보 수정 요청
         await axios({
-          url: `${API_URL}/user`,
+          url: `${API_URL}/api/user`,
           method: 'PUT',
           headers: {
             Authorization: 'Bearer ' + login

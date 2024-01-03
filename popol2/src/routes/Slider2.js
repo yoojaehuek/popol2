@@ -26,7 +26,7 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="images/video/ge.jpg"
+            src="/images/video/ge.jpg"
           />
           <br></br>
           <a href="/"alt ="">감상하기</a>
@@ -35,7 +35,7 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="images/video/ge2.jpg"
+            src="/images/video/ge2.jpg"
           />
           <br></br>
           <a href="/"alt ="">감상하기</a>
@@ -44,7 +44,7 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="images/video/ge3.jpg"
+            src="/images/video/ge3.jpg"
           />
           <br></br>
           <a href="/"alt ="">감상하기</a>
@@ -53,7 +53,7 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="images/video/ge4.jpg"
+            src="/images/video/ge4.jpg"
           />
           <br></br>
           <a href="/"alt ="">감상하기</a>
@@ -62,7 +62,7 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="images/video/ge5.jpg"
+            src="/images/video/ge5.jpg"
           />
           <br></br>
           <a href="/"alt ="">감상하기</a>
@@ -71,7 +71,7 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="images/video/ge6.jpg"
+            src="/images/video/ge6.jpg"
           />
           <br></br>
           <a href="/"alt ="">감상하기</a>
@@ -80,7 +80,7 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="images/video/ge7.jpg"
+            src="/images/video/ge7.jpg"
           />
           <br></br>
           <a href="/"alt ="">감상하기</a>
@@ -89,7 +89,7 @@ const Slider2 = () => {
           <img
             className="phoneImages"
             alt="이미지"
-            src="images/video/ge8.jpg"
+            src="/images/video/ge8.jpg"
           />
           <br></br>
           <a href="/"alt ="">감상하기</a>

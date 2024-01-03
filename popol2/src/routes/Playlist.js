@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import useAsync from "../customHook/useAsync";
 import { API_URL } from "../config/contansts";
-import { CssBaseline, Container, Box, Grid, Typography } from '@mui/material';
+import { CssBaseline, Box, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import Listb from './Listbar';
+import { NavLink, useNavigate } from 'react-router-dom';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Footer from './Footer';
 import { getCookie, removeCookie } from "../cookie";
-import CustomAudioPlayer from "./Audio"
 import '../scss/Playlist.scss'
 
 const MainContent = styled('div')({
@@ -18,7 +16,6 @@ const MainContent = styled('div')({
 });
 
 const PlaylistItem = styled(Box)({
-  // border: '1px solid #ccc',
   padding: '20px',
   borderRadius: '8px',
   margin: '10px',
@@ -26,9 +23,11 @@ const PlaylistItem = styled(Box)({
   position: 'relative',
   '&:hover .play-icon': {
     opacity: 1,
+    cursor: 'pointer',
   },
   '&:hover img': {
     opacity: 0.8,
+    cursor: 'pointer',
   },
 });
 
@@ -47,39 +46,16 @@ const PlayIcon = styled(PlayArrowIcon)({
   transition: 'opacity 0.3s ease',
 });
 
-// const playlists = [
-//   { id: 1, imageUrl: './logo192.png', artist: '아티스트 1', title: '플레이리스트 1' },
-//   { id: 2, imageUrl: './logo192.png', artist: '아티스트 2', title: '플레이리스트 2' },
-//   { id: 3, imageUrl: './logo192.png', artist: '아티스트 3', title: '플레이리스트 3' },
-//   { id: 4, imageUrl: './logo192.png', artist: '아티스트 4', title: '플레이리스트 4' },
-//   { id: 1, imageUrl: './logo192.png', artist: '아티스트 1', title: '플레이리스트 1' },
-//   { id: 2, imageUrl: './logo192.png', artist: '아티스트 2', title: '플레이리스트 2' },
-//   { id: 3, imageUrl: './logo192.png', artist: '아티스트 3', title: '플레이리스트 3' },
-//   { id: 4, imageUrl: './logo192.png', artist: '아티스트 4', title: '플레이리스트 4' },
-// ];
 
-
-
-
-const PlayList = () => {
+const PlayList = (props) => {
   const navigate = useNavigate();
-
-  const [playList, setPlayList] = useState([
-    {
-      name: "오늘 뭐 듣지?",
-      writer: "재생 버튼을 클릭해보세요",
-      img: "images/defaultMusicImg.png",
-      src: `${API_URL}/upload/music/RoieShpigler-Aluminum.mp3`,
-      id: 1,
-    },
-  ]);
 
   //전체곡 조회함수
   const getPlayList = async () => {
     const login = getCookie('accessToken');
     if (getCookie('accessToken') != null) {
       const res = await axios({
-        url: `${API_URL}/playlist`,
+        url: `${API_URL}/api/playlist`,
         method: 'GET',
         headers: {
           Authorization: 'Bearer ' + login
@@ -103,52 +79,26 @@ const PlayList = () => {
   if (!musics) {
     return <div>로딩중입니다.</div>;
   }
-  // const location = useLocation();
-  // const musicData = location.state ? location.state.musicData : null;
-  // const musicData = location.state.musicData;
-  // if (!musicData) {
-  //   return <div>데이터가 없습니다.</div>;
-  // }
-  
-
-  // 음악을 클릭했을 때 재생목록에 추가하는 함수
-  const onMusic = (e) => {
-    // e.preventDefault();
-    // console.log(e.target.value);
-    console.log(e.target.dataset);
-    setPlayList([
-      {
-        name: e.target.dataset.name,
-        writer: e.target.dataset.singer,
-        img: e.target.src,
-        src: e.target.dataset.musicurl,
-        id: 1,
-      },
-    ]);
-  };
 
 
   return (
     <div style={{ display: 'flex', background:'black' }}>
       <CssBaseline />
-      <Listb />
+      {/* <Listb /> */}
       <MainContent>
           <h1 style={{ color: 'white' }}>playlist</h1>
           <Grid container spacing={2}>
             {musics.map((playlist) => (
               <Grid item xs={12} sm={6} md={2} key={playlist.Music.id}>
                   <PlaylistItem style={{color : 'white'}} >
-                    <PlaylistImage 
-                      src={playlist.Music.imageUrl}
-                      alt={playlist.Music.name}
-                      data-singer={playlist.Music.singer}
-                      data-musicurl={playlist.Music.musicUrl}
-                      data-name={playlist.Music.name}
-                      data-id={playlist.Music.id}
-                      onClick={onMusic}
+                    <div onClick={() => {props.onMusic(playlist.Music)}}>
+                      <PlaylistImage 
+                        src={`${API_URL}${playlist.Music.imageUrl}`} 
+                        alt={playlist.Music.name}
                       />
-                    <PlayIcon className="play-icon" fontSize="large" />
-                    <NavLink to='/detail' state={{music: playlist.Music}} style={{color: "#fff"}}>
+                      <PlayIcon className="play-icon" fontSize="large" />
+                    </div>
+                    <NavLink to='/login-main/detail' state={{music: playlist.Music}} style={{color: "#fff"}}>
                       <Typography variant="subtitle1" gutterBottom>{playlist.Music.singer}</Typography>
                       <Typography variant="body1">{playlist.Music.name}</Typography>
                     </NavLink>
@@ -158,7 +108,6 @@ const PlayList = () => {
           </Grid>
           <Footer/>
       </MainContent>
-      <CustomAudioPlayer playList={playList} />
     </div>
   );
 };

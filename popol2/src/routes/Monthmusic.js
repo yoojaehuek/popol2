@@ -2,13 +2,11 @@ import React, {useEffect, useState} from 'react';
 import { CssBaseline, Container, Box, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useNavigate } from 'react-router-dom';
-import Listb from './Listbar';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import FastForwardIcon from '@mui/icons-material/FastForward';
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import MoreHorizSharpIcon from '@mui/icons-material/MoreHorizSharp';
 import Footer from './Footer'
-import CustomAudioPlayer from "./Audio";
 import axios from 'axios';
 import { getCookie, removeCookie } from "../cookie";
 import { API_URL } from '../config/contansts';
@@ -27,9 +25,11 @@ const PlaylistItem = styled(Box)({
   position: 'relative',
   '&:hover .play-icon': {
     opacity: 1,
+    cursor: 'pointer',
   },
   '&:hover img': {
     opacity: 0.8,
+    cursor: 'pointer',
   },
 });       
 
@@ -47,68 +47,27 @@ const PlayIcon = styled(PlayArrowIcon)({
   transition: 'opacity 0.3s ease',
 });
 
-// const playlists = [
-//   { id: 1, imageUrl: './logo192.png', artist: '아티스트 1', title: '플레이리스트 1' },
-//   { id: 2, imageUrl: './logo192.png', artist: '아티스트 2', title: '플레이리스트 2' },
-//   { id: 3, imageUrl: './logo192.png', artist: '아티스트 3', title: '플레이리스트 3' },
-//   { id: 4, imageUrl: './logo192.png', artist: '아티스트 4', title: '플레이리스트 4' },
-//   { id: 1, imageUrl: './logo192.png', artist: '아티스트 1', title: '플레이리스트 1' },
-//   { id: 2, imageUrl: './logo192.png', artist: '아티스트 2', title: '플레이리스트 2' },
-//   { id: 3, imageUrl: './logo192.png', artist: '아티스트 3', title: '플레이리스트 3' },
-//   { id: 4, imageUrl: './logo192.png', artist: '아티스트 4', title: '플레이리스트 4' },
-// ];
 
-//전체곡 조회함수
-const getMusics = async () => {
-  const res = await axios.get(`${API_URL}/musics`);
-  // .then(() => {
-  //   // alert("음악 전체 조회 성공.");
-  //   console.log("조회성공 res데이터: ",res.data);
-  // })
-  // .catch(err => {
-  //     console.error("음악 불러오기 에러: ", err);
-  // });
-  console.log("res.data:", res.data);
-  return res.data;
-};
+// //전체곡 조회함수
+// const getMusics = async () => {
+//   const res = await axios.get(`${API_URL}/api/musics`);
+//   // .then(() => {
+//   //   // alert("음악 전체 조회 성공.");
+//   //   console.log("조회성공 res데이터: ",res.data);
+//   // })
+//   // .catch(err => {
+//   //     console.error("음악 불러오기 에러: ", err);
+//   // });
+//   console.log("res.data:", res.data);
+//   return res.data;
+// };
 
-const Monthmusic = () => {
-  const [playList, setPlayList] = useState([
-    {
-      name: "오늘 뭐 듣지?",
-      writer: "재생 버튼을 클릭해보세요",
-      img: "images/defaultMusicImg.png",
-      src: `${API_URL}/upload/music/RoieShpigler-Aluminum.mp3`,
-      id: 1,
-    },
-  ]);
-
-  // 음악을 클릭했을 때 재생목록에 추가하는 함수
-  const onMusic = (e) => {
-    // e.preventDefault();
-    // console.log(e.target.value);
-    console.log(e.target.dataset);
-    setPlayList([
-      {
-        name: e.target.dataset.name,
-        writer: e.target.dataset.singer,
-        img: e.target.src,
-        src: e.target.dataset.musicurl,
-        id: 1,
-      },
-    ]);
-  };
+const Monthmusic = (props) => {
+  const navigate = useNavigate();
 
   //전체곡 조회함수
   const getMusics = async () => {
-    const res = await axios.get(`${API_URL}/musics`);
-    // .then(() => {
-    //   // alert("음악 전체 조회 성공.");
-    //   console.log("조회성공 res데이터: ",res.data);
-    // })
-    // .catch(err => {
-    //     console.error("음악 불러오기 에러: ", err);
-    // });
+    const res = await axios.get(`${API_URL}/api/musics`);
     console.log("res.data:", res.data);
     return res.data;
   };
@@ -121,43 +80,60 @@ const Monthmusic = () => {
     return <div>로딩중입니다.</div>;
   }
 
+  const addPlayList = async (music) => {
+    const login = getCookie('accessToken');
+    if (getCookie('accessToken') != null) {
+      await axios({
+        url: `${API_URL}/api/playlist`,
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + login
+        },
+        data: {
+          playList: music,
+        }
+      })
+      .then(() => {
+        alert("추가되었습니다!");
+      })
+      .catch(err => {
+        console.error(err);
+      });
+    }else {
+      alert('다시 로그인해주세요');
+      removeCookie('accessToken');
+      navigate('/');
+    }
+  }
+
   return (
     <div style={{ display: 'flex', background: 'black' }}>
       <CssBaseline />
-      <Listb />
       <MainContent style={{ color: 'white' }}>
         <div>
           <h1 style={{ paddingBottom: '1vw' }}>이달의 차트</h1>
           <Grid container spacing={1}>
             {musics.map((music) => (
               <Grid item xs={12} sm={6} md={12} key={music.id}>
-                <NavLink to='/detail' state={{ music }}>
-                  <PlaylistItem style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'white' }}>
-                    <PlaylistImage src={music.imageUrl} alt={music.name} />
-                    <PlayIcon className="play-icon" fontSize="large" />
+                <PlaylistItem style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'white' }}>
+                  <PlaylistImage src={API_URL+music.imageUrl} alt={music.name} onClick={() => {props.onMusic(music)}} />
+                  <PlayIcon className="play-icon" fontSize="large" onClick={() => {props.onMusic(music)}} />
+                  <NavLink to='/login-main/detail' state={{ music }}>
                     <Typography variant="subtitle1" gutterBottom>{music.singer}</Typography>
                     <Typography variant="subtitle" gutterBottom>{music.name}</Typography>
-                    <div>
-                      <FastForwardIcon style={{ marginRight: '1vw' }} />
-                      {/* <NavLink
-                        to={{
-                          pathname: '/playlist',
-                          state: { musicData: music },
-                        }}
-                      > */}
-                        <PlaylistAddIcon style={{ marginRight: '1vw' }} />
-                      {/* </NavLink> */}
-                      <MoreHorizSharpIcon />
-                    </div>
-                  </PlaylistItem>
-                </NavLink>
+                  </NavLink>
+                  <div>
+                    {/* <FastForwardIcon style={{ marginRight: '1vw' }} /> */}
+                    <PlaylistAddIcon style={{ marginRight: '1vw', cursor: 'pointer'}} onClick={() => {addPlayList(music)}} />
+                    {/* <MoreHorizSharpIcon /> */}
+                  </div>
+                </PlaylistItem>
               </Grid>
             ))}
           </Grid>
           <Footer />
         </div>
       </MainContent>
-      <CustomAudioPlayer playList={playList} />
     </div>
   );
 };

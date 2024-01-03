@@ -59,7 +59,7 @@ const MyPage = () => {
       // 서버에 로그인 정보를 전송하여 마이페이지 정보를 가져옴
       // const res = await axios.post(`${ API_URL }/user/mypage`, {login});
       const res = await axios({
-        url: `${API_URL}/user/mypage`,
+        url: `${API_URL}/api/user/mypage`,
         method: 'POST',
         headers: {
           Authorization: 'Bearer ' + login
@@ -95,7 +95,7 @@ const MyPage = () => {
     if (window.confirm("정말 탈퇴하시겠습니까?")) {
       try {
         // 서버에 회원 탈퇴 요청을 보냄
-        const response = await axios.delete(`${API_URL}/user`, {
+        const response = await axios.delete(`${API_URL}/api/user`, {
           headers: {
             Authorization: `Bearer ${login}`
           }
@@ -124,7 +124,7 @@ const MyPage = () => {
   return (
     <div id='mypageC' style={{ display: 'flex' }}>
       <CssBaseline />
-      <Listb />
+      {/* <Listb /> */}
       <MainContent>
         <Toolbar />
         <Container>
