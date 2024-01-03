@@ -1,5 +1,5 @@
-import React from 'react';
-import { CssBaseline, Box, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, CircularProgress } from '@mui/material';
+import React, { useState } from 'react';
+import { CssBaseline, Box, Typography, CircularProgress } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useNavigate } from 'react-router-dom';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -9,13 +9,14 @@ import axios from 'axios';
 import { getCookie, removeCookie } from "../cookie";
 import { API_URL } from '../config/contansts';
 import useAsync from '../customHook/useAsync';
-import './Monthmusic.scss';
+import '../scss/Monthmusic.scss';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableFooter, TablePagination, } from "@material-ui/core";
 
 const MainContent = styled('div')({
   padding: '2vw',
 });
 
-const PlaylistItem = styled(Box)({
+const TableCellStyle = {
   borderRadius: '8px',
   textAlign: 'center',
   position: 'relative',
@@ -27,7 +28,7 @@ const PlaylistItem = styled(Box)({
     opacity: 0.8,
     cursor: 'pointer',
   },
-});       
+};       
 
 const PlaylistImage = styled('img')({
   width: '5%',
@@ -45,6 +46,18 @@ const PlayIcon = styled(PlayArrowIcon)({
 
 const Monthmusic = (props) => {
   const navigate = useNavigate();
+
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage)
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10))
+    setPage(0)
+  };
 
   //전체곡 조회함수
   const getMusics = async () => {
@@ -96,47 +109,71 @@ const Monthmusic = (props) => {
     }
   }
 
+  const White = {
+    color: "white"
+  };
+
+  const paginatedMusics = musics.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
+
   return (
     <div style={{ display: 'flex', background: 'black' }}>
       <CssBaseline />
       <MainContent style={{ color: 'white' }} className='mcmain'>
-          <h1 style={{ paddingBottom: '1vw' }}>이달의 차트</h1>
+          <h1 style={{ paddingBottom: '1vw' }}>이달의 노래</h1>
             <TableContainer>
-              <Table>
+              <Table size="small">
                 <TableHead>
-                  <TableRow className='tbhead'>
-                    <TableCell>#</TableCell>
-                    <TableCell>이미지</TableCell>
-                    <TableCell>음악</TableCell>
-                    <TableCell>가수</TableCell>
-                    <TableCell>추가</TableCell>
+                  <TableRow>
+                    <TableCell style={White}>순위</TableCell>
+                    <TableCell style={{color: 'white'}}>앨범</TableCell>
+                    <TableCell style={White}>제목</TableCell>
+                    <TableCell style={White}>가수</TableCell>
+                    <TableCell style={White}>재생/담기</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {musics.map((music, index) => (
+                  {paginatedMusics.map((music, index) => (
                     <TableRow key={music.id}>
-                      <TableCell>{index + 1}</TableCell>
+                      <TableCell style={White}>{(index + 1)+10*page}</TableCell>
                       <TableCell>
-                        <PlaylistImage src={API_URL + music.imageUrl} alt={music.name} onClick={() => { props.onMusic(music) }} />
-                        <PlayIcon className="play-icon" fontSize="large" onClick={() => { props.onMusic(music) }} />
+                        <NavLink to='/login-main/detail' state={{ music }} style={White}>
+                          <PlaylistImage style={{ width: '60px', height: '60px'}} src={API_URL + music.imageUrl} alt={music.name}  />
+                          <PlayIcon className="play-icon" fontSize="large" />
+                        </NavLink>
                       </TableCell>
-                      <TableCell>
-                        <NavLink to='/login-main/detail' state={{ music }}>
+                      <TableCell style={{ width: 'fitContent'}}>
+                        <NavLink to='/login-main/detail' state={{ music }} style={White}>
                           <Typography variant="subtitle1" gutterBottom>{music.name}</Typography>
                         </NavLink>
                       </TableCell>
-                      <TableCell>
-                        <NavLink to='/login-main/detail' state={{ music }}>
+                      <TableCell style={{}}>
+                        <NavLink to='/login-main/detail' state={{ music }} style={White}>
                           <Typography variant="subtitle1" gutterBottom>{music.singer}</Typography>
                         </NavLink>
                       </TableCell>
-                      <TableCell>
+                      <TableCell style={White}>
+                        <PlayArrowIcon style={{ cursor: 'pointer' }} onClick={() => { props.onMusic(music) }} />
                         <PlaylistAddIcon style={{ cursor: 'pointer' }} onClick={() => { addPlayList(music) }} />
                       </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
+                <TableFooter>
+                  <TableRow>
+                    <TablePagination
+                      count={musics.length}
+                      page={page}
+                      rowsPerPage={rowsPerPage}
+                      onChangePage={handleChangePage}
+                      onChangeRowsPerPage={handleChangeRowsPerPage}
+                      style={{ backgroundColor: 'white'}}
+                    />
+                  </TableRow>
+                </TableFooter>
               </Table>
+              {/* <Stack spacing={2}>
+                <Pagination count={10} shape="rounded" style={{color: '#fff'}} />
+              </Stack> */}
             </TableContainer>
           <Footer />
       </MainContent>
