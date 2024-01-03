@@ -1,5 +1,5 @@
 import React from 'react';
-import { CssBaseline, Box, Grid, Typography, CircularProgress } from '@mui/material';
+import { CssBaseline, Box, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, CircularProgress } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useNavigate } from 'react-router-dom';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -9,6 +9,7 @@ import axios from 'axios';
 import { getCookie, removeCookie } from "../cookie";
 import { API_URL } from '../config/contansts';
 import useAsync from '../customHook/useAsync';
+import '../scss/Monthmusic.scss';
 
 const MainContent = styled('div')({
   padding: '2vw',
@@ -98,28 +99,46 @@ const Monthmusic = (props) => {
   return (
     <div style={{ display: 'flex', background: 'black' }}>
       <CssBaseline />
-      <MainContent style={{ color: 'white' }}>
-        <div>
+      <MainContent style={{ color: 'white' }} className='mcmain'>
           <h1 style={{ paddingBottom: '1vw' }}>이달의 노래</h1>
-          <Grid container spacing={1}>
-            {musics.map((music) => (
-              <Grid item xs={12} sm={6} md={12} key={music.id}>
-                <PlaylistItem style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'white' }}>
-                  <PlaylistImage src={API_URL+music.imageUrl} alt={music.name} onClick={() => {props.onMusic(music)}} />
-                  <PlayIcon className="play-icon" fontSize="large" onClick={() => {props.onMusic(music)}} />
-                  <NavLink to='/login-main/detail' state={{ music }}>
-                    <Typography variant="subtitle1" gutterBottom>{music.singer}</Typography>
-                    <Typography variant="subtitle" gutterBottom>{music.name}</Typography>
-                  </NavLink>
-                  <div>
-                    <PlaylistAddIcon style={{ marginRight: '1vw', cursor: 'pointer'}} onClick={() => {addPlayList(music)}} />
-                  </div>
-                </PlaylistItem>
-              </Grid>
-            ))}
-          </Grid>
+            <TableContainer>
+              <Table>
+                <TableHead>
+                  <TableRow className='tbhead'>
+                    <TableCell>#</TableCell>
+                    <TableCell>이미지</TableCell>
+                    <TableCell>음악</TableCell>
+                    <TableCell>가수</TableCell>
+                    <TableCell>추가</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {musics.map((music, index) => (
+                    <TableRow key={music.id}>
+                      <TableCell>{index + 1}</TableCell>
+                      <TableCell>
+                        <PlaylistImage src={API_URL + music.imageUrl} alt={music.name} onClick={() => { props.onMusic(music) }} />
+                        <PlayIcon className="play-icon" fontSize="large" onClick={() => { props.onMusic(music) }} />
+                      </TableCell>
+                      <TableCell>
+                        <NavLink to='/login-main/detail' state={{ music }}>
+                          <Typography variant="subtitle1" gutterBottom>{music.name}</Typography>
+                        </NavLink>
+                      </TableCell>
+                      <TableCell>
+                        <NavLink to='/login-main/detail' state={{ music }}>
+                          <Typography variant="subtitle1" gutterBottom>{music.singer}</Typography>
+                        </NavLink>
+                      </TableCell>
+                      <TableCell>
+                        <PlaylistAddIcon style={{ cursor: 'pointer' }} onClick={() => { addPlayList(music) }} />
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
           <Footer />
-        </div>
       </MainContent>
     </div>
   );

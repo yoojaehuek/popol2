@@ -1,8 +1,6 @@
 .song-main{
     padding: 5vw;
     justify-content: center;
-    display: flex;
-    height: 100vh;
     background-color: #000;
 }
 
@@ -33,7 +31,6 @@
     #lyrics{
         
         border-top: 1px solid #000;
-        margin: auto;
         p{
             font-size: 20px;
         }

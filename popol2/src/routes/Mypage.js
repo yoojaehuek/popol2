@@ -117,7 +117,7 @@ const MyPage = () => {
     }
   };
   const style = {
-    color: "black"
+    color: "white"
   };
 
   return (
@@ -128,31 +128,31 @@ const MyPage = () => {
         <Toolbar />
         <Container>
           <BoxContainer1>
-            <AiOutlineUser size={200} />
+            <AiOutlineUser size={200} style={style}/>
             <div>
-              <h3>{user.name}님 반갑습니다.</h3>
+              <h3 style={style}>{user.name}님 반갑습니다.</h3>
             </div>
           </BoxContainer1>
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <BoxContainer>
                 <NavLink to='/login-main/edit' state={{ user }}>
-                  <AiOutlineLock id='icon1' size={40} />
-                  <div id='mp2'>회원정보 수정</div>
+                  <AiOutlineLock id='icon1' size={40} style={style}/>
+                  <div id='mp2' style={style}>회원정보 수정</div>
                 </NavLink>
               </BoxContainer>
             </Grid>
             <Grid item xs={6}>
               <BoxContainer>
                 <NavLink to='/login-main/member'>
-                  <IoTicketOutline id='icon1' size={40} />
-                  <div id='mp2'>이용권 관리</div>
+                  <IoTicketOutline id='icon1' size={40} style={style}/>
+                  <div id='mp2' style={style}>이용권 관리</div>
                 </NavLink>
               </BoxContainer>
             </Grid>
           </Grid>
           <button onClick={secession}
-            style={{ width: '80px', float: 'right', backgroundColor: '#fff' }}>
+            style={{ width: '160px', height: '40px', float: 'right', backgroundColor: '#000', color: '#fff', borderRadius: '8px', border: '2px solid #fff'}}>
             회원 탈퇴
           </button>
         </Container>
