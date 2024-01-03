@@ -1,7 +1,6 @@
 import React from 'react';
 import Slider from './Slider2';
 import '../scss/video.scss'
-//12
 
 const Video = () => {
 

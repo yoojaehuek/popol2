@@ -2,8 +2,6 @@
     // padding-top: 5vw;
     padding: 5vw;
     justify-content: center;
-    display: flex;
-    height: 100vh;
     background-color: #000;
 }
 
@@ -16,7 +14,6 @@
     
     #detail-out{
         display: flex;
-        margin-bottom: 30px;
         img{
             height: 250px;
             width: 250px;
@@ -34,7 +31,6 @@
     #lyrics{
         
         border-top: 1px solid #000;
-        margin: auto;
         p{
             font-size: 20px;
         }

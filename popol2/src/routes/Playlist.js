@@ -45,6 +45,7 @@ const PlaylistItem = styled(Box)({
   '&:hover .play-icon': {
     opacity: 1,
     cursor: 'pointer',
+    color:'red',
   },
   '&:hover img': {
     opacity: 0.8,
@@ -54,13 +55,14 @@ const PlaylistItem = styled(Box)({
 
 const PlaylistImage = styled('img')({
   marginBottom: '10px',
-  width: '80%',
+  width: '90%',
+  height:"20vh",
   transition: 'opacity 0.3s ease',
 });
 
 const PlayIcon = styled(PlayArrowIcon)({
   position: 'absolute',
-  top: '50%',
+  top: '36%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   opacity: 0,
@@ -142,8 +144,8 @@ const PlayList = (props) => {
                       <PlayIcon className="play-icon" fontSize="large" />
                     </div>
                     <NavLink to='/login-main/detail' state={{music: playlist.Music}} style={{color: "#fff"}}>
-                      <Typography variant="subtitle1" gutterBottom>{playlist.Music.singer}</Typography>
-                      <Typography variant="body1">{playlist.Music.name}</Typography>
+                      <Typography variant="subtitle1" gutterBottom><span style={{fontWeight: "550", fontSize: "22px"}}>{playlist.Music.name}</span></Typography>
+                      <Typography variant="body1">{playlist.Music.singer}</Typography>
                     </NavLink>
                   </PlaylistItem>
               </Grid>

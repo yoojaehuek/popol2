@@ -1,26 +1,22 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import '../scss/Musicdetail.scss'
+import { Typography, Button } from '@mui/material'; // Material-UI 컴포넌트 가져오기
+import '../scss/Musicdetail.scss';
 import { API_URL } from '../config/contansts';
-import axios from "axios";
-import { getCookie, removeCookie } from "../cookie";
+import axios from 'axios';
+import { getCookie, removeCookie } from '../cookie';
 import { useNavigate } from 'react-router-dom';
 
 const MusicDetails = (props) => {
-  // 현재 페이지의 location 정보를 가져옴
   const location = useLocation();
-  // location에서 전달된 state를 추출
   const { state } = location;
-  console.log("state: ", state);
+  console.log('state: ', state);
 
   const navigate = useNavigate();
-  
-  // 가사 보기 상태를 관리하는 상태 변수 및 토글 함수
+
   const [showLyrics, setShowLyrics] = useState(false);
 
-  // 가사 보기 버튼을 클릭했을 때 호출되는 함수
   const handleToggleLyrics = () => {
-    // showLyrics 상태를 토글하여 가사를 표시하거나 숨김
     setShowLyrics(!showLyrics);
   };
 
@@ -31,83 +27,78 @@ const MusicDetails = (props) => {
         url: `${API_URL}/api/playlist`,
         method: 'POST',
         headers: {
-          Authorization: 'Bearer ' + login
+          Authorization: 'Bearer ' + login,
         },
         data: {
           playList: state.music,
-        }
+        },
       })
-      .then(() => {
-        alert("추가되었습니다!");
-      })
-      .catch(err => {
-        console.error(err);
-      });
-    }else {
+        .then(() => {
+          alert('추가되었습니다!');
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
       alert('다시 로그인해주세요');
       removeCookie('accessToken');
       navigate('/');
     }
-  }
+  };
 
   const handleDownload = (music) => {
-    // URL에서 GET 요청 보내기
     axios({
       url: `${API_URL}/mp3`,
       method: 'GET',
-      responseType: 'blob', // Set the expected response type to Blob
-      params: { url: music.musicUrl }
+      responseType: 'blob',
+      params: { url: music.musicUrl },
     })
-    .then((response) => {
-      console.log(response);
-      const blob = new Blob([response.data], { type: 'audio/mpeg' });
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
+      .then((response) => {
+        console.log(response);
+        const blob = new Blob([response.data], { type: 'audio/mpeg' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
 
-      // 생성한 URL과 다운로드할 파일명 설정
-      link.setAttribute('href', url);
-      link.setAttribute('download', `${music.name}.mp3`);
+        link.setAttribute('href', url);
+        link.setAttribute('download', `${music.name}.mp3`);
 
-      // 링크를 문서(body)에 추가
-      document.body.appendChild(link);
+        document.body.appendChild(link);
 
-      // 링크 클릭 => 파일 다운로드
-      link.click();
+        link.click();
 
-      // 다운로드 후 링크와 URL을 정리
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-    })
-    .catch((error) => {
-      console.error('Error during file download:', error);
-    });
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      })
+      .catch((error) => {
+        console.error('Error during file download:', error);
+      });
   };
 
-  // 음악 상세 정보를 화면에 렌더링
   return (
-    <div className='song-main'>
-      {/* <Listb/> */}
+    <div className="song-main">
       <div className="song-details">
-        <div id='detail-out'>
-          {/* 음악 이미지 표시 */}
-          <img src={API_URL+state.music.imageUrl} alt="노래 이미지" />
+        <div id="detail-out">
+          <img src={API_URL + state.music.imageUrl} alt="노래 이미지" />
           <div id="details-in">
-            {/* 가수 정보 표시 */}
-            <h2>{state.music.singer}</h2>
-            {/* 작곡가 정보 표시 */}
-            <p>작곡가: {state.music.composer}</p>
-            {/* 제목 정보 표시 */}
-            <p>제목: {state.music.name}</p>
-            {/* 장르 정보 표시 */}
-            <p>장르: {state.music.kind}</p>
+            <h2>{state.music.name}</h2>
+            <Typography variant="body1">가수: {state.music.singer}</Typography>
+            <Typography variant="body1">작곡가: {state.music.composer}</Typography>
+            <Typography variant="body1">장르: {state.music.kind}</Typography>
+            <Button onClick={() => props.onMusic(state.music)}>재생 아이콘</Button>
+            <Button onClick={addPlayList}>플리 아이콘</Button>
+            <Button onClick={() => handleDownload(state.music)}>다운로드 아이콘</Button>
           </div>
         </div>
-            <button onClick={() => {props.onMusic(state.music)}}>재생 아이콘</button>
-            <button onClick={addPlayList}>플리 아이콘</button>
-            <button onClick={() => handleDownload(state.music)}>다운로드 아이콘</button>
-        <div id='lyrics'>
-          <h2>가사</h2>
-          <p> {state.music.lyrics}</p>
+        <div id="lyrics">
+          <h2 style={{marginTop:'50px', borderTop:"solid 1px gray", paddingTop:'30px'}}>가사</h2>
+          {showLyrics && (
+            <Typography variant="body2" style={{ whiteSpace: 'pre-line' }}>
+              {state.music.lyrics}
+            </Typography>
+          )}
+          <Button onClick={handleToggleLyrics}>
+            {showLyrics ? '가사 숨기기' : '가사 보기'}
+          </Button>
         </div>
       </div>
     </div>

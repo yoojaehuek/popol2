@@ -326,8 +326,9 @@
   transform-style: preserve-3d;
   margin: -20vw -35vw;
 }
-.cube1 h1{
-  margin: 25vw -50vw 20vw;
+.cube1 > h1{
+  margin: 25vw -45vw 20vw;
+  font-size: 2.5rem;
 }
 .side {
   position: absolute;
