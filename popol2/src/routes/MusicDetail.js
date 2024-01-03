@@ -84,10 +84,15 @@ const MusicDetails = (props) => {
             <Typography variant="body1">가수: {state.music.singer}</Typography>
             <Typography variant="body1">작곡가: {state.music.composer}</Typography>
             <Typography variant="body1">장르: {state.music.kind}</Typography>
-            <Button onClick={() => props.onMusic(state.music)}>재생 아이콘</Button>
+            {/* <Button onClick={() => props.onMusic(state.music)}>재생 아이콘</Button>
             <Button onClick={addPlayList}>플리 아이콘</Button>
-            <Button onClick={() => handleDownload(state.music)}>다운로드 아이콘</Button>
+            <Button onClick={() => handleDownload(state.music)}>다운로드 아이콘</Button> */}
           </div>
+        </div>
+        <div className="Buttons">
+          <img src='/images/icons/play.png' alt='' onClick={() => {props.onMusic(state.music)}} id="pbtn"></img>
+          <img src='/images/icons/playlist.png' alt='' onClick={addPlayList} id="plbtn"></img>
+          <img src='/images/icons/download.png' alt='' onClick={() => handleDownload(state.music)} id="dbtn"></img>
         </div>
         <div id="lyrics">
           <h2 style={{marginTop:'50px', borderTop:"solid 1px gray", paddingTop:'30px'}}>가사</h2>
@@ -96,7 +101,7 @@ const MusicDetails = (props) => {
               {state.music.lyrics}
             </Typography>
           )}
-          <Button onClick={handleToggleLyrics}>
+          <Button onClick={handleToggleLyrics} style={{color : "#fff"}}>
             {showLyrics ? '가사 숨기기' : '가사 보기'}
           </Button>
         </div>

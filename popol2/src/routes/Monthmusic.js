@@ -9,6 +9,7 @@ import axios from 'axios';
 import { getCookie, removeCookie } from "../cookie";
 import { API_URL } from '../config/contansts';
 import useAsync from '../customHook/useAsync';
+import '../scss/Monthmusic.scss';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableFooter, TablePagination, } from "@material-ui/core";
 
 const MainContent = styled('div')({
@@ -118,7 +119,7 @@ const Monthmusic = (props) => {
     <div style={{ display: 'flex', background: 'black' }}>
       <CssBaseline />
       <MainContent style={{ color: 'white' }} className='mcmain'>
-          <h1 style={{ paddingBottom: '1vw' }}>이달의 차트</h1>
+          <h1 style={{ paddingBottom: '1vw' }}>이달의 노래</h1>
             <TableContainer>
               <Table size="small">
                 <TableHead>
