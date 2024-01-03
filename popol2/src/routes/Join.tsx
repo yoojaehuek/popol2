@@ -87,18 +87,13 @@ export default function Join() {
     setFormData({ 
       ...formData,
       [name]: value,
-      [`${name}Label`]: label, });
+      [`${name}Label`]: label, 
+    });
   };
 
   // 폼 제출 핸들러
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // 입력값 추출
-    const id = formData.id; // 이메일
-    const pwd = formData.pwd;
-    const confirmPwd = formData.confirmPwd;
-    const name = formData.name;
-    const phone = formData.phone;
     // 형식 유효성검사
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; 
@@ -117,13 +112,13 @@ export default function Join() {
     }
     // 입력값 유효성 검사 및 서버에 회원가입 요청
     // 서버에 POST 요청을 보내어 회원가입 처리
-    await axios.post(`${API_URL}/user`, { id, name, phone, pwd })
+    await axios.post(`${API_URL}/api/user`, { id: formData.id, name: formData.name, phone: formData.phone, pwd: formData.pwd }) 
       .then(() => {
         alert("가입 성공!");
         navigate('/');
       })
-      .catch(err => {
-        console.error(err);
+      .catch(error => {
+        console.error(error);
       });
   };
 
