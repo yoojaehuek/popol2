@@ -1,5 +1,7 @@
 import React from 'react';
 import Slider from './Slider2';
+import Slider2 from './Slider3';
+import Slider3 from './Slider4';
 import '../scss/video.scss'
 
 const Video = () => {
@@ -15,6 +17,8 @@ const Video = () => {
           <span className="arrow">↓</span>
         </div>
         <Slider/>
+        <Slider2/>
+        <Slider3/>
       </div>
     </div>
   );
