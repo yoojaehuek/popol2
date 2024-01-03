@@ -1,4 +1,5 @@
 const express = require('express');
+const { Op } = require('sequelize');
 const Music = require('../models/music'); // 음악 모델 import
 
 const router = express.Router();
@@ -37,18 +38,34 @@ router.route('/')
   });
 
 router.route('/new')
-.get(async (req, res, next) => { // 음악 전체 조회
-  try {
-    const musics = await Music.findAll({
-      order: [ ['regdate', 'DESC'] ],
-      limit: 10,
-    }); // 모든 음악 데이터 조회
-    console.log("musics", musics);
-    res.json(musics); // 조회된 음악 데이터를 클라이언트에 응답으로 전송
-  } catch (err) {
-    console.error(err);
-    next(err);
-  }
-})
+  .get(async (req, res, next) => { // 음악 전체 조회
+    try {
+      const musics = await Music.findAll({
+        order: [ ['regdate', 'DESC'] ],
+        limit: 10,
+      }); // 모든 음악 데이터 조회
+      console.log("musics", musics);
+      res.json(musics); // 조회된 음악 데이터를 클라이언트에 응답으로 전송
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  })
+
+  router.get('/kind', async (req, res)=>{
+    try {
+      const {kind, limit} = req.query;
+      console.log(kind);
+      const musics = await Music.findAll({
+        where: {
+          kind: {[Op.like]: `%${kind}%`}
+        },
+        limit: parseInt(limit)
+      });
+      res.status(200).json(musics);
+    } catch (error) { 
+      res.status(500).json({err: error});
+    } 
+  });
 
 module.exports = router;
