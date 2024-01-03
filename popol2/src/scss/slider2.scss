@@ -31,7 +31,7 @@
 }
 
 
-.sliders  a{
+.sliders > button{
   color: white;
   position: relative;
   left: 1rem;
@@ -42,7 +42,7 @@
   bottom: 1rem;
 }
 
-.sliders  a:hover{
+.sliders  button:hover{
   color: rgb(0, 0, 0);
   background-color: rgba(245, 236, 236, 0.856);
 }
