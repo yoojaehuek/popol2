@@ -49,10 +49,14 @@ const PlayIcon = styled(PlayArrowIcon)({
 });
 
 //전체곡 조회함수
-const getMusics = async () => {
-  const res = await axios.get(`${API_URL}/api/musics`);
+const getMusics = async (limit) => {
+  const res = await axios.get(`${API_URL}/api/musics/kind?kind=POP&limit=15`);
+  const res1 = await axios.get(`${API_URL}/api/musics/kind?kind=한국&limit=15`);
+  const res2 = await axios.get(`${API_URL}/api/musics/kind?kind=일본&limit=15`);
   console.log("res.data:", res.data);
-  return res.data;
+  const allResData = [...res.data, ...res1.data, ...res2.data]
+  console.log("allResData:",allResData);
+  return allResData;
 };
 
 const Chartmusic = (props) => {
@@ -109,7 +113,7 @@ const Chartmusic = (props) => {
     let arr = musics.filter((music) => kinds.includes(music.kind));
     console.log("arr: ", arr);
     // 기본적으로는 전체 차트를 보여줌
-    return arr.slice(0, 15);
+    return arr;
   };
 
   // useAsync 커스텀 훅을 사용하여 음악 데이터를 비동기적으로 가져오는 로직
