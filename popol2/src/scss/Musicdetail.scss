@@ -1,5 +1,5 @@
 .song-main{
-    padding-top: 5vw;
+    padding: 5vw;
     justify-content: center;
     display: flex;
     height: 100vh;
@@ -38,4 +38,27 @@
             font-size: 20px;
         }
     }
+    .Buttons{
+        position: absolute;
+        right: 100px;
+        float: auto;
+        #pbtn{                   
+            cursor: pointer;
+            margin-right: 40px;
+            width: 32px;
+            height: 32px;
+        }
+        #plbtn{            
+            cursor: pointer;
+            margin-right: 40px;
+            width: 32px;
+            height: 32px;
+        }
+        #dbtn{            
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+        }
+    }
+    
 }

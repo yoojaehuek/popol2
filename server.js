@@ -8,7 +8,7 @@ const path = require('path');
 const app = express();
 const morgan = require('morgan');
 const index = path.join(__dirname, 'popol2/build/index.html')
-const localUrl = 8081; 
+const localUrl = 8001; 
 
 const { sequelize } = require('./models');
 const musicRouter = require('./routes/musics');
@@ -31,7 +31,7 @@ const upload = multer({
             }
         },
         filename: function(req, file, cb){ // 어떤 이름으로 저장할거야?
-            cb(null, file.originalname) // 업로드한 file의 오리지널 이름으로 저장하겠다.
+            cb(null, path.basename(file.originalname, path.extname(file.originalname)) + new Date().valueOf() + path.extname(file.originalname)) // 업로드한 file의 오리지널 이름으로 저장하겠다.
         }
     })
 })
@@ -58,7 +58,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json())
 
 
-// 브라우저 cors 이슈를 막기 위해 사용(모든 브라우저의 요청 받겠다 보안이 뻥ㅋㅋㅋ)
+// 브라우저 cors 이슈를 막기 위해 사용(모든 브라우저의 요청 받겠다 보안이 취약)
 const cors = require('cors');
 app.use(cors());
 
@@ -72,7 +72,7 @@ app.post('/image', upload.single('image'), (req, res)=>{
   console.log("post(/image) file:",file);
   res.send({ 
       // imageUrl: "http://localhost:3000/"+file.destination+file.filename
-      imageUrl: `http://localhost:${localUrl}/`+file.destination+file.filename //이미지 여기 저장했다 json형식으로 보냄
+      imageUrl: `/`+file.destination+file.filename //이미지 여기 저장했다 json형식으로 보냄
   })
 })
 app.post('/mp3', upload.single('file'), (req, res)=>{ 
@@ -80,16 +80,22 @@ app.post('/mp3', upload.single('file'), (req, res)=>{
   console.log("post(/mp3) file:",file);
   res.send({ 
     // imageUrl: "http://localhost:3000/"+file.destination+file.filename
-    musicUrl: `http://localhost:${localUrl}/`+file.destination+file.filename //이미지 여기 저장했다 json형식으로 보냄
+    musicUrl: `/`+file.destination+file.filename //이미지 여기 저장했다 json형식으로 보냄
   })
 })
 
-app.use('/musics', musicRouter); 
-app.use('/user', userRouter); 
-app.use('/amounts', amountRouter);
-app.use('/login', loginRouter);
-app.use('/verify', verifyRouter);
-app.use('/playlist', playlistRouter);
+app.get('/mp3', (req, res)=>{ 
+  const {url} = req.query;
+  console.log(url);
+  res.download(url.substring(1));
+});
+
+app.use('/api/musics', musicRouter); 
+app.use('/api/user', userRouter); 
+app.use('/api/amounts', amountRouter);
+app.use('/api/login', loginRouter);
+app.use('/api/verify', verifyRouter);
+app.use('/api/playlist', playlistRouter);
 
 // 위에서 안걸린 나머지 모든 get요청 처리
 // 예: http://localhost:8080/asdfasdfasd

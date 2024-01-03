@@ -6,27 +6,18 @@ import Footer from './routes/Footer';
 import Main from './routes/Main';
 import Login from './routes/Login.tsx';
 import Join from './routes/Join.tsx';
-import Playlist from './routes/Playlist';
-import Mypage from './routes/Mypage';
-import Musics from './routes/Musics';
 import Payment from './routes/Payment.tsx';
-import SuccessPage from './routes/Success.js';
-import Simple from './routes/ChatBot.js';
-import FailPage from './routes/Fail.js';
-import Dash from './routes/Dash.js';
-import EditProfile from './routes/EditProfile.js';
-import MembershipManagement from './routes/Membershipmang.js';
-import MusicDetail from './routes/MusicDetail'
-import Dj from './routes/Dj.js';
-import Chart from './routes/Chart.js';
-import Monthmusic from './routes/Monthmusic.js';
-import Newchart from './routes/Newchart.js';
-import Video from './routes/Video.js';
+import SuccessPage from './routes/Success';
+import Simple from './routes/ChatBot';
+import FailPage from './routes/Fail';
+import Dash from './routes/Dash';
+import LoginMain from './routes/LoginMain.js';
 import UpLoader from './routes/UpLoader.js';
 
 function App() {
   const location = useLocation();
-  const hidePages = ['/detail', '/playlist', '/user/mypage', '/musics', '/music', '/dash', '/uploader', '/dj', '/month', "/chart", '/video', '/new'];
+  const hidePages = ['/login-main/detail', '/login-main/playlist', '/login-main/user/mypage', '/login-main/musics', '/login-main/music', '/dash', '/uploader', '/login-main/dj', '/login-main/month', "/login-main/chart", '/login-main/video', '/login-main/new', '/login-main', '/login-main/edit', '/login-main/member'];
+  // const hidePages = ['/login-main/detail'];
   const Hide = hidePages.includes(location.pathname);
 
   return (
@@ -42,7 +33,8 @@ function App() {
         <Route path="/fail" element={<FailPage />} />
 
         {/* b */}
-        <Route path="/playlist" element={<Playlist />} />
+        <Route path='/login-main/*' element={<LoginMain />}></Route>
+        {/* <Route path="/playlist" element={<Playlist />} />
         <Route path="/user/mypage" element={<Mypage />} />
         <Route path="/edit" element={<EditProfile />} />
         <Route path="/member" element={<MembershipManagement />} />
@@ -52,7 +44,7 @@ function App() {
         <Route path="/month" element={<Monthmusic />} />
         <Route path="/chart" element={<Chart />} />
         <Route path='/new' element={<Newchart/>} />
-        <Route path='/video' element={<Video/>} />
+        <Route path='/video' element={<Video/>} /> */}
 
         {/* c */}
         <Route path="/dash" element={<Dash/>} />

@@ -2,18 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* white-space: pre-wrap; */
 }
 
 a{
   text-decoration: none;
 }
-
-/* .App{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-} */
 
 li {
   list-style: none;

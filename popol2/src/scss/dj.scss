@@ -5,6 +5,16 @@
   background-color: black;
   display: flex;
   width: 100%; /* 전체 너비 사용 */
+  h1 {
+    font-size: 3vw;
+    line-height: 5.25rem;
+  }
+  
+  h2{
+    padding-top: 30px;
+    // font-size: 2vw;
+    line-height: 60px;
+  }
 }
 
 .dj-item {
@@ -17,12 +27,3 @@
   padding-bottom: 50px;
 }
 
-h1 {
-  font-size: 3vw;
-  line-height: 5.25rem;
-}
-
-h2{
-  padding-top: 30px;
-  line-height: 60px;
-}
