@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   CssBaseline,
   Box,
@@ -21,11 +21,12 @@ const MainContent = styled("div")({
 
 const PlaylistItem = styled(Box)({
   borderRadius: "8px",
-  textAlign: "center",
+  marginBottom: "20px",
   position: "relative",
   "&:hover .play-icon": {
     opacity: 1,
     cursor: "pointer",
+    color: "red",
   },
   "&:hover img": {
     opacity: 0.8,
@@ -34,15 +35,16 @@ const PlaylistItem = styled(Box)({
 });
 
 const PlaylistImage = styled("img")({
-  width: "5%",
+  width: "20%",
+  height: "10vh",
   transition: "opacity 0.3s ease",
-  marginRight: "3vw",
+  marginRight: "1vw",
 });
 
 const PlayIcon = styled(PlayArrowIcon)({
   position: "absolute",
-  bottom: "5%",
-  left: "2.5%",
+  bottom: "5.5%",
+  left: "9.5%",
   transform: "translate(-50%, -50%)",
   opacity: 0,
   transition: "opacity 0.3s ease",
@@ -54,8 +56,8 @@ const getMusics = async (limit) => {
   const res1 = await axios.get(`${API_URL}/api/musics/kind?kind=한국&limit=15`);
   const res2 = await axios.get(`${API_URL}/api/musics/kind?kind=일본&limit=15`);
   console.log("res.data:", res.data);
-  const allResData = [...res.data, ...res1.data, ...res2.data]
-  console.log("allResData:",allResData);
+  const allResData = [...res.data, ...res1.data, ...res2.data];
+  console.log("allResData:", allResData);
   return allResData;
 };
 
@@ -156,8 +158,12 @@ const Chartmusic = (props) => {
       <CssBaseline />
       <MainContent style={{ color: "white" }}>
         <div>
-          <h1 style={{ paddingBottom: "1vw" }}>차트</h1>
-          <h2 style={{ paddingBottom: "1vw" }}>K-POP TOP 15</h2>
+          <h1 style={{ paddingBottom: "1vw", color: "llightseagreen" }}>
+            차트
+          </h1>
+          <h2 style={{ paddingBottom: "1vw", color: "lightseagreen" }}>
+            K-POP TOP 15
+          </h2>
           <Grid container spacing={1}>
             {getFilteredMusics([
               "한국-발라드",
@@ -188,11 +194,17 @@ const Chartmusic = (props) => {
                       props.onMusic(music);
                     }}
                   />
-                  <NavLink to="/login-main/detail" state={{ music }}>
+                  <NavLink
+                    to="/login-main/detail"
+                    state={{ music }}
+                    style={{ color: "white" }}
+                  >
                     <Typography variant="subtitle1" gutterBottom>
-                      {music.singer}
+                      <span style={{ fontWeight: "550", fontSize: "22px" }}>
+                        {music.name}
+                      </span>
                       <br />
-                      {music.name}
+                      <span style={{ fontWeight: "300" }}>{music.singer}</span>
                     </Typography>
                   </NavLink>
                 </PlaylistItem>
@@ -201,7 +213,9 @@ const Chartmusic = (props) => {
           </Grid>
         </div>
         <div style={{ paddingTop: "2vw" }}>
-          <h2 style={{ paddingBottom: "1vw" }}>BILLBOARD TOP 15</h2>
+          <h2 style={{ paddingBottom: "1vw", color: "lightseagreen" }}>
+            BILLBOARD TOP 15
+          </h2>
           <Grid container spacing={1}>
             {getFilteredMusics([
               "POP-솔로",
@@ -232,11 +246,17 @@ const Chartmusic = (props) => {
                       props.onMusic(music);
                     }}
                   />
-                  <NavLink to="/login-main/detail" state={{ music }}>
+                  <NavLink
+                    to="/login-main/detail"
+                    state={{ music }}
+                    style={{ color: "white" }}
+                  >
                     <Typography variant="subtitle1" gutterBottom>
-                      {music.singer}
+                      <span style={{ fontWeight: "550", fontSize: "22px" }}>
+                        {music.name}
+                      </span>
                       <br />
-                      {music.name}
+                      <span style={{ fontWeight: "300" }}>{music.singer}</span>
                     </Typography>
                   </NavLink>
                 </PlaylistItem>
@@ -245,7 +265,9 @@ const Chartmusic = (props) => {
           </Grid>
         </div>
         <div style={{ paddingTop: "2vw" }}>
-          <h2 style={{ paddingBottom: "1vw" }}>J-POP TOP 15</h2>
+          <h2 style={{ paddingBottom: "1vw", color: "lightseagreen" }}>
+            J-POP TOP 15
+          </h2>
           <Grid container spacing={1}>
             {getFilteredMusics([
               "일본-아이돌",
@@ -275,11 +297,17 @@ const Chartmusic = (props) => {
                       props.onMusic(music);
                     }}
                   />
-                  <NavLink to="/login-main/detail" state={{ music }}>
+                  <NavLink
+                    to="/login-main/detail"
+                    state={{ music }}
+                    style={{ color: "white" }}
+                  >
                     <Typography variant="subtitle1" gutterBottom>
-                      {music.singer}
+                      <span style={{ fontWeight: "550", fontSize: "22px" }}>
+                        {music.name}
+                      </span>
                       <br />
-                      {music.name}
+                      <span style={{ fontWeight: "300" }}>{music.singer}</span>
                     </Typography>
                   </NavLink>
                 </PlaylistItem>
