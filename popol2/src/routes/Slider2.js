@@ -18,6 +18,7 @@ const CustomButton = styled(Button)({
   },
 });
 
+
 const Slider2 = () => {
   const [openModal, setOpenModal] = useState(false);
   const [videoId, setVideoId] = useState("");
