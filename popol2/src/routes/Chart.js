@@ -16,11 +16,12 @@ const MainContent = styled('div')({
 
 const PlaylistItem = styled(Box)({
   borderRadius: '8px',
-  textAlign: 'center',
+  marginBottom:"20px",
   position: 'relative',
   '&:hover .play-icon': {
     opacity: 1,
     cursor: 'pointer',
+    color:"red",
   },
   '&:hover img': {
     opacity: 0.8,
@@ -29,15 +30,16 @@ const PlaylistItem = styled(Box)({
 });       
 
 const PlaylistImage = styled('img')({
-  width: '5%',
+  width: '20%',
+  height: '10vh',
   transition: 'opacity 0.3s ease',
-	marginRight: '3vw',
+	marginRight: '1vw',
 });
 
 const PlayIcon = styled(PlayArrowIcon)({
   position: 'absolute',
-  bottom: '5%',
-  left: '2.5%',
+  bottom: '5.5%',
+  left: '9.5%',
   transform: 'translate(-50%, -50%)',
   opacity: 0,
   transition: 'opacity 0.3s ease',
@@ -143,7 +145,7 @@ if (!musics) {
           <Grid container spacing={1}>
             {getFilteredMusics(['한국-발라드', '한국-힙합', '한국-트로트', '한국-동요', '한국-아이돌']).map((music) => (
               <Grid item xs={12} sm={6} md={4} key={music.id}>
-                <PlaylistItem style={{display:'flex', alignItems:'center', color : 'white'}}>
+                <PlaylistItem style={{display:'flex', alignItems:'center', color :'white'}}>
                   <PlaylistImage 
                     src={`${API_URL}${music.imageUrl}`} 
                     alt={music.name} 
@@ -154,8 +156,8 @@ if (!musics) {
                     fontSize="large" 
                     onClick={() => {props.onMusic(music)}} 
                   />
-                  <NavLink to='/login-main/detail' state={{music}}>
-                    <Typography variant="subtitle1" gutterBottom>{music.singer}<br/>{music.name}</Typography>
+                  <NavLink to='/login-main/detail' state={{music}} style={{color:'white'}}>
+                    <Typography variant="subtitle1" gutterBottom><span style={{fontWeight:"550", fontSize:'22px'}}>{music.name}</span><br/><span style={{fontWeight:"300"}}>{music.singer}</span></Typography>
                   </NavLink>
                 </PlaylistItem>
               </Grid>
@@ -178,8 +180,8 @@ if (!musics) {
                       fontSize="large" 
                       onClick={() => {props.onMusic(music)}} 
                     />
-                    <NavLink to='/login-main/detail' state={{music}}>
-                      <Typography variant="subtitle1" gutterBottom>{music.singer}<br/>{music.name}</Typography>
+                    <NavLink to='/login-main/detail' state={{music}} style={{color:'white'}}>
+                      <Typography variant="subtitle1" gutterBottom><span style={{fontWeight:"550", fontSize:'22px'}}>{music.name}</span><br/><span style={{fontWeight:"300"}}>{music.singer}</span></Typography>
                     </NavLink>
                 </PlaylistItem>
               </Grid>
@@ -202,8 +204,8 @@ if (!musics) {
                       fontSize="large" 
                       onClick={() => {props.onMusic(music)}} 
                     />
-                    <NavLink to='/login-main/detail' state={{music}}>
-                      <Typography variant="subtitle1" gutterBottom>{music.singer}<br/>{music.name}</Typography>
+                    <NavLink to='/login-main/detail' state={{music}} style={{color:'white'}}>
+                      <Typography variant="subtitle1" gutterBottom><span style={{fontWeight:"550", fontSize:'22px'}}>{music.name}</span><br/><span style={{fontWeight:"300"}}>{music.singer}</span></Typography>
                     </NavLink>
                   </PlaylistItem>
               </Grid>

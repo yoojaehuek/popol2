@@ -90,7 +90,7 @@ const MusicDetails = (props) => {
           </div>
         </div>
         <div id="lyrics">
-          <h2 style={{marginTop:'50px'}}>가사</h2>
+          <h2 style={{marginTop:'50px', borderTop:"solid 1px gray", paddingTop:'30px'}}>가사</h2>
           {showLyrics && (
             <Typography variant="body2" style={{ whiteSpace: 'pre-line' }}>
               {state.music.lyrics}
