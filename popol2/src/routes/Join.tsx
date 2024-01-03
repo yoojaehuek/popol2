@@ -55,7 +55,7 @@ export default function Join() {
 
     // 이메일 형식을 확인하는 정규 표현식
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; // 최소 8자, 숫자와 문자 조합
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // 최소 8자, 숫자와 문자 조합
     const nameRegex = /^[a-zA-Z가-힣]+$/; // 영문 또는 한글만 허용
     const phoneRegex = /^\d{10,11}$/; // 10자 또는 11자의 숫자만 허용
 
@@ -87,33 +87,39 @@ export default function Join() {
     setFormData({ 
       ...formData,
       [name]: value,
-      [`${name}Label`]: label, });
+      [`${name}Label`]: label, 
+    });
   };
 
   // 폼 제출 핸들러
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // 입력값 추출
-    const id = formData.id; // 이메일
-    const pwd = formData.pwd;
-    const confirmPwd = formData.confirmPwd;
-    const name = formData.name;
-    const phone = formData.phone;
-    // 입력값 유효성 검사 및 서버에 회원가입 요청
-    if(pwd === confirmPwd && id !== "" && pwd !== "" && confirmPwd !== "" && name !== "" && phone !== ""){
-      // 서버에 POST 요청을 보내어 회원가입 처리
-      await axios.post(`${API_URL}/api/user`, { id, name, phone, pwd })
-        .then(() => {
-          alert("가입 성공!");
-          navigate('/');
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    } else {
-      // 필수 입력값이 비어있거나 비밀번호가 일치하지 않는 경우 경고 메시지 출력
-      return alert("모든 필수 항목을 입력해주세요.");
+    // 형식 유효성검사
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; 
+    const nameRegex = /^[a-zA-Z가-힣]+$/; 
+    const phoneRegex = /^\d{10,11}$/; 
+    // 각 입력 필드에 대한 유효성 검사
+    const isIdValid = emailRegex.test(formData.id);
+    const isPwdValid = passwordRegex.test(formData.pwd);
+    const isConfirmPwdValid = formData.confirmPwd === formData.pwd;
+    const isNameValid = nameRegex.test(formData.name);
+    const isPhoneValid = phoneRegex.test(formData.phone);
+
+    // 하나라도 유효성 검사를 통과하지 못한 경우 처리
+    if (!(isIdValid && isPwdValid && isConfirmPwdValid && isNameValid && isPhoneValid)) {
+      return alert("모든 필수 항목을 올바르게 입력해주세요.");
     }
+    // 입력값 유효성 검사 및 서버에 회원가입 요청
+    // 서버에 POST 요청을 보내어 회원가입 처리
+    await axios.post(`${API_URL}/api/user`, { id: formData.id, name: formData.name, phone: formData.phone, pwd: formData.pwd }) 
+      .then(() => {
+        alert("가입 성공!");
+        navigate('/');
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
 
   return (
