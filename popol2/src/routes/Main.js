@@ -55,7 +55,7 @@ const Main = () => {
   }
   // API에서 요금 정보를 가져오는 비동기 함수
   const getAmounts = async () => {
-    const res = await axios.get(`${API_URL}/amounts`);
+    const res = await axios.get(`${API_URL}/api/amounts`);
     return res.data;
   };
 

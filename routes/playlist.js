@@ -50,7 +50,7 @@ router.route('/')
       if (ok) {
         await PlayList.create({
           userId: id,
-          musicId: req.body.playList.musicId,
+          musicId: req.body.playList.musicId ? req.body.playList.musicId : req.body.playList.id,
         });
       }
       res.json(ok);

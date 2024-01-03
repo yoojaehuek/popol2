@@ -14,7 +14,7 @@ const Amount = (amount) => {
 
 	// API에서 특정 금액 정보를 가져오는 비동기 함수 정의
 	const getAmount = async () => {
-		const res = await axios.get(`${API_URL}/amounts/${id}`); // API에서 데이터를 가져옴
+		const res = await axios.get(`${API_URL}/api/amounts/${id}`); // API에서 데이터를 가져옴
 		return res.data; // 가져온 데이터를 반환
 	}
 

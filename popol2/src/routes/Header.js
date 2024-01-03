@@ -25,7 +25,7 @@ export default function Header() {
     </div>
   :
     <div>
-      <NavLink to='/user/mypage'>
+      <NavLink to='/login-main/user/mypage'>
         <Button color="inherit">My</Button>
       </NavLink>
       <NavLink color="inherit" onClick={logout}>
