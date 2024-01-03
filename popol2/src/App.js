@@ -11,10 +11,10 @@ import Mypage from './routes/Mypage';
 import Musics from './routes/Musics';
 import Payment from './routes/Payment.tsx';
 import SuccessPage from './routes/Success.js';
-import Simple from './routes/Chatbot.js';
+import Simple from './routes/ChatBot.js';
 import FailPage from './routes/Fail.js';
 import Dash from './routes/Dash.js';
-import EditProfile from './routes/Editprofile.js';
+import EditProfile from './routes/EditProfile.js';
 import MembershipManagement from './routes/Membershipmang.js';
 import MusicDetail from './routes/MusicDetail'
 import Dj from './routes/Dj.js';

@@ -127,7 +127,7 @@ const Monthmusic = () => {
       <Listb />
       <MainContent style={{ color: 'white' }}>
         <div>
-          <h1 style={{ paddingBottom: '1vw' }}>이달의 차트</h1>
+          <h1 style={{ paddingBottom: '1vw' }}>이달의 노래</h1>
           <Grid container spacing={1}>
             {musics.map((music) => (
               <Grid item xs={12} sm={6} md={12} key={music.id}>

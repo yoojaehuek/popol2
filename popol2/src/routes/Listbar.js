@@ -24,7 +24,7 @@ const Listb = () => {
     <DrawerContainer>
       <Drawer variant="permanent" sx={{width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth, zIndex:'0'} }}>
         <List style={{height : '100%', background : 'linear-gradient(45deg, rgb(0, 0, 0), rgb(201, 52, 221), rgb(0, 0, 0)'}}>
-          <h2 style={{color:'white', paddingLeft:'20px'}}>MusciHub</h2>
+          <h2 style={{color:'white', paddingLeft:'20px'}}>MusicHub</h2>
             <ListItem button>
               <NavLink to='/user/mypage' style={{color: '#fff'}}>Mypage</NavLink>
             </ListItem>
