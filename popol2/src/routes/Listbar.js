@@ -101,6 +101,14 @@ const Listb = () => {
               </ListItemContainer>
             </NavLink>
           </ListItem>
+          <ListItem button>
+            <NavLink to='/uploader'>
+              <ListItemContainer>
+                <MovieIcon style={{ color: 'white', marginRight: '5px' }} /> 
+                <ListItemText style={{color: 'white'}} primary="음악 업로드" />
+              </ListItemContainer>
+            </NavLink>
+          </ListItem>
           <ListItem button style={{ marginTop: '5vw' }}>
             <NavLink onClick={logout} style={{ textDecoration: 'none' }}>
               <ListItemContainer>

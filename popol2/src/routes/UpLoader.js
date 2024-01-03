@@ -205,10 +205,13 @@ const Uploader = () => {
                 </Form.Item>
                 <Form.Item>
                     <Button id="submit-button" size="large" htmlType='submit'>
-                        상품등록하기
+                        등록
                     </Button>
                 </Form.Item>
             </Form>
+            <Button id="submit-button" size="large" onClick={() => {navigate('/login-main')}}>
+                취소
+            </Button>
         </div>
     )
 }
