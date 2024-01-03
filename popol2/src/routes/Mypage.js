@@ -6,7 +6,6 @@ import { getCookie, removeCookie } from "../cookie";
 import { API_URL } from "../config/contansts";
 import useAsync from "../customHook/useAsync";
 import axios from "axios";
-import Listb from './Listbar';
 import '../scss/Mypage.scss';
 import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineLock } from "react-icons/ai";
@@ -137,7 +136,7 @@ const MyPage = () => {
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <BoxContainer>
-                <NavLink to='/edit' state={{ user }}>
+                <NavLink to='/login-main/edit' state={{ user }}>
                   <AiOutlineLock id='icon1' size={40} />
                   <div id='mp2'>회원정보 수정</div>
                 </NavLink>
@@ -145,7 +144,7 @@ const MyPage = () => {
             </Grid>
             <Grid item xs={6}>
               <BoxContainer>
-                <NavLink to='/member'>
+                <NavLink to='/login-main/member'>
                   <IoTicketOutline id='icon1' size={40} />
                   <div id='mp2'>이용권 관리</div>
                 </NavLink>

@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import { CssBaseline, Container, Box, Grid, Typography } from '@mui/material';
+import React from 'react';
+import { CssBaseline, Box, Grid, Typography, CircularProgress } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useNavigate } from 'react-router-dom';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import FastForwardIcon from '@mui/icons-material/FastForward';
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
-import MoreHorizSharpIcon from '@mui/icons-material/MoreHorizSharp';
 import Footer from './Footer'
 import axios from 'axios';
 import { getCookie, removeCookie } from "../cookie";
@@ -17,10 +15,7 @@ const MainContent = styled('div')({
 });
 
 const PlaylistItem = styled(Box)({
-  // border: '1px solid #ccc',
-  // padding: '20px',
   borderRadius: '8px',
-  // margin: '10px',
   textAlign: 'center',
   position: 'relative',
   '&:hover .play-icon': {
@@ -47,21 +42,6 @@ const PlayIcon = styled(PlayArrowIcon)({
   transition: 'opacity 0.3s ease',
 });
 
-
-// //전체곡 조회함수
-// const getMusics = async () => {
-//   const res = await axios.get(`${API_URL}/api/musics`);
-//   // .then(() => {
-//   //   // alert("음악 전체 조회 성공.");
-//   //   console.log("조회성공 res데이터: ",res.data);
-//   // })
-//   // .catch(err => {
-//   //     console.error("음악 불러오기 에러: ", err);
-//   // });
-//   console.log("res.data:", res.data);
-//   return res.data;
-// };
-
 const Monthmusic = (props) => {
   const navigate = useNavigate();
 
@@ -74,7 +54,16 @@ const Monthmusic = (props) => {
 
   const [state] = useAsync(getMusics, []);
   const { loading, data: musics, error } = state; //state구조분해
-  if (loading) return <div>로딩중 ......</div>;
+  if (loading) {
+    return (
+      <div style={{ textAlign: 'center', padding: '20px', color: 'white', backgroundColor: '#000', height: '100vh', display: "flex", flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <Typography variant="h5" gutterBottom>
+          잠시만 기다려주세요...
+        </Typography>
+        <CircularProgress style={{ marginTop: '10px' }} />
+      </div>
+    )
+  }
   if (error) return <div>에러가 발생했습니다.</div>;
   if (!musics) {
     return <div>로딩중입니다.</div>;
@@ -123,9 +112,7 @@ const Monthmusic = (props) => {
                     <Typography variant="subtitle" gutterBottom>{music.name}</Typography>
                   </NavLink>
                   <div>
-                    {/* <FastForwardIcon style={{ marginRight: '1vw' }} /> */}
                     <PlaylistAddIcon style={{ marginRight: '1vw', cursor: 'pointer'}} onClick={() => {addPlayList(music)}} />
-                    {/* <MoreHorizSharpIcon /> */}
                   </div>
                 </PlaylistItem>
               </Grid>

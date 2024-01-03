@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import useAsync from "../customHook/useAsync";
 import { API_URL } from "../config/contansts";
-import { CssBaseline, Box, Grid} from '@mui/material';
+import { CssBaseline, Box, Grid, Typography, CircularProgress } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink } from 'react-router-dom';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -95,7 +95,16 @@ const Dj = (props) => {
 
   const [state] = useAsync(getMusics, []);
   const { loading, data: musics, error } = state; //state구조분해
-  if (loading) return <div>로딩중 ......</div>;
+  if (loading) {
+    return (
+      <div style={{ textAlign: 'center', padding: '20px', color: 'white', backgroundColor: '#000', height: '100vh', display: "flex", flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <Typography variant="h5" gutterBottom>
+          잠시만 기다려주세요...
+        </Typography>
+        <CircularProgress style={{ marginTop: '10px' }} />
+      </div>
+    )
+  }
   if (error) return <div>에러가 발생했습니다.</div>;
   if (!musics) {
     return <div>로딩중입니다.</div>;

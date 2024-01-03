@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { CssBaseline, Box, Grid, Typography } from '@mui/material';
+import { CssBaseline, Box, Grid, Typography, CircularProgress } from '@mui/material';
 import { styled } from '@mui/system';
 import { NavLink, useNavigate } from 'react-router-dom';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -113,8 +113,16 @@ const [state] = useAsync(getMusics, []); // getMusics 함수를 사용하여 데
 const { loading, data: musics, error } = state; // state 객체에서 loading, musics, error 값을 구조 분해
 
 // 로딩 중일 때는 로딩 메시지를 표시
-if (loading) return <div>로딩중 ......</div>;
-
+if (loading) {
+  return (
+    <div style={{ textAlign: 'center', padding: '20px', color: 'white', backgroundColor: '#000', height: '100vh', display: "flex", flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      <Typography variant="h5" gutterBottom>
+        잠시만 기다려주세요...
+      </Typography>
+      <CircularProgress style={{ marginTop: '10px' }} />
+    </div>
+  )
+}
 // 에러 발생 시 에러 메시지를 표시
 if (error) return <div>에러가 발생했습니다.</div>;
 
