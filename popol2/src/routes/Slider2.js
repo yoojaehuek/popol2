@@ -1,20 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import Sliders from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Dialog, DialogContent, DialogTitle, Button, styled  } from "@mui/material";
 import "../scss/slider2.scss";
 
+const CustomButton = styled(Button)({
+  backgroundColor: 'rgba(129, 119, 119, 0.856)',
+  color: "white",
+  padding: '10px  5vw',
+  border: 'solid 1px rgba(128, 128, 128, 0)',
+  borderRadius: '40px',
+  cursor: "pointer",
+  left: '1rem',
+  "&:hover": {
+    backgroundColor: "#1565C0",
+  },
+});
+
 const Slider2 = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const [videoId, setVideoId] = useState("");
+
   const settings = {
-    infinite: true, // 무한 롤링 활성화
-    speed: 3900, // 슬라이드 속도 (ms)
-    slidesToShow: 4, // 한 번에 보여질 슬라이드 개수
-    slidesToScroll: 1, // 한 번에 스크롤될 슬라이드 개수
-    autoplay: true, // 자동 롤링 활성화
-    autoplaySpeed: 2000, // 자동 롤링 속도 (ms)
+    infinite: true,
+    speed: 3900,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
     pauseOnHover: false,
-    dots: false, // 점 표시 숨기기
-    arrows: false, // 버튼 숨기기
+    dots: false,
+    arrows: false,
+  };
+
+  const handleOpenModal = (id) => {
+    setOpenModal(true);
+    setVideoId(id);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setVideoId("");
   };
 
   return (
@@ -29,7 +56,9 @@ const Slider2 = () => {
             src="/images/video/ge.jpg"
           />
           <br></br>
-          <a href="/"alt ="">감상하기</a>
+          <CustomButton onClick={() => handleOpenModal("RURusloLi-s")}>
+            감상하기
+          </CustomButton>
         </div>
         <div>
           <img
@@ -38,7 +67,9 @@ const Slider2 = () => {
             src="/images/video/ge2.jpg"
           />
           <br></br>
-          <a href="/"alt ="">감상하기</a>
+          <CustomButton onClick={() => handleOpenModal("pfGDfDjAdSE")}>
+            감상하기
+          </CustomButton>
         </div>
         <div>
           <img
@@ -47,7 +78,9 @@ const Slider2 = () => {
             src="/images/video/ge3.jpg"
           />
           <br></br>
-          <a href="/"alt ="">감상하기</a>
+          <CustomButton onClick={() => handleOpenModal("92a7Hj0ijLs")}>
+            감상하기
+          </CustomButton>
         </div>
         <div>
           <img
@@ -56,7 +89,9 @@ const Slider2 = () => {
             src="/images/video/ge4.jpg"
           />
           <br></br>
-          <a href="/"alt ="">감상하기</a>
+          <CustomButton onClick={() => handleOpenModal("cObkRSVathg")}>
+            감상하기
+          </CustomButton>
         </div>
         <div>
           <img
@@ -65,7 +100,9 @@ const Slider2 = () => {
             src="/images/video/ge5.jpg"
           />
           <br></br>
-          <a href="/"alt ="">감상하기</a>
+          <CustomButton onClick={() => handleOpenModal("iwROgK94zcM")}>
+            감상하기
+          </CustomButton>
         </div>
         <div>
           <img
@@ -74,7 +111,9 @@ const Slider2 = () => {
             src="/images/video/ge6.jpg"
           />
           <br></br>
-          <a href="/"alt ="">감상하기</a>
+          <CustomButton onClick={() => handleOpenModal("lwrG3HQXTFw")}>
+            감상하기
+          </CustomButton>
         </div>
         <div>
           <img
@@ -83,7 +122,9 @@ const Slider2 = () => {
             src="/images/video/ge7.jpg"
           />
           <br></br>
-          <a href="/"alt ="">감상하기</a>
+          <CustomButton onClick={() => handleOpenModal("VlMe7PavaRQ")}>
+            감상하기
+          </CustomButton>
         </div>
         <div>
           <img
@@ -92,9 +133,42 @@ const Slider2 = () => {
             src="/images/video/ge8.jpg"
           />
           <br></br>
-          <a href="/"alt ="">감상하기</a>
+          <CustomButton onClick={() => handleOpenModal("-rvt5cOh-Ys")}>
+            감상하기
+          </CustomButton>
         </div>
       </Sliders>
+
+      <Dialog
+        open={openModal}
+        onClose={handleCloseModal}
+        maxWidth="xl"
+        fullWidth
+      >
+        <DialogTitle
+          style={{
+            textAlign: "center",
+            // backgroundColor: "rgba(0 0 0)",
+            color: "white",
+            fontWeight: "bold",
+          }}
+        >
+          <img
+            src="/images/video/gbl.png"
+            alt="감상 이미지"
+            style={{ width: "15%", height: "50%" }}
+          />
+        </DialogTitle>
+        <DialogContent>
+          <iframe
+            width="100%"
+            height="700px"
+            src={`https://www.youtube.com/embed/${videoId}`}
+            title="YouTube"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          ></iframe>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
