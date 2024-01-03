@@ -19,7 +19,7 @@ const Slider2 = () => {
 
   return (
     <div className="sliders">
-      <h1>MusicHub 오디오 콘텐츠</h1>
+      <h1>Music<span style={{color:'lightseagreen'}}>Hub</span> 오디오 콘텐츠</h1>
       <h2>지브리 ost를 지금 감상해보세요</h2>
       <Sliders {...settings} className="sliders2">
         <div>
