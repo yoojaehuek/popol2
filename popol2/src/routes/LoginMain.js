@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import Listb from "./Listbar.js";
+import Listb from "./listbar.js";
 import EditProfile from './EditProfile.js';
 import MembershipManagement from './Membershipmang';
 import MusicDetail from './MusicDetail'
