@@ -1,10 +1,22 @@
-# Mplay 🎵
+# MusicHub는 🎵
 
-> 바쁜 현대시대에 내 기분에 맞춘 음악 서비스
+> MusicHub는 바쁜 일상에 적합한 간편한 음악 스트리밍 플랫폼으로, 개인 취향을 학습하여 최적의 음악을 제안하며, 언제 어디서나 손쉽게 감상할 수 있는 사용자 중심의 서비스를 제공
+
+ ## 대표화면
+<table>
+  <tr>
+    <td><b>메인 페이지</b></td>
+    <td><b>로그인 후 메인 페이지</b></td>
+  </tr> 
+  <tr>
+    <td><img src="/readme-img/main.png" alt="메인 페이지"></td>
+    <td><img src="/readme-img/main2.png" alt="로그인 후 메인 페이지"></td>
+  </tr>
+</table>
 
 ## 어떤 서비스인가요?
 
-- 바쁜 현대시대에 내 기분에 맞춘 음악 서비스
+- 바쁜 현대사회를 살아가는 현대인들을 위한 특별한 음악 체험을 제공하는 서비스로 사용자의 일상, 기분, 그리고 감성에 맞춰 정확한 음악을 추천하며, 언제 어디서나 손쉽게 즐길 수 있는 편리함을 지닌 음악 스트리밍 플랫폼
 
 ## Contents
 
@@ -71,16 +83,22 @@ npm start
 
 서비스 소개
 
-- 노래를 다운로드해 오프라인으로도 음악을 저장해서 어디서든 들어보세요 (예정)
-- 월정액으로 노래를 제한없이 들어보세요
+- 각 나라별 원하는 노래를 선택하고 재생하며, 다운로드 및 플레이 리스트에 넣어 보관합니다
+- 월정액으로 노래를 제한없이 들어보세요(예정)
+
 기능 소개
 
 - 음원 등록
 - 음원 조회
 - 음원 듣기
+- 음원 다운로드
 - 음원 플레이리스트 담기
-- 회원 가입 / 탈퇴
-- 로그인 / 로그아웃
+- 비디오 콘텐츠 감상하기(유튜브)
+- 회원 가입
+- 회원 정보 수정
+- 회원 탈퇴
+- 로그인
+- 로그아웃
 - 월정액 결제
 - 마이페이지
 
@@ -93,19 +111,21 @@ npm start
       - 대표 이미지, 음원 파일, 음원 제목, 카테고리, 가수 이름, 작곡가, 작사가, 가사를 입력 받아 음원 등록
 
     2. 음원 조회 기능  
-        - 텍스트 클릭 시 상세페이지로 이동 후 음원 정보 표시
-        - 로그인 후  페이지의 투데이 페이지에서 메뉴전체 조회
+        - 텍스트 클릭 시 상세페이지로 이동 후 음원 세부 정보 조회
+        - 로그인 후 접속되는 페이지에서 원하는 카테고리 노래 감상 가능
         - 업로드하면 차트페이지에서 카테고리 분석 후 해당 나라에 맞게 자동 추가
-        - DJ스테이션 페이지 이미지 클릭 시 DB에 저장된 플레이 리스트 목록 조회 및 재생
         - 업로드 시 이달의 차트 페이지에 해당 달에 등록한 음원 조회
+        - 플레이 리스트 페이지에서 추가한 노래 확인 및 감상 가능
 
     3. 음원 듣기 기능
         - 재생 시 오디오 플레이어에 이미지, 제목, 가수 데이터를 보내 해당 음원 재생
         - 오디오 플레이어에서 재생, 정지, 음량 조절 등 컨트롤 가능
+        - 페이지 이동 시 재생 유지
     
     4. 플레이리스트 기능
         - 플레이리스트 아이콘 클릭 시 선택한 음원 데이터가 플레이리스트 페이지로 이동
         - 저장된 플레이리스트는 언제든지 다시 들을 수 있도록 저장
+        - 플레이 리스트가 비어있으면 추천 문구 및 추천 페이지로 이동
     
     5. 회원가입/탈퇴 기능
         - 회원가입을 통해 서비스에 가입 및 이용 가능
@@ -129,7 +149,7 @@ npm start
     
     8. 마이페이지 기능
         - 마이페이지에서 개인 정보를 확인하고 수정 가능
-        - 이용 중인 서비스 정보, 내역, 개인 설정 등을 관리  
+        - 회원 탈퇴 기능
       
 4. 유저 시나리오
   - WHO 
@@ -149,7 +169,7 @@ npm start
 
 #### 🧩 front-end
 
-![front-end](/readme-img/front.png)
+![front-end](/readme-img/front.svg)
 
 > 페이지별 구조
 
@@ -164,7 +184,7 @@ npm start
 * Chart: 음원을 카테고리별로 분류하여 보여주는 페이지
 * Newchart: 최신 음원 순으로 정렬하여 보여주는 페이지
 * Monthmusic: 조회수 기준 순위를 보여주는 페이지 
-* DJ: 
+* DJ: 카테고리 광고 페이지
 * Playlist: 플레이리스트에 담긴 음원만 보여누는 페이지
 * Video: 광고 페이지
 #### 🧩 back-end
@@ -181,7 +201,9 @@ npm start
 
 #### 🧩 ERD
 
-![erd](/readme-img/ERD.png)
+![erd](/readme-img/ERD.svg)
+
+- [ERD 다이어그램](https://dbdiagram.io/d/Mplay-659393e0ac844320ae1348d3)
 
 ### ✔️ 페이지 구성
 
@@ -189,14 +211,63 @@ npm start
 
 <img alt="Html" src ="https://img.shields.io/badge/HTML5-E34F26.svg?&style=for-the-badge&logo=HTML5&logoColor=white"/> <img alt="JavaScript" src ="https://img.shields.io/badge/JavaScript-F7DF1E.svg?&style=for-the-badge&logo=JavaScript&logoColor=black"/> <img alt="react" src ="https://img.shields.io/badge/react-61DAFB.svg?&style=for-the-badge&logo=react&logoColor=white"/> <img alt="node.js" src ="https://img.shields.io/badge/node.js-339933.svg?&style=for-the-badge&logo=node.js&logoColor=white"/> <img alt="express" src ="https://img.shields.io/badge/express-000000.svg?&style=for-the-badge&logo=express&logoColor=white"/> <img alt="Sequelize" src ="https://img.shields.io/badge/sequelize-52B0E7.svg?&style=for-the-badge&logo=sequelize&logoColor=white"/> <img alt="MySQL" src ="https://img.shields.io/badge/mysql-4479A1.svg?&style=for-the-badge&logo=mysql&logoColor=white"/> <img alt="MUI" src ="https://img.shields.io/badge/mui-007FFF.svg?&style=for-the-badge&logo=mui&logoColor=white"/> <img alt="antd" src ="https://img.shields.io/badge/antd-111111.svg?&style=for-the-badge&logo=antd&logoColor=White"/>
 
+### 🔗 Cooperation
+
+<img alt="github" src ="https://img.shields.io/badge/github-000000.svg?&style=for-the-badge&logo=github&logoColor=white"/> <img alt="discord" src ="https://img.shields.io/badge/discord-5662F6.svg?&style=for-the-badge&logo=discord&logoColor=white"/>
+
 ### 💻 Dependencies
 
 <img alt="npm" src ="https://img.shields.io/badge/npm-CB3837.svg?&style=for-the-badge&logo=npm&logoColor=white"/> <img alt="axios" src ="https://img.shields.io/badge/axios-5A29E4.svg?&style=for-the-badge&logo=axios&logoColor=white"/> <img alt=".env" src ="https://img.shields.io/badge/.ENV-ECD53F.svg?&style=for-the-badge&logo=dotenv&logoColor=white"/> <img alt="multer" src ="https://img.shields.io/badge/multer-000000.svg?&style=for-the-badge&logo=multer&logoColor=White"/>
 
+## 5. 트러블 슈팅
+
+ ### 1. 페이지 이동 시 음악 초기화
+ 
+  - 문제: 각 페이지를 이동할 때마다 React 컴포넌트가 다시 마운트되기 때문에 오디오 컴포넌트 또한 초기화되고 음악 재생 상태가 초기화
+  - 해결책: CustomAudioPlayer 컴포넌트를 React-Router-Dom의 Routes 내부가 아닌 외부에 위치시켜, 해당 컴포넌트가 다시 렌더링되지 않게 함
+
+ ```javascript
+<div id="loginMain">
+   <Listb id='Listb'/>
+   <div id='loginMain-content'>
+     <Routes>
+       <Route path="/playlist" element={<Playlist onMusic={onMusic} />} />
+       <Route path="/user/mypage" element={<Mypage />} />
+       <Route path="/edit" element={<EditProfile />} />
+       <Route path="/member" element={<MembershipManagement />} />
+       <Route path="/musics" element={<Musics onMusic={onMusic} />} />
+       <Route path="/detail" element={<MusicDetail onMusic={onMusic} />} />
+       <Route path="/dj" element={<Dj onMusic={onMusic} />} />
+       <Route path="/month" element={<Monthmusic onMusic={onMusic} />} />
+       <Route path="/chart" element={<Chart onMusic={onMusic} />} />
+       <Route path='/new' element={<Newchart onMusic={onMusic} />} />
+       <Route path='/video' element={<Video onMusic={onMusic} />} />
+     </Routes>
+   </div>
+   <CustomAudioPlayer playList={playList} />
+</div>
+```
+
+ ### 2. Fullpage가 정상적으로 동작하지 않음
+ 
+  - 문제: @fullpage/react-fullpage의 각 섹션의 높이를 계산하는데 일부 CSS 스타일링 문제
+  - 해결책:각 섹션에 높이를 설정하고, CSS 스타일의 포지션을 적용하여 각 섹션의 높이를 조절
+
+<table>
+  <tr>
+    <td><b>메인 1</b></td>
+    <td><b>메인 2</b></td>
+  </tr> 
+  <tr>
+    <td><img src="/readme-img/main.png" alt="메인 페이지"></td>
+    <td><img src="/readme-img/main1.png" alt="관리자 페이지"></td>
+  </tr>
+</table>
+
 
 ## 6. END
 
-- 한국정보교육원 웹 프론트엔드 클라우드 콘솔 개발자 양성과정 3회차차 1조 
+- 한국정보교육원 웹 프론트엔드 클라우드 콘솔 개발자 양성과정 3회차 1조 
 
 ## ✔️프로젝트 멤버 구성
 
@@ -221,13 +292,18 @@ npm start
 - 플레이리스트 추가 기능 구현
 - JWT토큰 로그인 / 로그인 상태 유지 기능 구현
 - [react-modern-audio-player](https://github.com/slash9494/react-modern-audio-player)사용하여 음악 재생바 구현
+- 오디오 컴포넌트 mp3 다운로드 기능 구현
+- 페이지 이동해도 노래 재생 유지 기능 구현
 - 하단 음원 재생 컴포넌트 기능 구현
    - 음원 클릭시 재생중인 음원 교체 기능
-   - 플레이리스트 추가 버튼 기능 
+   - 플레이리스트 추가 버튼 기능
 
 ### 김준녕
 
   - 토스페이먼츠 SDK 결제 구현
+  - 빈 플레이 리스트 페이지 구현
+  - 내돈내산 페이지 슬라이드 감상하기 버튼 클릭 시 모달로 유튜브 재생
+  - DB 음악 데이터 넣기
   - 로그인 후 메인페이지
     - 프론트엔드
     - css 스타일링
@@ -235,6 +311,7 @@ npm start
 ### 유재혁
 
 - 회원가입 페이지 구현
+- 회원가입 유효성 검사
 - 헤더 구현
 - CSS 스타일링
 - 디자인
@@ -244,6 +321,7 @@ npm start
 
 - 마이페이지 제작
 - 회원탈퇴 기능 구현 및 제작
+- 이달의 노래 테이블 형식 및 페이지네이션 구현
 - CSS 스타일링
   
 ### 임헌성
@@ -261,12 +339,16 @@ npm start
       - css 스타일링
       - 디자인 
       - Ul 리서치
-
+  - 내돈내산 페이지 슬라이드 감상하기 버튼 클릭 시 모달로 유튜브 재생
+  - Music Detail 가사 보기
+  - DB 음악 데이터 넣기
+    
 ### 박승균
 
    - 관리자 페이지 기본틀제작
    - css스타일링
-   - 
+   - DB 음악 데이터 넣기
+
 ### 백승준
 
   - 전반적인 디자인 담당
@@ -274,5 +356,7 @@ npm start
     - Ul 리서치
     - icon 디자인
     - logo 디자인
+    - Mypage, 회원 정보 수정 페이지 css
+    - Music Detail 버튼 아이콘
 
 

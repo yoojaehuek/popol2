@@ -11,6 +11,7 @@ import NewReleasesIcon from '@mui/icons-material/NewReleases';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import HeadsetIcon from '@mui/icons-material/Headset';
 import MovieIcon from '@mui/icons-material/Movie';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 import { removeCookie } from "../cookie";
 
 const drawerWidth = 250;
@@ -98,6 +99,14 @@ const Listb = () => {
               <ListItemContainer>
                 <MovieIcon style={{ color: 'white', marginRight: '5px' }} /> 
                 <ListItemText style={{color: 'white'}} primary="내돈내산" />
+              </ListItemContainer>
+            </NavLink>
+          </ListItem>
+          <ListItem button style={{ padding: '8px 16px', justifyContent: 'start' }}>
+            <NavLink to='/uploader'>
+              <ListItemContainer>
+                <FileUploadIcon style={{ color: 'white', marginRight: '5px' }} /> 
+                <ListItemText style={{color: 'white'}} primary="음악 업로드" />
               </ListItemContainer>
             </NavLink>
           </ListItem>
