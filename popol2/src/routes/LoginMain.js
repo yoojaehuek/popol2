@@ -13,6 +13,7 @@ import Playlist from './Playlist';
 import Mypage from './Mypage';
 import Musics from './Musics';
 import CustomAudioPlayer from './Audio.js';
+import UpLoader from './UpLoader.js';
 import { API_URL } from '../config/contansts.js';
 import '../scss/LoginMain.scss';
 
@@ -61,6 +62,7 @@ const LoginMain = () => {
           <Route path="/chart" element={<Chart onMusic={onMusic} />} />
           <Route path='/new' element={<Newchart onMusic={onMusic} />} />
           <Route path='/video' element={<Video onMusic={onMusic} />} />
+          <Route path="/uploader" element={<UpLoader />} />
         </Routes>
       </div>
       <CustomAudioPlayer playList={playList} />
