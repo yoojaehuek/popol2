@@ -10,22 +10,6 @@ router.route('/')
       console.log("/playlist post: ", req.body.playList);
       const { ok, id } = verify(req.headers.authorization.substring(7));
       if (ok) {
-        // const playlist = new Array;
-        // const playlistId = await PlayList.findAll({
-        //   attributes: ['musicId'],
-        //   where: {
-        //     userId: id
-        //   }
-        // });
-        // playlistId.map( async (list) => {
-        //   const music = await Music.findAll({
-        //     where: {
-        //       id: list.dataValues.musicId
-        //     }
-        //   })
-        //   playlist.push(music);
-        // })
-        // console.log("playlist: ", playlist);
         const playlist = await PlayList.findAll({ // Cart모델에서 전부(findAll) 불러와서 cart상수에 넣음
           where: { //조건
             userId: id, 
