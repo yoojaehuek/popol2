@@ -82,14 +82,14 @@ const Main = () => {
             <div className="section">
               {showWelcome ? (
                 <div className={`headertxt ${showWelcome ? '' : 'fade-out'}`}>
-                  <h1>저희 Music Hub를 찾아주셔서 감사합니다.</h1>
+                  <h1>저희 MusicHub를 찾아주셔서 감사합니다.</h1>
                 </div>
               ) : (
                 <div className="main-page">
                   <div className={`main-page3 ${showMainPage ? 'fade-in' : ''}`}>
                     <section className='Money2'>
                       <div className='txt'>
-                        <h1>저희 Music Hub를 이용해야 하는 이유!</h1>
+                        <h1>저희 MusicHub를 이용해야 하는 이유!</h1>
                       </div>
                       <ul className='section1'>
                         <li className='section2'>

@@ -32,11 +32,11 @@ const PlaylistImage = styled('img')({
 const PlayIcon = styled(PlayArrowIcon) ({
   border  :  'solid 1px rgba(0, 0, 0, 0); ',
   borderRadius : '50px',
-  backgroundColor : 'gray',
+  backgroundColor : '#FF0050',
   position: 'absolute',
   color : 'white',
-  top: '90%',
-  left: '15%',
+  top: '85%',
+  left: '20%',
   transform: 'translate(-50%, -50%)',
   opacity: 0,
   transition: 'opacity 0.3s ease',
@@ -88,13 +88,19 @@ const Dj = (props) => {
 
   //전체곡 조회함수
   const getMusics = async () => {
-    const res = await axios.get(`${API_URL}/api/musics`);
-    console.log("res.data:", res.data);
-    return res.data;
+    const allMusic = await axios.get(`${API_URL}/api/musics`);
+    const K_Idol = await axios.get(`${API_URL}/api/musics/kind?kind=한국-아이돌&limit=15`);
+    const POP = await axios.get(`${API_URL}/api/musics/kind?kind=POP&limit=15`);
+    const hiphop = await axios.get(`${API_URL}/api/musics/kind?kind=힙합&limit=15`);
+    const musics = {allMusic: allMusic.data, K_Idol: K_Idol.data, hiphop: hiphop.data, POP: POP.data};
+    // console.log("res.data:", res.data);
+    return musics;
   };
 
   const [state] = useAsync(getMusics, []);
   const { loading, data: musics, error } = state; //state구조분해
+  console.log("musics: ", musics);
+
   if (loading) {
     return (
       <div style={{ textAlign: 'center', padding: '20px', color: 'white', backgroundColor: '#000', height: '100vh', display: "flex", flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -118,27 +124,44 @@ const Dj = (props) => {
           <h1>DJ 스테이션</h1>
           <h2>느낌별 스테이션</h2>
           <Grid container spacing={2}>
-            {playlists.map((playlist) => (
-              <Grid item xs={12} sm={6} md={2} key={playlist.id}>
-                <NavLink to='/login-main/detail'>
-                  <PlaylistItem>
-                    <PlaylistImage src={playlist.imageUrl}/>
-                    <PlayIcon className="play-icon" fontSize="large" />
-                  </PlaylistItem>
-                </NavLink>
+            {playlists.map((playlist, index) => (
+              <Grid item xs={12} sm={6} md={2} key={index}>
+                <PlaylistItem >
+                  <PlaylistImage src={playlist.imageUrl} style={{ filter: index >= 3 ? "grayscale(100%)" : "none" }} />
+                  <PlayIcon
+                    className="play-icon"
+                    fontSize="large"
+                    onClick={() => {
+                      const selectedMusic =
+                        index === 0 ? musics.allMusic :
+                        index === 1 ? musics.hiphop :
+                        index === 2 ? musics.K_Idol :
+                        null; // 예외 처리가 필요하면 추가
+                      props.onPlaylist(selectedMusic);
+                    }}
+                  />
+                </PlaylistItem>
               </Grid>
             ))}
           </Grid>
           <h2>장르 스테이션</h2>
           <Grid container spacing={2}>
-            {playlist.map((playlist) => (
-              <Grid item xs={12} sm={6} md={2} key={playlist.id}>
-                <NavLink to='/login-main/detail'>
-                  <PlaylistItem>
-                    <PlaylistImage src={playlist.imageUrl}/>
-                    <PlayIcon className="play-icon" fontSize="large" />
-                  </PlaylistItem>
-                </NavLink>
+            {playlist.map((playlist, index) => (
+              <Grid item xs={12} sm={6} md={2} key={index}>
+                <PlaylistItem>
+                  <PlaylistImage src={playlist.imageUrl} style={{ filter: index >= 2 ? "grayscale(100%)" : "none" }}/>
+                  <PlayIcon
+                  className="play-icon"
+                  fontSize="large"
+                  onClick={() => {
+                    const selectedMusic =
+                      index === 0 ? musics.K_Idol :
+                      index === 1 ? musics.POP :
+                      null; // 예외 처리가 필요하면 추가
+                    props.onPlaylist(selectedMusic);
+                  }}
+                />
+                </PlaylistItem>
               </Grid>
             ))}
           </Grid>

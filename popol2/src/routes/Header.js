@@ -17,18 +17,18 @@ export default function Header() {
     let login = getCookie("accessToken") == null ? 
     <div>
       <NavLink to='/join'>
-        <Button color="inherit">회원가입</Button>
+        <Button style={{color:"#000"}}>회원가입</Button>
       </NavLink>
       <NavLink to='/login'>
-        <Button color="inherit">로그인</Button>
+        <Button style={{color:"black"}}>로그인</Button>
       </NavLink>
     </div>
   :
     <div>
       <NavLink to='/login-main/user/mypage'>
-        <Button color="inherit">My</Button>
+        <Button style={{color:"black"}}>My</Button>
       </NavLink>
-      <NavLink color="inherit" onClick={logout}>
+      <NavLink style={{color:"black"}} onClick={logout}>
         로그아웃
       </NavLink>
       {/* <NavLink>
@@ -44,8 +44,9 @@ export default function Header() {
       <AppBar position="static" sx={{ backgroundColor: '#90EE90' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <NavLink to='/'>
-            <Typography variant="h6" component="div">
-              Music Hub
+            <Typography variant="h6" component="div" style={{color:"#fff"}}>
+              Music
+              <span style={{color:"lightseagreen"}}>Hub</span>
             </Typography>
           </NavLink>
           {

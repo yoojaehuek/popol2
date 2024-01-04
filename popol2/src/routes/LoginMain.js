@@ -46,6 +46,29 @@ const LoginMain = () => {
     ]);
   };
 
+  // 음악을 클릭했을 때 재생목록에 추가하는 함수
+  const onPlaylist = (musics) => {
+    if(musics == null){
+      return
+    }
+    
+    const playlist = []
+    musics.map((music, index) => {
+      playlist.push(
+        {
+          name: music.name,
+          writer: music.singer,
+          img: API_URL+music.imageUrl,
+          src: API_URL+music.musicUrl,
+          musicId: music.id,
+          id: index+1,
+        }
+      )
+    })
+    console.log("playlist: ", playlist);
+    setPlayList(playlist);
+  };
+
   return (
     <div id="loginMain">
       <Listb id='Listb'/>
@@ -57,7 +80,7 @@ const LoginMain = () => {
           <Route path="/member" element={<MembershipManagement />} />
           <Route path="/musics" element={<Musics onMusic={onMusic} />} />
           <Route path="/detail" element={<MusicDetail onMusic={onMusic} />} />
-          <Route path="/dj" element={<Dj onMusic={onMusic} />} />
+          <Route path="/dj" element={<Dj onMusic={onMusic} onPlaylist={onPlaylist} />} />
           <Route path="/month" element={<Monthmusic onMusic={onMusic} />} />
           <Route path="/chart" element={<Chart onMusic={onMusic} />} />
           <Route path='/new' element={<Newchart onMusic={onMusic} />} />
