@@ -9,7 +9,7 @@
     <td><b>로그인 후 메인 페이지</b></td>
   </tr> 
   <tr>
-    <td><img src="/readme-img/main.png" alt="메인 페이지"></td>
+    <td><img src="/readme-img/main1.png" alt="메인 페이지"></td>
     <td><img src="/readme-img/main2.png" alt="로그인 후 메인 페이지"></td>
   </tr>
 </table>
