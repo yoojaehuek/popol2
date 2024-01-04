@@ -102,7 +102,7 @@ const Listb = () => {
               </ListItemContainer>
             </NavLink>
           </ListItem>
-          <ListItem button>
+          <ListItem button style={{ padding: '8px 16px', justifyContent: 'start' }}>
             <NavLink to='/uploader'>
               <ListItemContainer>
                 <FileUploadIcon style={{ color: 'white', marginRight: '5px' }} /> 

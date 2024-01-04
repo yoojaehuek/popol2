@@ -17,16 +17,6 @@ import { API_URL } from '../config/contansts.js';
 import '../scss/LoginMain.scss';
 
 const LoginMain = () => {
-  // const navigate = useNavigate();
-  // const location = useLocation();
-  
-  // useEffect(() => {
-  //   console.log("location: ", location);
-  //   if(!getCookie('login')){
-  //     alert('다시 로그인 해주세요');
-  //     navigate('/');
-  //   }
-  // }, [location]);
 
   const [playList, setPlayList] = useState([
     {
