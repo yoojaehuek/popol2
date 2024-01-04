@@ -108,9 +108,11 @@ const Uploader = () => {
                     </Upload>
                 </Form.Item>
                 <Divider /> {/* Divider: 인풋 사이사이 반투명 구분선 */}
+                <Form.Item name="mp3" label={<div className='upload-label'>국가</div>}>
                 <Upload {...props}>
                     <Button icon={<UploadOutlined />}>Click to Upload</Button>
                 </Upload>
+                </Form.Item>
                 <Divider />
                 <Form.Item name="name"
                     label={<div className='upload-label'>음원 제목</div>}>
@@ -207,11 +209,11 @@ const Uploader = () => {
                     <Button id="submit-button" size="large" htmlType='submit'>
                         등록
                     </Button>
-                </Form.Item>
-            </Form>
-            <Button id="submit-button" size="large" onClick={() => {navigate('/login-main/musics')}}>
+                    <Button id="submit-button" size="large" onClick={() => {navigate('/login-main/musics')}}>
                 취소
             </Button>
+                </Form.Item>
+            </Form>
         </div>
     )
 }
