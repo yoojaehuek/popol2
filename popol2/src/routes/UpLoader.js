@@ -84,7 +84,7 @@ const Uploader = () => {
         }).then((result) => {
             console.log(result);
             alert("등록 성공");
-            navigate("/");
+            navigate("/login-main/new");
         })
         .catch(e => {
             console.log(e);
@@ -102,13 +102,13 @@ const Uploader = () => {
                         {imageUrl ? <img src={API_URL+imageUrl} //삼항연산자
                             alt="" width="200px" height="200px" /> :
                             (<div id="upload-img-placeholder">
-                                <img src="images/icons/camera.png" alt="" />
+                                <img src="/images/icons/camera.png" alt="" />
                                 <span>이미지를 업로드 해주세요.</span>
                             </div>)}
                     </Upload>
                 </Form.Item>
                 <Divider /> {/* Divider: 인풋 사이사이 반투명 구분선 */}
-                <Form.Item name="mp3" label={<div className='upload-label'>국가</div>}>
+                <Form.Item name="mp3" label={<div className='upload-label'>MP3</div>}>
                 <Upload {...props}>
                     <Button icon={<UploadOutlined />}>Click to Upload</Button>
                 </Upload>

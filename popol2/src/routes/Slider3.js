@@ -122,7 +122,7 @@ const Slider3 = () => {
             src="/images/slider2/7.png"
           />
           <br></br>
-          <CustomButton onClick={() => handleOpenModal("VlMe7PavaRQ")}>
+          <CustomButton onClick={() => handleOpenModal("0GtEGZv1_Os")}>
             감상하기
           </CustomButton>
         </div>

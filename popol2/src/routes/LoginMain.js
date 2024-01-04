@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import React, {useState } from 'react';
+import { Routes, Route, useLocation} from 'react-router-dom';
 import Listb from "./Listbar.js";
 import EditProfile from './EditProfile.js';
 import MembershipManagement from './Membershipmang';
@@ -18,6 +18,9 @@ import { API_URL } from '../config/contansts.js';
 import '../scss/LoginMain.scss';
 
 const LoginMain = () => {
+  const location = useLocation();
+  const hidePages = ['/login-main/uploader', '/login-main/video'];
+  const Hide = hidePages.includes(location.pathname);
 
   const [playList, setPlayList] = useState([
     {
@@ -88,7 +91,7 @@ const LoginMain = () => {
           <Route path="/uploader" element={<UpLoader />} />
         </Routes>
       </div>
-      <CustomAudioPlayer playList={playList} />
+      {!Hide &&  <CustomAudioPlayer playList={playList} />}
     </div>
   );
 };
