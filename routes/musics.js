@@ -42,7 +42,7 @@ router.route('/new')
     try {
       const musics = await Music.findAll({
         order: [ ['regdate', 'DESC'] ],
-        limit: 10,
+        limit: 18,
       }); // 모든 음악 데이터 조회
       console.log("musics", musics);
       res.json(musics); // 조회된 음악 데이터를 클라이언트에 응답으로 전송

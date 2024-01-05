@@ -84,7 +84,7 @@ const Uploader = () => {
         }).then((result) => {
             console.log(result);
             alert("등록 성공");
-            navigate("/");
+            navigate("/login-main/new");
         })
         .catch(e => {
             console.log(e);
@@ -108,7 +108,7 @@ const Uploader = () => {
                     </Upload>
                 </Form.Item>
                 <Divider /> {/* Divider: 인풋 사이사이 반투명 구분선 */}
-                <Form.Item name="mp3" label={<div className='upload-label'>국가</div>}>
+                <Form.Item name="mp3" label={<div className='upload-label'>MP3</div>}>
                 <Upload {...props}>
                     <Button icon={<UploadOutlined />}>Click to Upload</Button>
                 </Upload>
