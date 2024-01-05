@@ -102,7 +102,7 @@ const Uploader = () => {
                         {imageUrl ? <img src={API_URL+imageUrl} //삼항연산자
                             alt="" width="200px" height="200px" /> :
                             (<div id="upload-img-placeholder">
-                                <img src="images/icons/camera.png" alt="" />
+                                <img src="/images/icons/camera.png" alt="" />
                                 <span>이미지를 업로드 해주세요.</span>
                             </div>)}
                     </Upload>
