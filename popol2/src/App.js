@@ -16,7 +16,6 @@ import LoginMain from './routes/LoginMain.js';
 function App() {
   const location = useLocation();
   const hidePages = ['/login-main/detail', '/login-main/playlist', '/login-main/user/mypage', '/login-main/musics', '/login-main/music', '/dash', '/login-main/uploader', '/login-main/dj', '/login-main/month', "/login-main/chart", '/login-main/video', '/login-main/new', '/login-main', '/login-main/edit', '/login-main/member'];
-  // const hidePages = ['/login-main/detail'];
   const Hide = hidePages.includes(location.pathname);
 
   return (

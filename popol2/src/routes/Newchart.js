@@ -60,7 +60,7 @@ const NewChart = (props) => {
 
   //전체곡 조회함수
   const getMusics = async () => {
-    const res = await axios.get(`${API_URL}/api/musics`);
+    const res = await axios.get(`${API_URL}/api/musics/new`);
     console.log("res.data:", res.data);
     return res.data;
   };
