@@ -203,7 +203,7 @@ npm start
 
 ![erd](/readme-img/ERD.svg)
 
-- [ERD 다이어그램](https://dbdiagram.io/d/Mplay-659393e0ac844320ae1348d3)
+- [ERD](https://dbdiagram.io/d/Mplay-659393e0ac844320ae1348d3)
 
 ### ✔️ 페이지 구성
 
