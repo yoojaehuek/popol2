@@ -49,23 +49,34 @@ For building and running the application you need :
 Installation
 
 ```bash
-git clone https://github.com/IkGy/Popol.git
-cd Popol2
+git clone https://github.com/KJH1225/popol2.git
 ```
 
-Front
+Front (popol2/popol2/)
 
 ```
-cd popol2
+npm install
+npm run build
+```
+
+DB
+
+```
+/popol2/SQL/MusicHubdb.sql 실행
+```
+
+
+Back (popol2/)
+
+```
 npm install
 npm start
 ```
 
-Back
+접속
 
 ```
-npm install
-npm start
+http://localhost:8001 접속
 ```
 
 ## 💻 2. Project Info : 프로젝트 소개
