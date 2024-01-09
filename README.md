@@ -302,7 +302,7 @@ http://localhost:8001 접속
 - 카테고리별 음원조회 기능 구현
 - 플레이리스트 추가 기능 구현
 - JWT토큰 로그인 / 로그인 상태 유지 기능 구현
-- [react-modern-audio-player](https://github.com/slash9494/react-modern-audio-player)사용하여 음악 재생바 구현
+- [react-modern-audio-player](https://github.com/slash9494/react-modern-audio-player)로 음악 재생바 사용
 - 오디오 컴포넌트 mp3 다운로드 기능 구현
 - 페이지 이동해도 노래 재생 유지 기능 구현
 - 하단 음원 재생 컴포넌트 기능 구현
