@@ -64,6 +64,7 @@ DB
 
 ```
 /popol2/SQL/MusicHubdb.sql 실행
+popol2/config/config.json 파일의 development: {} 내용을 자신에 맞게 수정
 ```
 
 
