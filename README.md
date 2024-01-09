@@ -53,17 +53,17 @@ Installation
 git clone https://github.com/KJH1225/popol2.git
 ```
 
-Front (popol2/popol2/)
+Front (popol2/poopl2/)에서
 
 ```
-npm install
+npm i --force
 npm run build
 ```
 
 DB
 
 ```
-/popol2/SQL/MusicHubdb.sql 실행
+popol2/SQL/MusicHub.sql 실행
 popol2/config/config.json 파일의 development: {} 내용을 자신에 맞게 수정
 ```
 
@@ -71,7 +71,7 @@ popol2/config/config.json 파일의 development: {} 내용을 자신에 맞게 �
 Back (popol2/)
 
 ```
-npm install
+npm i 
 npm start
 ```
 
