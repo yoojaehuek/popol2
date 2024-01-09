@@ -45,6 +45,7 @@ For building and running the application you need :
 
 - [Node.js 18.16.1](https://nodejs.org/en)
 - [npm 9.7.2](https://www.npmjs.com/)
+- '10.3.11-MariaDB'
 
 Installation
 
